@@ -187,8 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundBox:
   - {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
-  columns: 5
-  rows: 5
+  columns: 20
+  rows: 20
   columnsPerLevel: 3
   level: 1
   dangers:
@@ -286,8 +286,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646437270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: .366970241, y: 0, z: 0, w: .930232704}
+  m_LocalPosition: {x: 6.48999977, y: 8.57999992, z: -4.30999994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
