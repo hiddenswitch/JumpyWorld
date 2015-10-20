@@ -100,11 +100,12 @@ namespace JumpyWorld
 			}
 			int index = Random.Range (0, dir.Count-1);
 			Vector3 newpt = pt;
-			while (pathPositions.Contains(newpt)&& dir.Count>0 ) {
+			while (pathPositions.Contains(newpt)&& dir.Count>1 ) {
 				newpt=pt+dir[index];
 				dir.RemoveAt(index);
 				index=Random.Range(0,dir.Count-1);
-				newpt=pt+dir[index];
+                newpt =pt+dir[index];
+
 			}
 			return newpt;
 		}

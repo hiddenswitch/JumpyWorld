@@ -81,30 +81,31 @@ namespace JumpyWorld{
 			smoothingZ = false;
 		}
 
-		void SwipeNorth ()
-		{
-			shouldSnapX = true;
-			quitSmoothX = false;
-			quitSmoothZ = true;
-		}
-		
-		void SwipeWest ()
-		{
-			shouldSnapZ = true;
-			quitSmoothX = true;
-			quitSmoothZ = false;
 
-		}
-		
-		void SwipeEast ()
-		{
-			SwipeWest ();
+        void TurnDirection(Vector3 targetRotation)
+        {
+            if (!enabled)
+            {
 
-		}
-		
-		void SwipeSouth (){
-			SwipeNorth ();
-		}
+                return;
+            }
+            Debug.Log("this fired");
+            if (targetRotation.y == 0f || targetRotation.y == 180f)
+            {
+                shouldSnapX = true;
+                quitSmoothX = false;
+                quitSmoothZ = true;
+            } else if (targetRotation.y == 90f || targetRotation.y == -90f)
+            {
+                shouldSnapZ = true;
+                quitSmoothX = true;
+                quitSmoothZ = false;
+            } else
+            {
+                Debug.LogError("there is a problem with targetRotation with snapToCell that requires fixing.");
+            }
+        }
+
 
 
 		//Assumes that the cells are gridded, with (0,0) being a valid center.

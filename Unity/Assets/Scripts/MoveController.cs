@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JumpyWorld
 {
@@ -8,14 +9,16 @@ namespace JumpyWorld
 	{
 		CharacterController controller;
 		public float speed = 0.85f;
-		[Header("Runtime")]
+
+
+
+        [Header("Runtime")]
 		public bool
 			moving = true;
 		public bool isAlive = true;
 
-		
-		// Use this for initialization
-		void Start ()
+        // Use this for initialization
+        void Start ()
 		{
 			// Move controller is disabled for non-local players.
 			/*
@@ -24,7 +27,17 @@ namespace JumpyWorld
 				return;
 			}*/
 			controller = GetComponent<CharacterController> ();
-		}
+
+        }
+
+        void Update()
+        {
+
+        }
+
+
+
+
 		
 		void HandleOnGameOver ()
 		{
@@ -40,41 +53,10 @@ namespace JumpyWorld
 				controller.Move (Vector3.zero);
 			}
 		}
-		
-		void SwipeNorth ()
-		{
-			if (!isAlive) {
-				return;
-			}
-			moving = true;
-			transform.rotation = Quaternion.Euler (0f, 0f, 0f);
-		}
-		
-		void SwipeWest ()
-		{
-			if (!isAlive) {
-				return;
-			}
-			moving = true;
-			transform.rotation = Quaternion.Euler (0f, -90f, 0f);
-		}
-		
-		void SwipeEast ()
-		{
-			if (!isAlive) {
-				return;
-			}
-			moving = true;
-			transform.rotation = Quaternion.Euler (0f, 90f, 0f);
-		}
-		
-		void SwipeSouth ()
-		{
-			if (!isAlive) {
-				return;
-			}
-			moving = true;
-			transform.rotation = Quaternion.Euler (0f, 180f, 0f);
-		}
-	}
+
+        void TurnDirection(Vector3 targetRotation)
+        {
+            transform.rotation = Quaternion.Euler(targetRotation);
+        }
+    }
 }

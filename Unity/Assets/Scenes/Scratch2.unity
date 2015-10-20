@@ -98,7 +98,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
       propertyPath: m_LocalPosition.z
@@ -130,13 +130,30 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11418588, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
       propertyPath: smoothFrames
-      value: 90
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11470812, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11470812, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
+      propertyPath: cellSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470812, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
+      propertyPath: enterCellThreshold
+      value: -.100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470812, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
+      propertyPath: exitCellThreshold
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418588, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11418588, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &746390641
@@ -248,6 +265,8 @@ MonoBehaviour:
   dangers:
   - {fileID: 136726, guid: 3a1e64ec3e5b39b4398be66a520fb518, type: 2}
   walls: []
+  endpoint: {x: 29, y: -1, z: 29}
+  startpoint: {x: 0, y: -1, z: 0}
 --- !u!4 &1248090091
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +343,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -367,3 +386,35 @@ MonoBehaviour:
   difference: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   needsStart: 1
+--- !u!1 &2002873246 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
+  m_PrefabInternal: {fileID: 443945739}
+--- !u!114 &2002873248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002873246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb43381560094e4ea426bc128ca62ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 1
+  smoothFrames: 15
+--- !u!114 &2002873253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002873246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8686b21b4dc5064487849065de772a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 1
+  enterCellThreshold: -.0500000007
+  exitCellThreshold: .0500000007
+  isAlive: 1
