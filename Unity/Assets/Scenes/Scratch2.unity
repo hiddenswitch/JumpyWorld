@@ -415,6 +415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellSize: 1
-  enterCellThreshold: -.0500000007
-  exitCellThreshold: .0500000007
+  enterCellThreshold: -.349999994
+  exitCellThreshold: .100000001
   isAlive: 1
