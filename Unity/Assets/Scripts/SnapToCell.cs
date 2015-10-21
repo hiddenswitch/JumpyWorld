@@ -53,7 +53,7 @@ namespace JumpyWorld{
 				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float) smoothFrames);
 
 				if (!quitSmoothX){
-					yield return new WaitForEndOfFrame();
+					yield return new WaitForFixedUpdate();
 				} else {
 					quitSmoothX = false;
 					transform.position = newPosition;
@@ -71,7 +71,7 @@ namespace JumpyWorld{
 				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float) smoothFrames);
 
 				if (!quitSmoothZ){
-					yield return new WaitForEndOfFrame();
+					yield return new WaitForFixedUpdate();
 				} else {
 					quitSmoothZ = false;
 					transform.position = newPosition;
