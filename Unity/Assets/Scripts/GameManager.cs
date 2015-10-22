@@ -6,7 +6,7 @@ namespace JumpyWorld {
         public BoardGenerator boardScript;
         // Use this for initialization
         void Awake() {
-            boardScript = GetComponent<BoardGenerator>();
+            boardScript = boardScript ?? GetComponent<BoardGenerator>();
             InitGame();
         }
         void InitGame()

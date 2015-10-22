@@ -86,10 +86,8 @@ namespace JumpyWorld{
         {
             if (!enabled)
             {
-
                 return;
             }
-            Debug.Log("this fired");
             if (targetRotation.y == 0f || targetRotation.y == 180f)
             {
                 shouldSnapX = true;
