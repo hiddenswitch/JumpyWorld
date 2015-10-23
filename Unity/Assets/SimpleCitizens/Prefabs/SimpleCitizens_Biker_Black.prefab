@@ -519,11 +519,16 @@ GameObject:
   m_Component:
   - 4: {fileID: 400066}
   - 95: {fileID: 9500000}
-  - 143: {fileID: 14387360}
   - 114: {fileID: 11497972}
   - 114: {fileID: 11470812}
-  - 114: {fileID: 11418588}
   - 114: {fileID: 11412584}
+  - 54: {fileID: 5400150}
+  - 136: {fileID: 13683530}
+  - 114: {fileID: 11448246}
+  - 114: {fileID: 11462424}
+  - 114: {fileID: 11410274}
+  - 114: {fileID: 11488956}
+  - 114: {fileID: 11499166}
   m_Layer: 0
   m_Name: SimpleCitizens_Biker_Black
   m_TagString: Untagged
@@ -951,7 +956,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400064}
@@ -972,6 +977,21 @@ Transform:
   - {fileID: 400034}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!54 &5400150
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: .5
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -989,6 +1009,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102320300796dac44aa73774e461ba12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  moving: 1
+  isAlive: 1
+  currentTargetSpeed: 3
 --- !u!114 &11412584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1003,10 +1038,23 @@ MonoBehaviour:
   speedParameter: Speed_f
   deathParameter: Death_b
   animator: {fileID: 9500000}
-  controller: {fileID: 14387360}
+  controller: {fileID: 0}
+  rigidBody: {fileID: 5400150}
   speedScale: 1
   isAlive: 1
---- !u!114 &11418588
+--- !u!114 &11448246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e48e489be807144c9afc18ab5a1e1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayedTurnController: {fileID: 11488956}
+--- !u!114 &11462424
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1018,8 +1066,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellSize: 1
-  smoothFrames: 30
+  smoothFrames: 5
 --- !u!114 &11470812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72e1e8632c318c47b7f2667d06feb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  moving: 1
+  isAlive: 1
+--- !u!114 &11488956
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1027,11 +1089,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d72e1e8632c318c47b7f2667d06feb8b, type: 3}
+  m_Script: {fileID: 11500000, guid: c8686b21b4dc5064487849065de772a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: .5
-  moving: 1
+  cellSize: 1
+  enterCellThreshold: -.349999994
+  exitCellThreshold: .349999994
   isAlive: 1
 --- !u!114 &11497972
 MonoBehaviour:
@@ -1057,6 +1120,31 @@ MonoBehaviour:
   swipe: {x: 0, y: 0}
   prevFrameDown: 0
   distanceTraveled: 0
+--- !u!114 &11499166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a801de44ad2d3304289a2a5b9e62c8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnDepth: -10
+--- !u!136 &13683530
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .699999988
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1625,23 +1713,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 2.38418579e-06, y: 1.37616217, z: .0016335845}
     m_Extent: {x: .691650748, y: 1.37616217, z: .355550438}
   m_DirtyAABB: 0
---- !u!143 &14387360
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100066}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 3
-  m_Radius: .200000003
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: .00100000005
-  m_Center: {x: 0, y: 1.38999999, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

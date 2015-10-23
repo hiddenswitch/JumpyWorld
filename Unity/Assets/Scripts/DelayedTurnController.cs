@@ -40,7 +40,6 @@ public class DelayedTurnController : MonoBehaviour {
 
     void handleTurnAngle(Vector3 targetRotationDegrees)
     {
-        Debug.Log(Mathf.Abs(currentDirection.y - targetRotationDegrees.y));
         if (Mathf.Abs(currentDirection.y - targetRotationDegrees.y) == 90f || Mathf.Abs(currentDirection.y - targetRotationDegrees.y) == 270f)
         {
             directionQueue.Clear();

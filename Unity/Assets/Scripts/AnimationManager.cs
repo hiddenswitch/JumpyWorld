@@ -25,7 +25,7 @@ namespace JumpyWorld
 		void LateUpdate ()
 		{
 			if (animator == null
-			    || controller == null) {
+			    && controller == null) {
 				return;
 			}
 			
