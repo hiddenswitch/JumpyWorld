@@ -7,55 +7,62 @@ namespace JumpyWorld
 	{
 		public float cellSize;
 		public int smoothFrames;
+		/// <summary>
+		/// When true, starts a smoothing snap; (then set to false.)
+		/// </summary>
 		[Header("Runtime")]
 		bool
-			shouldSnapX; //when true, starts a smoothing snap; (then set to false.)
+			shouldSnapX;
 		bool shouldSnapZ;
-		bool quitSmoothX; //when true, quits any existing smoothing snaps.
+		/// <summary>
+		/// When true, quits any existing smoothing snaps.
+		/// </summary>
+		bool quitSmoothX;
 		bool quitSmoothZ;
-		bool smoothingX = false; //when true, there is a smoothing snap running.
+		/// <summary>
+		/// When true, there is a smoothing snap running.
+		/// </summary>
+		bool smoothingX = false;
 		bool smoothingZ = false;
 
-		// Use this for initialization
 		void Start ()
 		{
 			
 		}
 		
-		// Update is called once per frame
 		void Update ()
 		{
 			if (shouldSnapX) {
-				snapX ();
+				SnapX ();
 			}
 			if (shouldSnapZ) {
-				snapZ ();
+				SnapZ ();
 			}
 		}
 
-		void snapX ()
+		void SnapX ()
 		{
 			if (!smoothingX) {
-				StartCoroutine (smoothX ());
+				StartCoroutine (SmoothX ());
 			}
 			shouldSnapX = false;
 
 		}
 
-		void snapZ ()
+		void SnapZ ()
 		{
 			if (!smoothingZ) {
-				StartCoroutine (smoothZ ());
+				StartCoroutine (SmoothZ ());
 			}
 			shouldSnapZ = false;
 		}
 
-		IEnumerator smoothX ()
+		IEnumerator SmoothX ()
 		{
 			smoothingX = true;
 			for (int i = 0; (i < smoothFrames); i++) {
 				Vector3 oldPosition = transform.position;
-				Vector3 newPosition = new Vector3 (computeNearestCell (oldPosition.x), oldPosition.y, oldPosition.z); 
+				Vector3 newPosition = new Vector3 (ComputeNearestCell (oldPosition.x), oldPosition.y, oldPosition.z); 
 				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float)smoothFrames);
 
 				if (!quitSmoothX) {
@@ -69,12 +76,12 @@ namespace JumpyWorld
 			smoothingX = false;
 		}
 
-		IEnumerator smoothZ ()
+		IEnumerator SmoothZ ()
 		{
 			smoothingZ = true;
 			for (int i = 0; (i < smoothFrames); i++) {
 				Vector3 oldPosition = transform.position;
-				Vector3 newPosition = new Vector3 (oldPosition.x, oldPosition.y, computeNearestCell (oldPosition.z)); 
+				Vector3 newPosition = new Vector3 (oldPosition.x, oldPosition.y, ComputeNearestCell (oldPosition.z)); 
 				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float)smoothFrames);
 
 				if (!quitSmoothZ) {
@@ -106,10 +113,12 @@ namespace JumpyWorld
 			}
 		}
 
-
-
-		//Assumes that the cells are gridded, with (0,0) being a valid center.
-		float computeNearestCell (float currentPos)
+		/// <summary>
+		/// Computes the nearest cell to the current position. Assumes that the cells are gridded, with (0,0) being a valid center.
+		/// </summary>
+		/// <returns>The nearest cell.</returns>
+		/// <param name="currentPos">Current position.</param>
+		float ComputeNearestCell (float currentPos)
 		{
 			return Mathf.Round (currentPos / cellSize) * cellSize;
 		}

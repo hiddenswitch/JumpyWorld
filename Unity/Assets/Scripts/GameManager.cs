@@ -15,7 +15,7 @@ namespace JumpyWorld
 
 		void InitGame ()
 		{
-			boardScript.setupScene ();
+			boardScript.SetupScene ();
 		}
 		// Update is called once per frame
 		void Update ()

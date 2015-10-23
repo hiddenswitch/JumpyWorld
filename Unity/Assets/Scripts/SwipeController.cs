@@ -40,12 +40,6 @@ namespace JumpyWorld
 			
 			screenSpaceNorth = screenSpaceNorth.normalized;
 			screenSpaceEast = screenSpaceEast.normalized;
-			
-			// TODO: Put into editor
-			/*
-			screenSpaceEast = (new Vector2 (271.2969f, 344.0117f) - new Vector2 (255.5f, 337.5195f)).normalized;
-			screenSpaceNorth = (new Vector2 (272.5234f, 345.7578f) - new Vector2 (285.5039f, 333.2734f)).normalized;
-			*/
 		}
 		
 		

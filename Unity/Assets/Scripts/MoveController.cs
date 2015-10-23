@@ -50,13 +50,13 @@ namespace JumpyWorld
 		void TurnDirection (Vector3 targetRotation)
 		{
 			//transform.rotation = Quaternion.Euler(targetRotation);
-			StartCoroutine (smoothTurn (targetRotation));
+			StartCoroutine (SmoothTurn (targetRotation));
 		}
 
-		IEnumerator smoothTurn (Vector3 targetRotationEuler)
+		IEnumerator SmoothTurn (Vector3 targetRotationEuler)
 		{
 			Quaternion startRotation = transform.rotation;
-			for (int i = 0; i <5; i++) {
+			for (int i = 0; i < 5; i++) {
 				transform.rotation = Quaternion.Lerp (startRotation, Quaternion.Euler (targetRotationEuler), i / (float)4);
 				yield return new WaitForEndOfFrame ();
 			}

@@ -32,7 +32,7 @@ namespace JumpyWorld
 		void Start ()
 		{
 			if (generateOnStart) {
-				setupScene ();
+				SetupScene ();
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace JumpyWorld
 
 		}
 
-		public void setupScene ()
+		public void SetupScene ()
 		{
 			BoardSetup ();
 		}
@@ -53,38 +53,39 @@ namespace JumpyWorld
 			UnityEngine.Random.seed = seed;
 			switch (style) {
 			case BoardStyle.Path:
-				createPath ();
+				CreatePath ();
 				break;
 			case BoardStyle.Room:
-				createRoom ();
+				CreateRoom ();
 				break;
 			}
 			UnityEngine.Random.seed = oldSeed;
 
 		}
 
-		void LayoutObject (int Density, GameObject[] objects, int x, int row)
+		void LayoutObject (int density, GameObject[] objects, int x, int row)
 		{
-
+			// TODO: Places objects along a given position with a given density
 		}
 
-		void addDangers ()
+		void AddDangers ()
 		{
-
+			// TODO: Add dangers to the map
 		}
 
-		void createPath ()
+		void CreatePath ()
 		{
+			// TODO: Create an exciting path between two points
 			Vector3 currentPoint = startpoint;
 			//while(currentPoint!=endpoint){
 			for (int i=0; i <rows+columns; i++) {
 				DrawTerrain (0, groundBox, currentPoint);
 				pathPositions.Add (currentPoint);
-				currentPoint = pickNeighbor (currentPoint);
+				currentPoint = PickNeighbor (currentPoint);
 			}
 		}
 
-		void createRoom ()
+		void CreateRoom ()
 		{
 			int height;
 			boardHolder = new GameObject ("Board").transform;
@@ -115,7 +116,7 @@ namespace JumpyWorld
 			}
 		}
 
-		Vector3 pickNeighbor (Vector3 pt)
+		Vector3 PickNeighbor (Vector3 pt)
 		{
 			var dir = new List<Vector3>{new Vector3(0,0,1), new Vector3(0,0,-1), new Vector3(-1,0,0),new Vector3(1,0,0)};
 			if (pt [2] == rows - 1) {
@@ -130,7 +131,7 @@ namespace JumpyWorld
 			}
 			int index = Random.Range (0, dir.Count - 1);
 			Vector3 newpt = pt;
-			while (pathPositions.Contains(newpt)&& dir.Count>1) {
+			while (pathPositions.Contains(newpt) && dir.Count>1) {
 				newpt = pt + dir [index];
 				dir.RemoveAt (index);
 				index = Random.Range (0, dir.Count - 1);
