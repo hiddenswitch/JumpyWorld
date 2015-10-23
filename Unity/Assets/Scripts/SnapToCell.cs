@@ -1,36 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace JumpyWorld{
-	public class SnapToCell : MonoBehaviour {
+namespace JumpyWorld
+{
+	public class SnapToCell : MonoBehaviour
+	{
 		public float cellSize;
 		public int smoothFrames;
-
 		[Header("Runtime")]
-		bool shouldSnapX; //when true, starts a smoothing snap; (then set to false.)
+		bool
+			shouldSnapX; //when true, starts a smoothing snap; (then set to false.)
 		bool shouldSnapZ;
 		bool quitSmoothX; //when true, quits any existing smoothing snaps.
 		bool quitSmoothZ;
-
 		bool smoothingX = false; //when true, there is a smoothing snap running.
 		bool smoothingZ = false;
 
 		// Use this for initialization
-		void Start () {
+		void Start ()
+		{
 			
 		}
 		
 		// Update is called once per frame
-		void Update () {
+		void Update ()
+		{
 			if (shouldSnapX) {
-				snapX();
+				snapX ();
 			}
 			if (shouldSnapZ) {
-				snapZ();
+				snapZ ();
 			}
 		}
 
-		void snapX () {
+		void snapX ()
+		{
 			if (!smoothingX) {
 				StartCoroutine (smoothX ());
 			}
@@ -38,22 +42,24 @@ namespace JumpyWorld{
 
 		}
 
-		void snapZ () {
+		void snapZ ()
+		{
 			if (!smoothingZ) {
 				StartCoroutine (smoothZ ());
 			}
 			shouldSnapZ = false;
 		}
 
-		IEnumerator smoothX(){
+		IEnumerator smoothX ()
+		{
 			smoothingX = true;
-			for (int i = 0; (i < smoothFrames) ; i++) {
+			for (int i = 0; (i < smoothFrames); i++) {
 				Vector3 oldPosition = transform.position;
-				Vector3 newPosition = new Vector3 (computeNearestCell(oldPosition.x), oldPosition.y, oldPosition.z); 
-				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float) smoothFrames);
+				Vector3 newPosition = new Vector3 (computeNearestCell (oldPosition.x), oldPosition.y, oldPosition.z); 
+				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float)smoothFrames);
 
-				if (!quitSmoothX){
-					yield return new WaitForFixedUpdate();
+				if (!quitSmoothX) {
+					yield return new WaitForFixedUpdate ();
 				} else {
 					quitSmoothX = false;
 					transform.position = newPosition;
@@ -63,15 +69,16 @@ namespace JumpyWorld{
 			smoothingX = false;
 		}
 
-		IEnumerator smoothZ(){
+		IEnumerator smoothZ ()
+		{
 			smoothingZ = true;
-			for (int i = 0; (i < smoothFrames) ; i++) {
+			for (int i = 0; (i < smoothFrames); i++) {
 				Vector3 oldPosition = transform.position;
-				Vector3 newPosition = new Vector3 (oldPosition.x, oldPosition.y,computeNearestCell(oldPosition.z)); 
-				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float) smoothFrames);
+				Vector3 newPosition = new Vector3 (oldPosition.x, oldPosition.y, computeNearestCell (oldPosition.z)); 
+				transform.position = Vector3.Lerp (oldPosition, newPosition, i / (float)smoothFrames);
 
-				if (!quitSmoothZ){
-					yield return new WaitForFixedUpdate();
+				if (!quitSmoothZ) {
+					yield return new WaitForFixedUpdate ();
 				} else {
 					quitSmoothZ = false;
 					transform.position = newPosition;
@@ -81,33 +88,29 @@ namespace JumpyWorld{
 			smoothingZ = false;
 		}
 
-
-        void TurnDirection(Vector3 targetRotation)
-        {
-            if (!enabled)
-            {
-                return;
-            }
-            if (targetRotation.y == 0f || targetRotation.y == 180f)
-            {
-                shouldSnapX = true;
-                quitSmoothX = false;
-                quitSmoothZ = true;
-            } else if (targetRotation.y == 90f || targetRotation.y == -90f)
-            {
-                shouldSnapZ = true;
-                quitSmoothX = true;
-                quitSmoothZ = false;
-            } else
-            {
-                Debug.LogError("there is a problem with targetRotation with snapToCell that requires fixing.");
-            }
-        }
+		void TurnDirection (Vector3 targetRotation)
+		{
+			if (!enabled) {
+				return;
+			}
+			if (targetRotation.y == 0f || targetRotation.y == 180f) {
+				shouldSnapX = true;
+				quitSmoothX = false;
+				quitSmoothZ = true;
+			} else if (targetRotation.y == 90f || targetRotation.y == -90f) {
+				shouldSnapZ = true;
+				quitSmoothX = true;
+				quitSmoothZ = false;
+			} else {
+				Debug.LogError ("there is a problem with targetRotation with snapToCell that requires fixing.");
+			}
+		}
 
 
 
 		//Assumes that the cells are gridded, with (0,0) being a valid center.
-		float computeNearestCell(float currentPos){
+		float computeNearestCell (float currentPos)
+		{
 			return Mathf.Round (currentPos / cellSize) * cellSize;
 		}
 	}

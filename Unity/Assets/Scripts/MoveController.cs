@@ -9,16 +9,13 @@ namespace JumpyWorld
 	{
 		CharacterController controller;
 		public float speed = 0.85f;
-
-
-
-        [Header("Runtime")]
+		[Header("Runtime")]
 		public bool
 			moving = true;
 		public bool isAlive = true;
 
-        // Use this for initialization
-        void Start ()
+		// Use this for initialization
+		void Start ()
 		{
 			// Move controller is disabled for non-local players.
 			/*
@@ -28,16 +25,12 @@ namespace JumpyWorld
 			}*/
 			controller = GetComponent<CharacterController> ();
 
-        }
+		}
 
-        void Update()
-        {
+		void Update ()
+		{
 
-        }
-
-
-
-
+		}
 		
 		void HandleOnGameOver ()
 		{
@@ -54,21 +47,19 @@ namespace JumpyWorld
 			}
 		}
 
-        void TurnDirection(Vector3 targetRotation)
-        {
-            //transform.rotation = Quaternion.Euler(targetRotation);
-            StartCoroutine(smoothTurn(targetRotation));
-        }
+		void TurnDirection (Vector3 targetRotation)
+		{
+			//transform.rotation = Quaternion.Euler(targetRotation);
+			StartCoroutine (smoothTurn (targetRotation));
+		}
 
-
-        IEnumerator smoothTurn(Vector3 targetRotationEuler)
-        {
-            Quaternion startRotation = transform.rotation;
-            for (int i = 0; i <5; i++)
-            {
-                transform.rotation = Quaternion.Lerp(startRotation, Quaternion.Euler(targetRotationEuler), i / (float)4);
-                yield return new WaitForEndOfFrame();
-            }
-        }
-    }
+		IEnumerator smoothTurn (Vector3 targetRotationEuler)
+		{
+			Quaternion startRotation = transform.rotation;
+			for (int i = 0; i <5; i++) {
+				transform.rotation = Quaternion.Lerp (startRotation, Quaternion.Euler (targetRotationEuler), i / (float)4);
+				yield return new WaitForEndOfFrame ();
+			}
+		}
+	}
 }
