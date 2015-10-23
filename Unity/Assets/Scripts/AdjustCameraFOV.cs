@@ -30,7 +30,7 @@ namespace JumpyWorld
 					camera.fieldOfView = previousFOV = portraitFOV;
 				}
 			}
-#elif
+#else
 			switch (Screen.orientation) {
 			case ScreenOrientation.LandscapeLeft:
 			case ScreenOrientation.LandscapeRight:
