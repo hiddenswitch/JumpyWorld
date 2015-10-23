@@ -14,6 +14,7 @@ namespace JumpyWorld
 		}
 		public bool generateOnStart;
 		public BoardStyle style;
+		public int seed = 101;
 		public GameObject[] groundBox;
 		public int columns = 30;
 		public int rows = 30;
@@ -48,6 +49,8 @@ namespace JumpyWorld
 
 		void BoardSetup ()
 		{
+			var oldSeed = UnityEngine.Random.seed;
+			UnityEngine.Random.seed = seed;
 			switch (style) {
 			case BoardStyle.Path:
 				createPath ();
@@ -56,6 +59,7 @@ namespace JumpyWorld
 				createRoom ();
 				break;
 			}
+			UnityEngine.Random.seed = oldSeed;
 
 		}
 
@@ -71,7 +75,6 @@ namespace JumpyWorld
 
 		void createPath ()
 		{
-
 			Vector3 currentPoint = startpoint;
 			//while(currentPoint!=endpoint){
 			for (int i=0; i <rows+columns; i++) {
@@ -79,7 +82,6 @@ namespace JumpyWorld
 				pathPositions.Add (currentPoint);
 				currentPoint = pickNeighbor (currentPoint);
 			}
-
 		}
 
 		void createRoom ()
@@ -109,7 +111,7 @@ namespace JumpyWorld
 			}
 
 			if (boardParent != null) {
-				boardHolder.SetParent(boardParent, false);
+				boardHolder.SetParent (boardParent, false);
 			}
 		}
 
