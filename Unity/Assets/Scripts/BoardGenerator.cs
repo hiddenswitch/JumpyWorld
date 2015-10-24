@@ -26,7 +26,7 @@ namespace JumpyWorld
 		public Vector3 endpoint = new Vector3 (29, -1, 29);
 		public Vector3 startpoint = new Vector3 (0, -1, 0);
 		private Transform boardHolder;
-		private List<Vector3> gridPositions = new List<Vector3> ();
+//		private List<Vector3> gridPositions = new List<Vector3> ();
 		private List<Vector3> pathPositions = new List<Vector3> ();
 		// Use this for initialization
 		void Start ()

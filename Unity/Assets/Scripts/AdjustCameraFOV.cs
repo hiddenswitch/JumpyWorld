@@ -8,7 +8,7 @@ namespace JumpyWorld
 	{
 		public float landscapeFOV;
 		public float portraitFOV;
-		public Camera camera;
+		public new Camera camera;
 		float previousFOV;
 		// Use this for initialization
 		void Start ()
