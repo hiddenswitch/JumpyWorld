@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &119356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407096}
+  - 114: {fileID: 11428666}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &134734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 452372}
+  - 114: {fileID: 11469946}
+  - 114: {fileID: 11411576}
+  m_Layer: 0
+  m_Name: Board Generators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407096
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13, y: 0, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 452372}
+  m_RootOrder: 0
+--- !u!4 &452372
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 407096}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11411576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb52efcef8c368748abe1aafc26d4537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  gateWay: {fileID: 169480, guid: 46b4020b66c96ac46acca0faac908037, type: 2}
+--- !u!114 &11428666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcf402c34c133c40b9f1af030ba5156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateOnStart: 0
+  style: 1
+  seed: 101
+  groundBox:
+  - {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  columns: 30
+  rows: 20
+  columnsPerLevel: 1
+  level: 1
+  dangers:
+  - {fileID: 136726, guid: 3a1e64ec3e5b39b4398be66a520fb518, type: 2}
+  - {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  walls:
+  - {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  boardParent: {fileID: 407096}
+  endpoint: {x: 29, y: -1, z: 29}
+  startpoint: {x: 0, y: -1, z: 0}
+--- !u!114 &11469946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcf199b658666848ad8c4a2d1945457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  simpleRoomPrefab: {fileID: 165534, guid: 9ee44b0fe71881f49ade26b7a9664287, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: cube
+      value: 
+      objectReference: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+    - target: {fileID: 0}
+      propertyPath: gateWay
+      value: 
+      objectReference: {fileID: 169480, guid: 46b4020b66c96ac46acca0faac908037, type: 2}
+    - target: {fileID: 0}
+      propertyPath: simpleRoomPrefab
+      value: 
+      objectReference: {fileID: 165534, guid: 9ee44b0fe71881f49ade26b7a9664287, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 134734}
+  m_IsPrefabParent: 1
