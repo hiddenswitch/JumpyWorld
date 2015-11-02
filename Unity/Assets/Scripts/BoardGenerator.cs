@@ -86,31 +86,48 @@ namespace JumpyWorld
 		void CreatePath (int elongation)
 		{
 			// TODO: Create an exciting path between two points
-			Vector3 currentPoint = startpoint;
-            int counter = 0;
-            int index = 0;
-            pathPositions.Add (new Vector3 (-1, -2, -1));
-            while(currentPoint!=endpoint && counter < rows*columns*5){
-	            counter++;
-                if (currentPoint!=pathPositions[index]){
-                    pathPositions.Add (currentPoint);
-                    index++;
-                }
-                else{
-                    pathPositions.Remove(currentPoint);
-                    index--;
-                    currentPoint= pathPositions[index-1];
-                }
-                visitedPositions.Add (currentPoint);
-				currentPoint = PickNeighbor (currentPoint,elongation);
-			}
+            //Bresenham's algorithm
+            pathPositions=(StraighPath(startpoint,endpoint));
+            for (int i=0; i < 15; i++) {
+                PertrubePath(pathPositions);
+            }
             for (int i =0; i< pathPositions.Count; i++) {
                 DrawTerrain(0,groundBox,pathPositions[i]);
             }
-            print ("the counter is " + counter);
-            print ("the last point was " + currentPoint);
 		}
-
+        List<Vector3> StraighPath(Vector3 startpt, Vector3 endpt){
+            List<Vector3>path= new List<Vector3>();
+            Vector3 start=startpt;
+            Vector3 end=endpt;
+            Vector3 directionLine= endpt - startpt;
+            float m = directionLine [2] / directionLine [0];
+            int z = (int)startpt [2];
+            float epsilon = m - 1.0f;
+            int drivingAxis=0;
+            int otherAxis = 2;
+            if (Math.Abs(directionLine [2]) > Math.Abs (directionLine [0])){
+                drivingAxis=2;
+                otherAxis=0;
+            }
+            if (startpt [drivingAxis] > endpt [drivingAxis]) {
+                start= endpt;
+                end= startpt;
+            }
+            Vector3 currentPoint = start;
+            Vector3 connectingPoint = new Vector3 (0, 0, 0);
+            connectingPoint[drivingAxis]=1;
+            for (int i = (int)start[drivingAxis]; i<end[drivingAxis];i=i+1){
+                currentPoint[drivingAxis]=i;
+                path.Add(currentPoint);
+                path.Add (currentPoint+connectingPoint);
+                if (epsilon>=1.0){
+                    currentPoint[otherAxis]+=1;
+                    epsilon-=1.0f;
+                }
+                epsilon+=m;
+            }
+            return path;
+        }
 		void CreateRoom ()
 		{
 			int height;
@@ -141,7 +158,24 @@ namespace JumpyWorld
 				boardHolder.SetParent (boardParent, false);
 			}
 		}
-
+        void PertrubePath(List<Vector3> path){
+            var dir = new List<Vector3>{new Vector3(0,0,2), new Vector3(0,0,-2),new Vector3(2,0,0),new Vector3(-2,0,0)};
+            int index =  Random.Range (2, (path.Count-2));
+            Vector3 movePoint = path [index];
+           //DrawTerrain (0, dangers, movePoint);
+            movePoint += dir [Random.Range (0, dir.Count)];
+            List<Vector3> modifiedStart = StraighPath (path [index - 2], movePoint);
+            List<Vector3> modifiedEnd= StraighPath(movePoint,path[index+2]);
+            path.RemoveAt (index);
+            path.RemoveAt (index - 1);
+            path.RemoveAt (index+1);
+            for (int i=0; i<modifiedStart.Count; i++) {
+                path.Insert(i+index-1,modifiedStart[i]);
+            }
+            for (int i=0; i <modifiedEnd.Count; i++ ){
+                path.Insert(i+index+modifiedStart.Count,modifiedEnd[i]);
+            }
+        }
 		Vector3 PickNeighbor (Vector3 pt,int e)
 		{
             int index;
