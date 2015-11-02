@@ -529,6 +529,7 @@ GameObject:
   - 114: {fileID: 11410274}
   - 114: {fileID: 11488956}
   - 114: {fileID: 11499166}
+  - 114: {fileID: 11450854}
   m_Layer: 0
   m_Name: SimpleCitizens_Biker_Black
   m_TagString: Untagged
@@ -1054,6 +1055,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayedTurnController: {fileID: 11488956}
+--- !u!114 &11450854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3ce4be644da46689dc6b458292bc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11462424
 MonoBehaviour:
   m_ObjectHideFlags: 1
