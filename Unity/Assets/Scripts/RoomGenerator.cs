@@ -6,6 +6,6 @@ namespace JumpyWorld
     {
 
         //assuming rectangular rooms...
-        public abstract void generateRoom(Vector3 roomCenterPosition, int xSize, int ySize);
+        public abstract Platform generateRoom(Vector3 roomCenterPosition, int xSize, int ySize);
     }
 }

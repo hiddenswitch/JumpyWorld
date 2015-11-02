@@ -7,9 +7,10 @@ namespace JumpyWorld
     {
         public GameObject simpleRoomPrefab;
 
-        public override void generateRoom(Vector3 roomCenterPosition, int xSize, int ySize)
+        public override Platform generateRoom(Vector3 roomCenterPosition, int xSize, int ySize)
         {
             GameObject simpleRoom = Instantiate(simpleRoomPrefab, roomCenterPosition, Quaternion.identity) as GameObject;
+            return simpleRoom.GetComponent<Platform>();
 
             /**
             The simple room generator does not do things correctly. Below are certain ways to make it better, but since we are not going to use it on the long run anyway,

@@ -19,12 +19,10 @@ namespace JumpyWorld
 
         }
 
-        void OnTriggerEnter(Collider other)
+        void generatePlatform(PlatformConnection owner)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                hallwayGenerator.generateHallway(startPos, endPos);
-            }
+            Platform p = hallwayGenerator.generateHallway(startPos, endPos);
+            owner.setOtherPlatform(p);
         }
     }
 }

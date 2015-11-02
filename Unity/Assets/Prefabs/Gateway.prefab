@@ -13,6 +13,7 @@ GameObject:
   - 65: {fileID: 6532930}
   - 23: {fileID: 2312108}
   - 114: {fileID: 11421412}
+  - 114: {fileID: 11409896}
   m_Layer: 0
   m_Name: Gateway
   m_TagString: Untagged
@@ -87,6 +88,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &11409896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2b9b1dc87889d4fa3c2e5c9833d19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11421412
 MonoBehaviour:
   m_ObjectHideFlags: 1

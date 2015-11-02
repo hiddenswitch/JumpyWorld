@@ -32,6 +32,7 @@ GameObject:
   - 114: {fileID: 11499374}
   - 114: {fileID: 11468492}
   - 65: {fileID: 6522528}
+  - 114: {fileID: 11482148}
   m_Layer: 0
   m_Name: RoomGateway (1)
   m_TagString: Untagged
@@ -71,6 +72,7 @@ GameObject:
   - 114: {fileID: 11457496}
   - 114: {fileID: 11494886}
   - 65: {fileID: 6524768}
+  - 114: {fileID: 11400430}
   m_Layer: 0
   m_Name: RoomGateway
   m_TagString: Untagged
@@ -92,6 +94,7 @@ GameObject:
   - 114: {fileID: 11432530}
   - 114: {fileID: 11445380}
   - 65: {fileID: 6591072}
+  - 114: {fileID: 11426132}
   m_Layer: 0
   m_Name: RoomGateway (3)
   m_TagString: Untagged
@@ -305,6 +308,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457996}
+  - 114: {fileID: 11415184}
   m_Layer: 0
   m_Name: SimpleRoom
   m_TagString: Untagged
@@ -452,6 +456,7 @@ GameObject:
   - 114: {fileID: 11434242}
   - 114: {fileID: 11408854}
   - 65: {fileID: 6581694}
+  - 114: {fileID: 11441824}
   m_Layer: 0
   m_Name: RoomGateway (2)
   m_TagString: Untagged
@@ -1937,6 +1942,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11400430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2b9b1dc87889d4fa3c2e5c9833d19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11408854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1949,6 +1965,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallwayTargetOffset: {x: 5, y: 0, z: 0}
+  simpleRoom: {fileID: 11415184}
+--- !u!114 &11415184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96386beb3849cb741ad09580438cd33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11426132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2b9b1dc87889d4fa3c2e5c9833d19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11432530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1977,6 +2016,17 @@ MonoBehaviour:
   hallwayGenerator: {fileID: 11411576, guid: 370e63efee78f6e409c1e3159791cb44, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   endPos: {x: 0, y: 0, z: 0}
+--- !u!114 &11441824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2b9b1dc87889d4fa3c2e5c9833d19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11445380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1989,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallwayTargetOffset: {x: 0, y: 0, z: 5}
+  simpleRoom: {fileID: 11415184}
 --- !u!114 &11457496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2015,6 +2066,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallwayTargetOffset: {x: -5, y: 0, z: 0}
+  simpleRoom: {fileID: 11415184}
+--- !u!114 &11482148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2b9b1dc87889d4fa3c2e5c9833d19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11494886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2027,6 +2090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallwayTargetOffset: {x: 0, y: 0, z: -5}
+  simpleRoom: {fileID: 11415184}
 --- !u!114 &11499374
 MonoBehaviour:
   m_ObjectHideFlags: 1

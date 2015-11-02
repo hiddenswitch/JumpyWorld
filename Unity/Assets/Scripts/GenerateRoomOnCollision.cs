@@ -28,12 +28,10 @@ namespace JumpyWorld
         }
 
 
-        void OnTriggerEnter(Collider other)
+        void generatePlatform(PlatformConnection owner)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                roomGenerator.generateRoom(roomCenter, roomXSize, roomYSize);
-            }
+            Platform p = roomGenerator.generateRoom(roomCenter, roomXSize, roomYSize);
+            owner.setOtherPlatform(p);
         }
     }
 }
