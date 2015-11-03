@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11409896}
   m_Layer: 0
   m_Name: Gateway
-  m_TagString: Untagged
+  m_TagString: platformConnection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +133,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: roomCenter.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: platformConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

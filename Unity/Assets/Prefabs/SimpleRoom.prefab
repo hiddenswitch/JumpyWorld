@@ -35,7 +35,7 @@ GameObject:
   - 114: {fileID: 11482148}
   m_Layer: 0
   m_Name: RoomGateway (1)
-  m_TagString: Untagged
+  m_TagString: platformConnection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - 114: {fileID: 11400430}
   m_Layer: 0
   m_Name: RoomGateway
-  m_TagString: Untagged
+  m_TagString: platformConnection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 11426132}
   m_Layer: 0
   m_Name: RoomGateway (3)
-  m_TagString: Untagged
+  m_TagString: platformConnection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +459,7 @@ GameObject:
   - 114: {fileID: 11441824}
   m_Layer: 0
   m_Name: RoomGateway (2)
-  m_TagString: Untagged
+  m_TagString: platformConnection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1977,6 +1977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96386beb3849cb741ad09580438cd33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exits: []
 --- !u!114 &11426132
 MonoBehaviour:
   m_ObjectHideFlags: 1

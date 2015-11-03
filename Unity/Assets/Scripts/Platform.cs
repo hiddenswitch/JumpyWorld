@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Platform : MonoBehaviour {
+namespace JumpyWorld
+{ 
+    public class Platform : PlaceableWithExits {
 
-	// Use this for initialization
-	void Start () {
+        //Exits need to be set with room generation;
+
+
+	    // Use this for initialization
+	    void Start () {
 	
-	}
+	    }
 	
-	// Update is called once per frame
-	void Update () {
+	    // Update is called once per frame
+	    void Update () {
 	
-	}
+	    }
+    }
 }
