@@ -12,6 +12,7 @@ namespace JumpyWorld
 			Path,
 			Room
 		}
+		public bool debug;
 		public BoardStyle style;
 		public int seed = 101;
         public int elongationFactor=2;
@@ -31,6 +32,12 @@ namespace JumpyWorld
 //		private List<Vector3> gridPositions = new List<Vector3> ();
 		private List<Vector3> pathPositions = new List<Vector3> ();
         private List<Vector3> pathBackBone = new List<Vector3> ();
+
+		new void print(object message) {
+			if (debug) {
+				Debug.Log(message);
+			}
+		}
 
 		void Start ()
 		{

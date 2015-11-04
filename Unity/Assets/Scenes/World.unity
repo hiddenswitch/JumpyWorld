@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcf402c34c133c40b9f1af030ba5156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateOnStart: 0
-  style: 0
+  debug: 0
+  style: 1
   seed: 101
   elongationFactor: 2
   groundBox:
@@ -245,49 +245,11 @@ MonoBehaviour:
   passableDangers: []
   walls:
   - {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  - {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  - {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   boardParent: {fileID: 901141413}
   endpoint: {x: 20, y: -1, z: 20}
   startpoint: {x: 0, y: -1, z: 0}
---- !u!1 &1248090088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1248090091}
-  - 114: {fileID: 1248090089}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1248090089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1248090088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d3eaf2284de524d898c3dd28c46d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardScript: {fileID: 901141414}
---- !u!4 &1248090091
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1248090088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!4 &1375145191 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400066, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
@@ -319,7 +281,7 @@ Transform:
   m_Children:
   - {fileID: 901141413}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1646437270
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +342,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 50
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
