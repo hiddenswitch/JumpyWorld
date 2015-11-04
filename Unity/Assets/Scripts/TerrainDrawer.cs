@@ -34,6 +34,7 @@ namespace JumpyWorld
 			at = Tile.ToGrid (at);
 
 			if (bloomFilter.Contains (at)) {
+				// Bloom filters are only probabilistically accurate for positives.
 				// Check for certain if a tile exists there
 				var colliders = Physics.OverlapSphere (at, Tile.gridSize / 2f);
 				foreach (var collider in colliders) {
