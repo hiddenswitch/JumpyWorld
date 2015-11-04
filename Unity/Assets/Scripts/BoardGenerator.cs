@@ -20,7 +20,6 @@ namespace JumpyWorld
         /// </summary>
         public int elongationFactor=2;
 		public GameObject[] groundBox;
-        [Header("Blah")]
 		public int columns = 30;
 		public int rows = 30;
 		public int columnsPerLevel = 2;
@@ -36,8 +35,6 @@ namespace JumpyWorld
 //		private List<Vector3> gridPositions = new List<Vector3> ();
 		private List<Vector3> pathPositions = new List<Vector3> ();
         private List<Vector3> pathBackBone = new List<Vector3> ();
-        private Vector3 lastDirection=new Vector3(0,0,0);
-		// Use this for initialization
 
 		void Start ()
 		{
@@ -108,7 +105,6 @@ namespace JumpyWorld
             Vector3 directionLine= endpt - startpt;
             float m = (float)directionLine [2] / (float)directionLine [0];
 
-            int z = (int)startpt [2];
             float epsilon = m - 1.0f;
             print ("what"+epsilon);
 
