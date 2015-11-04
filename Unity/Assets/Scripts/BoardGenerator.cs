@@ -12,12 +12,8 @@ namespace JumpyWorld
 			Path,
 			Room
 		}
-		public bool generateOnStart;
 		public BoardStyle style;
 		public int seed = 101;
-        /// <summary>
-        /// This is not a vary functional int yet, I will come up with a functional way to make the paths less or more blobby, I think right now it works to make things more bloby(larger number is more fully covered room area)The elongation factor.
-        /// </summary>
         public int elongationFactor=2;
 		public GameObject[] groundBox;
 		public int columns = 30;
@@ -38,6 +34,9 @@ namespace JumpyWorld
 
 		void Start ()
 		{
+			// If boardHolder is not set, assume it is this object. Never spawn objects globally by default.
+			boardHolder = boardHolder ?? transform;
+
 			var oldSeed = UnityEngine.Random.seed;
 			UnityEngine.Random.seed = seed;
 			switch (style) {
@@ -61,15 +60,15 @@ namespace JumpyWorld
 			// TODO: Add dangers to the map
 		}
 
-		void CreatePath (int elongation)
+		void CreatePath (int elongation, int perturbationCount=10)
 		{
 			// TODO: Create an exciting path between two points
             //Bresenham's algorithm
 
            pathBackBone=(StraighPath(startpoint,endpoint,false,5));
             //pathPositions=(StraighPath(new Vector3(0,0,0), new Vector3(5,0,13), true, 1));
-            for (int i=0; i < 10; i++) {
-               PertrubePath(pathBackBone);
+            for (int i=0; i < perturbationCount; i++) {
+               PerturbePath(pathBackBone);
             }
             for (int i =1; i < pathBackBone.Count; i++) {
                 pathPositions.AddRange(StraighPath(pathBackBone[i-1],pathBackBone[i],true,1));
@@ -79,7 +78,7 @@ namespace JumpyWorld
                 DrawTerrain(0,groundBox,pathPositions[i]);
             }
 		}
-        List<Vector3> StraighPath(Vector3 startpt, Vector3 endpt, Boolean pathable, int density){
+        List<Vector3> StraighPath(Vector3 startpt, Vector3 endpt, Boolean pathable=true, int density=1){
             List<Vector3>path= new List<Vector3>();
             Vector3 start=startpt;
             Vector3 end=endpt;
@@ -156,7 +155,7 @@ namespace JumpyWorld
 				boardHolder.SetParent (boardParent, false);
 			}
 		}
-        void PertrubePath(List<Vector3> path){
+        void PerturbePath(List<Vector3> path){
             var dir = new List<Vector3>{new Vector3(0,0,2), new Vector3(0,0,-2),new Vector3(2,0,0),new Vector3(-2,0,0)};
             int index =  Random.Range (1, (path.Count-1));
             Vector3 movePoint = path [index];
