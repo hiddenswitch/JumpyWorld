@@ -136,8 +136,10 @@ namespace JumpyWorld
 					level = (int)(Math.Max (x, z) / columnsPerLevel);
 					if (!pathPositions.Contains (new Vector3 (x, -1, z))) {
 						if (Random.Range (0, 50) < 1 * level) { //walls
+							objectType = walls;
 							height = 1;
 						} else if (Random.Range (0, 50) < level) {//holes
+
 							height = -1;						
 						} else {
 							if (Random.Range (0, 50) < level) {//dangers
