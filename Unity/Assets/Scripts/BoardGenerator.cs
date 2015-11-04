@@ -38,24 +38,6 @@ namespace JumpyWorld
 
 		void Start ()
 		{
-			if (generateOnStart) {
-				SetupScene ();
-			}
-		}
-
-		// Update is called once per frame
-		void Update ()
-		{
-
-		}
-
-		public void SetupScene ()
-		{
-			BoardSetup ();
-		}
-
-		void BoardSetup ()
-		{
 			var oldSeed = UnityEngine.Random.seed;
 			UnityEngine.Random.seed = seed;
 			switch (style) {
@@ -67,7 +49,6 @@ namespace JumpyWorld
 				break;
 			}
 			UnityEngine.Random.seed = oldSeed;
-
 		}
 
 		void LayoutObject (int density, GameObject[] objects, int x, int row)
