@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &31758232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   tileDrawer: {fileID: 380298429}
   tilePool: {fileID: 380298432}
   seed: 0
+  anchors: []
   startPoint: {x: 1, y: 0, z: 0}
   endPoint: {x: 40, y: 0, z: 40}
   pathBackBone: []
@@ -146,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &36549825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +162,7 @@ MonoBehaviour:
   tileDrawer: {fileID: 380298429}
   tilePool: {fileID: 380298432}
   seed: 0
+  anchors: []
   startPoint: {x: -5, y: 0, z: 5}
   endPoint: {x: 5, y: 0, z: 5}
   pathBackBone: []
@@ -233,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2218bc919f410dbcf47d75eb77123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainDrawer: {fileID: 380298429}
-  terrainPool: {fileID: 380298432}
+  tileDrawer: {fileID: 0}
+  tilePool: {fileID: 0}
 --- !u!114 &380298432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &985348336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +385,7 @@ MonoBehaviour:
   tileDrawer: {fileID: 380298429}
   tilePool: {fileID: 380298432}
   seed: 0
+  anchors: []
   size:
     serializedVersion: 2
     x: -5
@@ -420,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1559257542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +438,7 @@ MonoBehaviour:
   tileDrawer: {fileID: 380298429}
   tilePool: {fileID: 380298432}
   seed: 0
+  anchors: []
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 10}
   pathBackBone: []

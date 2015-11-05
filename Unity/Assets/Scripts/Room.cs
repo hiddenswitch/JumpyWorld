@@ -104,7 +104,7 @@ namespace JumpyWorld
 							side = Directions.West;
 						} else if (x == rect.xMax) {
 							side = Directions.East;
-						} else if (z == rect.xMin) {
+						} else if (z == rect.yMin) {
 							side = Directions.North;
 						} else if (z == rect.yMax) {
 							side = Directions.South;
@@ -116,7 +116,7 @@ namespace JumpyWorld
 							side |= Directions.East;
 						}
 						
-						if (z >= rect.yMin && x < rect.center.y) {
+						if (z >= rect.yMin && z < rect.center.y) {
 							side |= Directions.North;
 						} else if (z > rect.center.y && z <= rect.yMax) {
 							side |= Directions.South;
