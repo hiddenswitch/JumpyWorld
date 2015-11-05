@@ -4,7 +4,7 @@ using System.Collections;
 namespace JumpyWorld
 {
 	[System.Serializable]
-	public class Anchor : IPositionGrid, IDirections
+	public struct Anchor : IPositionGrid, IDirections
 	{
 		public Vector3 position;
 		public Directions directions;

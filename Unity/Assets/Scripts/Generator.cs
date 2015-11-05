@@ -33,5 +33,14 @@ namespace JumpyWorld
 		{
 
 		}
+
+		
+		public virtual void OnDrawGizmos ()
+		{
+			Gizmos.color = Color.blue;
+			foreach (var anchor in anchors) {
+				Gizmos.DrawWireCube (anchor.position, new Vector3 (1, 1, 1));
+			}
+		}
 	}
 }

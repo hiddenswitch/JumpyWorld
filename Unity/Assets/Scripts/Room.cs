@@ -29,14 +29,6 @@ namespace JumpyWorld
 			}
 		}
 
-		void OnDrawGizmos ()
-		{
-			Gizmos.color = Color.blue;
-			foreach (var anchor in anchors) {
-				Gizmos.DrawWireCube (anchor.position, new Vector3 (1, 1, 1));
-			}
-		}
-
 		public override void Generate (int seed)
 		{
 			// Compute how far along the border we should place the anchor.
@@ -68,9 +60,12 @@ namespace JumpyWorld
 					// This will be true the first moment the progress along the border is larger
 					// than the amount indicated by anchor positions.
 						progressAlongBorder > anchorPositions [info.side]) {
+						// Compute the placement of the anchor based on the side (should be one off from the border)
+						var displacement = info.side.ToVector();
+
 						// Place anchor
 						anchorList.Add (new Anchor () {
-							PositionGrid = info.position,
+							PositionGrid = info.position + displacement,
 							Directions = info.side
 						});
 						// Consume the anchor.
@@ -105,9 +100,9 @@ namespace JumpyWorld
 						} else if (x == rect.xMax) {
 							side = Directions.East;
 						} else if (z == rect.yMin) {
-							side = Directions.North;
-						} else if (z == rect.yMax) {
 							side = Directions.South;
+						} else if (z == rect.yMax) {
+							side = Directions.North;
 						}
 					} else {
 						if (x >= rect.xMin && x < rect.center.x) {
@@ -117,9 +112,9 @@ namespace JumpyWorld
 						}
 						
 						if (z >= rect.yMin && z < rect.center.y) {
-							side |= Directions.North;
-						} else if (z > rect.center.y && z <= rect.yMax) {
 							side |= Directions.South;
+						} else if (z > rect.center.y && z <= rect.yMax) {
+							side |= Directions.North;
 						}
 					}
 

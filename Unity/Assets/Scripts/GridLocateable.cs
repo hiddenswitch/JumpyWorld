@@ -25,42 +25,10 @@ namespace JumpyWorld
 
 		public virtual Directions Directions {
 			get {
-				var forward = transform.forward.normalized;
-				var northness = Vector3.Dot (forward, Vector3.forward);
-				var eastness = Vector3.Dot (forward, Vector3.right);
-
-				var direction = Directions.None;
-				if (northness > 0.5f) {
-					direction |= Directions.North;
-				} else if (northness < -0.5f) {
-					direction |= Directions.South;
-				}
-
-				if (eastness > 0.5f) {
-					direction |= Directions.East;
-				} else if (eastness < -0.5f) {
-					direction |= Directions.West;
-				}
-
-				return direction;
+				return transform.forward.ToDirection ();
 			}
 			set {
-				var direction = Vector3.zero;
-
-				if ((value & Directions.East) == Directions.East) {
-					direction += Vector3.right;
-				}
-				if ((value & Directions.West) == Directions.West) {
-					direction -= Vector3.right;
-				}
-				if ((value & Directions.North) == Directions.North) {
-					direction += Vector3.forward;
-				}
-				if ((value & Directions.North) == Directions.North) {
-					direction -= Vector3.forward;
-				}
-
-				transform.forward = direction;
+				transform.forward = value.ToVector ();
 			}
 		}
 	}
