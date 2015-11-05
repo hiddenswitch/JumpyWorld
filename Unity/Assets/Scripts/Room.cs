@@ -16,6 +16,7 @@ namespace JumpyWorld
 		[Header("Options")]
 		public Rect
 			size;
+		public bool shouldGenerateAnchors = true;
 
 		public override Bounds BoundsGrid {
 			get {
@@ -31,6 +32,10 @@ namespace JumpyWorld
 
 		public override void Generate (int seed)
 		{
+			if (!shouldGenerateAnchors) {
+				anchors = new Anchor[] {};
+				return;
+			}
 			// Compute how far along the border we should place the anchor.
 			// We will kill a dictionary entry as soon as we consume it (as soon as we place
 			// the anchor for that (border, position) tuple.
