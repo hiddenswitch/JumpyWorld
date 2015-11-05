@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace JumpyWorld
 {
-	public class TerrainDrawer : MonoBehaviour
+	public class TileDrawer : MonoBehaviour
 	{
+		public static TileDrawer instance { get; private set; }
+
 		public Transform parent;
 		public LayerMask terrainLayer;
 		/// <summary>
@@ -12,20 +14,20 @@ namespace JumpyWorld
 		/// </summary>
 		private BloomFilter.Filter<Vector3> bloomFilter;
 
-		TerrainDrawer ()
+		TileDrawer ()
 		{
 			bloomFilter = new BloomFilter.Filter<Vector3> (capacity: 100000, hashFunction: HashFunction);
+		}
+
+		void Awake ()
+		{
+			instance = this;
+			parent = parent ?? transform;
 		}
 
 		int HashFunction (Vector3 value)
 		{
 			return value.GetHashCode ();
-		}
-
-		// Use this for initialization
-		void Start ()
-		{
-			parent = parent ?? transform;
 		}
 
 		public void DrawTerrain (GameObject tile=null, Vector3 at=default(Vector3))
@@ -36,7 +38,7 @@ namespace JumpyWorld
 			if (bloomFilter.Contains (at)) {
 				// Bloom filters are only probabilistically accurate for positives.
 				// Check for certain if a tile exists there
-				var colliders = Physics.OverlapSphere (at, Tile.gridSize / 2f);
+				var colliders = Physics.OverlapSphere (at, Tile.gridSize / 2f - Physics.defaultContactOffset);
 				foreach (var collider in colliders) {
 					// Is this a terrain tile?
 					if (((1 << collider.gameObject.layer) & terrainLayer.value) != 0) {

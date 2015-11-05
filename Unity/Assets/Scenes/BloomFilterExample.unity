@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 31758233}
   - 114: {fileID: 31758232}
-  - 114: {fileID: 31758231}
   m_Layer: 0
   m_Name: Hallway (2)
   m_TagString: Untagged
@@ -102,18 +101,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &31758231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 31758230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
 --- !u!114 &31758232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,11 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainDrawer: {fileID: 380298429}
-  terrainPool: {fileID: 31758231}
-  startPoint: {x: 1, y: 0, z: 0}
-  endPoint: {x: 1, y: 0, z: 10}
+  tileDrawer: {fileID: 380298429}
+  tilePool: {fileID: 380298432}
   seed: 0
+  startPoint: {x: 1, y: 0, z: 0}
+  endPoint: {x: 40, y: 0, z: 40}
   pathBackBone: []
   pathPositions: []
 --- !u!4 &31758233
@@ -153,7 +140,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 36549826}
   - 114: {fileID: 36549825}
-  - 114: {fileID: 36549824}
   m_Layer: 0
   m_Name: Hallway (1)
   m_TagString: Untagged
@@ -161,18 +147,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &36549824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36549823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
 --- !u!114 &36549825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,11 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainDrawer: {fileID: 380298429}
-  terrainPool: {fileID: 36549824}
+  tileDrawer: {fileID: 380298429}
+  tilePool: {fileID: 380298432}
+  seed: 0
   startPoint: {x: -5, y: 0, z: 5}
   endPoint: {x: 5, y: 0, z: 5}
-  seed: 0
   pathBackBone: []
   pathPositions: []
 --- !u!4 &36549826
@@ -212,8 +186,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 380298430}
   - 114: {fileID: 380298429}
+  - 114: {fileID: 380298432}
+  - 114: {fileID: 380298431}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,6 +222,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &380298431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380298428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c2218bc919f410dbcf47d75eb77123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainDrawer: {fileID: 380298429}
+  terrainPool: {fileID: 380298432}
+--- !u!114 &380298432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380298428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
 --- !u!1001 &443945739
 Prefab:
   m_ObjectHideFlags: 0
@@ -352,6 +353,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &985348335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 985348337}
+  - 114: {fileID: 985348336}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &985348336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985348335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 380298429}
+  tilePool: {fileID: 380298432}
+  seed: 0
+  size:
+    serializedVersion: 2
+    x: -5
+    y: -5
+    width: 10
+    height: 10
+--- !u!4 &985348337
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985348335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!4 &1375145191 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400066, guid: 7b10bd239bd6ca94e8fd30395b8a7d93, type: 2}
@@ -365,7 +414,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1559257543}
   - 114: {fileID: 1559257542}
-  - 114: {fileID: 1559257541}
   m_Layer: 0
   m_Name: Hallway (3)
   m_TagString: Untagged
@@ -373,18 +421,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1559257541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1559257540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
 --- !u!114 &1559257542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,11 +432,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainDrawer: {fileID: 380298429}
-  terrainPool: {fileID: 1559257541}
+  tileDrawer: {fileID: 380298429}
+  tilePool: {fileID: 380298432}
+  seed: 0
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 10}
-  seed: 0
   pathBackBone: []
   pathPositions: []
 --- !u!4 &1559257543

@@ -4,15 +4,12 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class Hallway : MonoBehaviour
+	public class Hallway : Generator
 	{
-		public TerrainDrawer terrainDrawer;
-		public TerrainPool terrainPool;
 		[Header("Optional")]
 		public Vector3
 			startPoint;
 		public Vector3 endPoint;
-		public int seed;
 		[Header("Runtime")]
 		public List<Vector3>
 			pathBackBone;
@@ -20,26 +17,21 @@ namespace JumpyWorld
 
 
 		// Use this for initialization
-		void Start ()
+		public override void Generate (int seed)
 		{
-			var oldRandom = Random.seed;
-			Random.seed = seed;
-
-			terrainDrawer = terrainDrawer ?? GetComponent<TerrainDrawer> ();
-			terrainPool = terrainPool ?? GetComponent<TerrainPool> ();
-
 			// Create the path
 			pathPositions = BresenhamFilledPath (from: startPoint, to: endPoint);
-
-			// Draw the terrain
-			for (int i = 0; i < pathPositions.Count; i++) {
-				terrainDrawer.DrawTerrain (tile: terrainPool.defaultGround, at: pathPositions [i]);
-			}
-
-			Random.seed = oldRandom;
 		}
 
-		List<Vector3> BresenhamFilledPath (Vector3 from=default(Vector3), Vector3 to=default(Vector3))
+		public override void Draw (TileDrawer tileDrawer, TilePool tilePool)
+		{
+			// Draw the terrain
+			for (int i = 0; i < pathPositions.Count; i++) {
+				tileDrawer.DrawTerrain (tile: tilePool.defaultGround, at: pathPositions [i]);
+			}
+		}
+
+		public static List<Vector3> BresenhamFilledPath (Vector3 from=default(Vector3), Vector3 to=default(Vector3))
 		{
 			var path = new List<Vector3> ();
 			// Change the origin of the bresenham to be at the start point

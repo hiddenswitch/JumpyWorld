@@ -5,7 +5,7 @@ namespace JumpyWorld
 {
 	public class GridLocateable : MonoBehaviour, IPositionGrid, IDirections
 	{
-		public Vector3 PositionGrid {
+		public virtual Vector3 PositionGrid {
 			get {
 				return Tile.ToGrid (transform.position);
 			}
@@ -14,7 +14,7 @@ namespace JumpyWorld
 			}
 		}
 
-		public Vector3 PositionGridLocal {
+		public virtual Vector3 PositionGridLocal {
 			get {
 				return Tile.ToGrid (transform.localPosition);
 			}
@@ -22,7 +22,8 @@ namespace JumpyWorld
 				transform.localPosition = Tile.gridSize * value;
 			}
 		}
-		public Directions Directions {
+
+		public virtual Directions Directions {
 			get {
 				var forward = transform.forward.normalized;
 				var northness = Vector3.Dot (forward, Vector3.forward);
@@ -30,21 +31,36 @@ namespace JumpyWorld
 
 				var direction = Directions.None;
 				if (northness > 0.5f) {
-					direction &= Directions.North;
+					direction |= Directions.North;
 				} else if (northness < -0.5f) {
-					direction &= Directions.South;
+					direction |= Directions.South;
 				}
 
 				if (eastness > 0.5f) {
-					direction &= Directions.East;
+					direction |= Directions.East;
 				} else if (eastness < -0.5f) {
-					direction &= Directions.West;
+					direction |= Directions.West;
 				}
 
 				return direction;
 			}
 			set {
-				throw new System.NotImplementedException ();
+				var direction = Vector3.zero;
+
+				if ((value & Directions.East) == Directions.East) {
+					direction += Vector3.right;
+				}
+				if ((value & Directions.West) == Directions.West) {
+					direction -= Vector3.right;
+				}
+				if ((value & Directions.North) == Directions.North) {
+					direction += Vector3.forward;
+				}
+				if ((value & Directions.North) == Directions.North) {
+					direction -= Vector3.forward;
+				}
+
+				transform.forward = direction;
 			}
 		}
 	}

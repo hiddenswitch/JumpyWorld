@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class Placeable : MonoBehaviour, IBoundsGrid
+	public class Placeable : GridLocateable, IBoundsGrid
 	{
 		public virtual Bounds BoundsGrid {
 			get {

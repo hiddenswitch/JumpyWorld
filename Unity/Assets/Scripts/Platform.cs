@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace JumpyWorld
 { 
-    public class Platform : PlaceableWithExits {
+    public class Platform : Placeable {
 
         //Exits need to be set with room generation;
 
