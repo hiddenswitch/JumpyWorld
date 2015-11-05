@@ -36,9 +36,9 @@ namespace JumpyWorld
 
 		public static Directions ToDirection (this Vector3 forward)
 		{
-			var northness = Vector3.Dot (forward, Vector3.forward);
-			var eastness = Vector3.Dot (forward, Vector3.right);
-			var sqrt2 = Mathf.Sqrt (2);
+			var northness = Vector3.Dot (forward.normalized, Vector3.forward);
+			var eastness = Vector3.Dot (forward.normalized, Vector3.right);
+			var sqrt2 = Mathf.Sqrt (2) / 2;
 			var direction = Directions.None;
 			if (northness > sqrt2) {
 				direction |= Directions.North;

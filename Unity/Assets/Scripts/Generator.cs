@@ -9,8 +9,17 @@ namespace JumpyWorld
 		public TilePool tilePool;
 		public int seed;
 		public Anchor[] anchors;
+        public bool generateOnStart = false;
 
-		void Start ()
+        void Start ()
+        {
+            if (generateOnStart)
+            {
+                Build ();
+            }
+        }
+
+		public void Build ()
 		{
 			tileDrawer = tileDrawer ?? GetComponent<TileDrawer> () ?? TileDrawer.instance;
 			tilePool = tilePool ?? GetComponent<TilePool> () ?? TilePool.instance;
