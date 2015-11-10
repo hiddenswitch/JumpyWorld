@@ -18,11 +18,15 @@ namespace JumpyWorld
 
         bool roomGeneratingIteration = false;
 
-        public int minHallwayLength = 10;
-        public int maxHallwayLength = 20;
+        public int minHallwayLength = 8;
+        public int maxHallwayLength = 11;
 
-        public int minRoomDimension = 5;
-        public int maxRoomDimension = 8;
+		public int HallwayShift = 5;		
+
+        public int minRoomDimension = 12;
+        public int maxRoomDimension = 15;
+
+		public int RoomShift = 5;
 
         public float newHallwayProbablity = 0.4f;
 
@@ -44,19 +48,32 @@ namespace JumpyWorld
                         int h = Random.Range(minRoomDimension, maxRoomDimension);
 
 
-                        int x = (int)anchor.position.x; //+ (int) ( anchor.directions.ToVector().x) * w;
-                        int y = (int)anchor.position.z; //+ (int)(anchor.directions.ToVector().z) * h;
+                        int x = (int)anchor.position.x + Mathf.Min (0,(int)(anchor.directions.ToVector().x)) * w;
+						int y = (int)anchor.position.z + Mathf.Min (0,(int)(anchor.directions.ToVector().z)) * h;
+
+
+						if (anchor.directions.ToVector().x == 0){
+							x += Random.Range (0, RoomShift);
+						} else {
+							y += Random.Range (0, RoomShift);
+						}
 
                         Room newRoom = generateRoom(new Rect(x, y, w, h));
 
 
-                        foreach (Anchor newAnchor in newRoom.anchors)
-                        {
-                            if (newAnchor.directions.ToVector() != - anchor.directions.ToVector())
-                            {
-                                newAnchors.Add(newAnchor);
-                            }
-                        }
+
+						if (newRoom != null){
+
+	                        foreach (Anchor newAnchor in newRoom.anchors)
+	                        {
+	                            if (newAnchor.directions.ToVector() != - anchor.directions.ToVector())
+	                            {
+	                                newAnchors.Add(newAnchor);
+	                            }
+	                        }
+						} else {
+							//Destroy(anchor.Generator.gameObject)
+						}
 
                     }
                     pendingAnchors = newAnchors;
@@ -67,9 +84,13 @@ namespace JumpyWorld
                         if (Random.value < newHallwayProbablity) { 
                             Vector3 endPoint = Random.Range(minHallwayLength, maxHallwayLength) * anchor.directions.ToVector() + anchor.position;
                             Hallway newHallway = generateHallway(anchor.position, endPoint);
+							if (newHallway == null){
+								break;
+							}
                             newAnchors.Add(newHallway.anchors[1]);  //Hardcoding this for now.
                         }
                     }
+
 
                     pendingAnchors = newAnchors;
                 }
@@ -90,11 +111,19 @@ namespace JumpyWorld
         Room generateRoom (Rect options)
         {
             GameObject roomObj = Instantiate(roomPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			tileDrawer.parent = roomObj.transform;
             Room room = roomObj.GetComponent<Room>();
 
             room.size = options;
 
+
+			tileDrawer.startCollisionTest ();
             room.Build();
+
+			if (tileDrawer.getCollisionTestResult()) {
+				Destroy(roomObj);
+				return null;
+			}
             return room;
 
 
@@ -104,12 +133,18 @@ namespace JumpyWorld
         Hallway generateHallway(Vector3 startPoint, Vector3 endPoint)
         {
             GameObject hallwayObj = Instantiate(hallwayPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			tileDrawer.parent = hallwayObj.transform;
             Hallway hallway = hallwayObj.GetComponent<Hallway>();
 
             hallway.startPoint = startPoint;
             hallway.endPoint = endPoint;
 
+			tileDrawer.startCollisionTest ();
             hallway.Build();
+			if (tileDrawer.getCollisionTestResult ()) {
+				Destroy (hallwayObj);
+				return null;
+			}
             return hallway;
         }
 	}
