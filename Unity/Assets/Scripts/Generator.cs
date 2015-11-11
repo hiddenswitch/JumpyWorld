@@ -45,12 +45,18 @@ namespace JumpyWorld
 
 		public static List<Vector3> Perturb (List<Vector3> points, float turbulence=2.0f)
 		{
+            Vector3 newpoint;
 			var newPoints = new List<Vector3> (points.Count);
-			foreach (var point in points) {
+            newPoints.Add (points[0]);
+			foreach (var point in points.GetRange (1,points.Count-2)) {
 				var displacement = turbulence * Random.insideUnitSphere;
 				displacement.y = 0;
-				newPoints.Add(displacement + point);
+                newpoint=(displacement + point);
+                newpoint.x=Mathf.Round (newpoint.x);
+                newpoint.z=Mathf.Round(newpoint.z);
+				newPoints.Add(newpoint);
 			}
+            newPoints.Add (points[points.Count-1]);
 			return newPoints;
 //			for (int i =0; i< points.Count; i++) {
 //				int index = 3 * Random.Range (1, (points.Count - 2) / 3);
@@ -81,37 +87,6 @@ namespace JumpyWorld
 			return path;
 		}
 
-		public static Vector3 FillPath (Vector3 point1, Vector3 point2, bool shouldBalanceCorners=false)
-		{
-			// Detect two patterns and fill in a corner:
-			// #        #
-			//  #  or  #
-			// Fill in any of the other corners when that pattern is detected
-
-			Vector3[] lastTwoPoints = new Vector3[2];
-			// Use a toggle value to alternate which corner gets filled
-			bool toggle = false;
-			lastTwoPoints [0] = point1;
-			lastTwoPoints [1] = point2;
-			// Detect if a diagonal pattern occurred
-			// TODO: Make this work for 3D
-			if (lastTwoPoints [0].z != lastTwoPoints [1].z && lastTwoPoints [0].x != lastTwoPoints [1].x) {
-				// Fill in a corner point
-				var cornerPoint = Vector3.zero;
-				if (toggle) {
-					cornerPoint.x = Mathf.Min (lastTwoPoints [0].x, lastTwoPoints [1].x);
-					cornerPoint.z = Mathf.Max (lastTwoPoints [0].z, lastTwoPoints [1].z);
-				} else {
-					cornerPoint.x = Mathf.Max (lastTwoPoints [0].x, lastTwoPoints [1].x);
-					cornerPoint.z = Mathf.Min (lastTwoPoints [0].z, lastTwoPoints [1].z);
-				}
-				if (shouldBalanceCorners) {
-					toggle = !toggle;
-				}
-				return cornerPoint;
-			}
-			return Vector3.zero;
-		}
 
 	}
 }

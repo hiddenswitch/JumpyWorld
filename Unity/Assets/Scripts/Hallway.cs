@@ -51,7 +51,15 @@ namespace JumpyWorld
 				}
 			};
 		}
-
+        public override void OnDrawGizmos ()
+        {
+            base.OnDrawGizmos ();
+            for (var i = 0; i < pathPositions.Count-1; i++) {
+                Gizmos.color = Color.Lerp(Color.green, Color.yellow, (Mathf.Pow(-1.0f,i)+1.0f)/2.0f);
+                Gizmos.DrawLine(pathPositions[i], pathPositions[i+1]);
+               // Gizmos.DrawCube(pathPositions[i],new Vector3(1,1,1));
+            }
+        }
 		public static Vector3 PositionForAnchor (Vector3[] tileLocations)
 		{
 			// Detect patterns and place the anchor where the X is located
@@ -77,7 +85,7 @@ namespace JumpyWorld
 		{
 			var path = new List<Vector3> ();
 			// Change the origin of the bresenham to be at the start point
-			var bresenham = new UnifyCommunity.Bresenham3D (from, to);
+			var bresenham = new UnifyCommunity.Bresenham3D (Vector3.zero, to-from);
 			// Detect two patterns and fill in a corner:
 			// #        #
 			//  #  or  #
@@ -104,9 +112,9 @@ namespace JumpyWorld
 					if (shouldBalanceCorners) {
 						toggle = !toggle;
 					}
-					path.Add (cornerPoint);
+					path.Add (cornerPoint+from);
 				}
-				path.Add (point);
+				path.Add (point+from);
 			}
 
 			return path;
