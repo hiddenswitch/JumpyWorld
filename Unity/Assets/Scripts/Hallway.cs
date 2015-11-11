@@ -22,7 +22,8 @@ namespace JumpyWorld
 		{
 			// Create the path
 			pathPositions = BresenhamFilledPath (from: startPoint, to: endPoint, shouldBalanceCorners: shouldBalanceCorners);
-
+			pathPositions = Generator.Perturb (pathPositions);
+			pathPositions = MakePathable (pathPositions);
 			// Figure out where to place the anchors based on path positions
 			// If we didn't generate enough path positions for anchors, exit.
 			if (pathPositions.Count < 2) {
@@ -76,7 +77,7 @@ namespace JumpyWorld
 		{
 			var path = new List<Vector3> ();
 			// Change the origin of the bresenham to be at the start point
-			var bresenham = new UnifyCommunity.Bresenham3D (Vector3.zero, to - from);
+			var bresenham = new UnifyCommunity.Bresenham3D (from, to);
 			// Detect two patterns and fill in a corner:
 			// #        #
 			//  #  or  #
@@ -103,9 +104,9 @@ namespace JumpyWorld
 					if (shouldBalanceCorners) {
 						toggle = !toggle;
 					}
-					path.Add (cornerPoint + from);
+					path.Add (cornerPoint);
 				}
-				path.Add (point + from);
+				path.Add (point);
 			}
 
 			return path;
