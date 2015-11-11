@@ -79,7 +79,7 @@ namespace JumpyWorld
 //							path.Add (FillPath (points [i - 1], points [i]));
 //						}
 //					} else {
-						List<Vector3> PathPostions = Hallway.BresenhamFilledPath (points [i - 1], points [i]);//this is not good. Would probably make filled path more useful. 
+						List<Vector3> PathPostions = Hallway.BresenhamFilledPath (points [i - 1], points [i]);
 						path.AddRange (PathPostions);
 //					}
 //				}

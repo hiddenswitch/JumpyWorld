@@ -15,14 +15,14 @@ namespace JumpyWorld
 		public List<Vector3>
 			pathBackBone;
 		public List<Vector3> pathPositions = new List<Vector3> ();
-
+        public float turbulence=2;
 
 		// Use this for initialization
 		public override void Generate (int seed)
 		{
 			// Create the path
 			pathPositions = BresenhamFilledPath (from: startPoint, to: endPoint, shouldBalanceCorners: shouldBalanceCorners);
-			pathPositions = Generator.Perturb (pathPositions);
+			pathPositions = Generator.Perturb (pathPositions,turbulence);
 			pathPositions = MakePathable (pathPositions);
 			// Figure out where to place the anchors based on path positions
 			// If we didn't generate enough path positions for anchors, exit.
@@ -57,8 +57,11 @@ namespace JumpyWorld
             for (var i = 0; i < pathPositions.Count-1; i++) {
                 Gizmos.color = Color.Lerp(Color.green, Color.yellow, (Mathf.Pow(-1.0f,i)+1.0f)/2.0f);
                 Gizmos.DrawLine(pathPositions[i], pathPositions[i+1]);
-               // Gizmos.DrawCube(pathPositions[i],new Vector3(1,1,1));
+
             }
+//            Gizmos.DrawCube(pathPositions[1],new Vector3(1,1,1));
+//            Gizmos.DrawCube(startPoint,new Vector3(1,1,1));
+//            Gizmos.DrawCube (endPoint,new Vector3(1,1,1));
         }
 		public static Vector3 PositionForAnchor (Vector3[] tileLocations)
 		{
@@ -102,13 +105,25 @@ namespace JumpyWorld
 				if (lastTwoPoints [0].z != lastTwoPoints [1].z && lastTwoPoints [0].x != lastTwoPoints [1].x) {
 					// Fill in a corner point
 					var cornerPoint = Vector3.zero;
+                    print ("diagonal");
+                    print (lastTwoPoints[0]);
+
 					if (toggle) {
 						cornerPoint.x = Mathf.Min (lastTwoPoints [0].x, lastTwoPoints [1].x);
-						cornerPoint.z = Mathf.Max (lastTwoPoints [0].z, lastTwoPoints [1].z);
+						cornerPoint.z = Mathf.Min (lastTwoPoints [0].z, lastTwoPoints [1].z);
 					} else {
 						cornerPoint.x = Mathf.Max (lastTwoPoints [0].x, lastTwoPoints [1].x);
-						cornerPoint.z = Mathf.Min (lastTwoPoints [0].z, lastTwoPoints [1].z);
+						cornerPoint.z = Mathf.Max (lastTwoPoints [0].z, lastTwoPoints [1].z);
 					}
+                    if (cornerPoint==lastTwoPoints[0] || cornerPoint==lastTwoPoints[1]){
+                        if (toggle) {
+                            cornerPoint.x = Mathf.Min (lastTwoPoints [0].x, lastTwoPoints [1].x);
+                            cornerPoint.z = Mathf.Max (lastTwoPoints [0].z, lastTwoPoints [1].z);
+                        } else {
+                            cornerPoint.x = Mathf.Max (lastTwoPoints [0].x, lastTwoPoints [1].x);
+                            cornerPoint.z = Mathf.Min (lastTwoPoints [0].z, lastTwoPoints [1].z);
+                        }
+                    }   
 					if (shouldBalanceCorners) {
 						toggle = !toggle;
 					}
