@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 11
 --- !u!1 &97373219
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,10 +178,10 @@ MonoBehaviour:
   anchors: []
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 10, y: 0, z: 10}
-  shouldBalanceCorners: 0
+  shouldBalanceCorners: 1
   pathBackBone: []
   pathPositions: []
-  turbulence: 3
+  turbulence: 1
 --- !u!4 &97373221
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +193,56 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!1 &187230209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 187230211}
+  - 114: {fileID: 187230210}
+  m_Layer: 0
+  m_Name: Hallway (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &187230210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187230209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1961508053}
+  tilePool: {fileID: 1961508052}
+  seed: 0
+  anchors: []
+  startPoint: {x: 0, y: 15, z: 4}
+  endPoint: {x: -1, y: 15, z: 6}
+  shouldBalanceCorners: 0
+  pathBackBone: []
+  pathPositions: []
+  turbulence: 4
+--- !u!4 &187230211
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187230209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.013731, y: -10.6180496, z: 5.50785446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &297848430
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,12 +274,12 @@ MonoBehaviour:
   tilePool: {fileID: 1961508052}
   seed: 0
   anchors: []
-  startPoint: {x: 10, y: 25, z: 0}
-  endPoint: {x: 0, y: 25, z: 10}
+  startPoint: {x: 10, y: 5, z: 0}
+  endPoint: {x: 0, y: 5, z: 10}
   shouldBalanceCorners: 0
   pathBackBone: []
   pathPositions: []
-  turbulence: 3
+  turbulence: 2
 --- !u!4 &297848432
 Transform:
   m_ObjectHideFlags: 0
@@ -242,7 +291,56 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
+--- !u!1 &316934782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 316934784}
+  - 114: {fileID: 316934783}
+  m_Layer: 0
+  m_Name: Hallway (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &316934783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316934782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1961508053}
+  tilePool: {fileID: 1961508052}
+  seed: 0
+  anchors: []
+  startPoint: {x: 0, y: -15, z: 0}
+  endPoint: {x: 10, y: -15, z: 10}
+  shouldBalanceCorners: 0
+  pathBackBone: []
+  pathPositions: []
+  turbulence: 1.5
+--- !u!4 &316934784
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316934782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.013731, y: -10.6180496, z: 5.50785446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &538331383
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,12 +372,12 @@ MonoBehaviour:
   tilePool: {fileID: 1961508052}
   seed: 0
   anchors: []
-  startPoint: {x: 0, y: -7, z: 0}
-  endPoint: {x: 10, y: -7, z: 10}
+  startPoint: {x: 0, y: -10, z: 0}
+  endPoint: {x: 10, y: -10, z: 10}
   shouldBalanceCorners: 0
   pathBackBone: []
   pathPositions: []
-  turbulence: 2
+  turbulence: 0
 --- !u!4 &538331385
 Transform:
   m_ObjectHideFlags: 0
@@ -291,7 +389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 7
 --- !u!1 &1071111029
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +438,56 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
+--- !u!1 &1082859917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1082859919}
+  - 114: {fileID: 1082859918}
+  m_Layer: 0
+  m_Name: Hallway (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1082859918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1082859917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1961508053}
+  tilePool: {fileID: 1961508052}
+  seed: 0
+  anchors: []
+  startPoint: {x: 0, y: 25, z: 10}
+  endPoint: {x: 10, y: 25, z: 10}
+  shouldBalanceCorners: 1
+  pathBackBone: []
+  pathPositions: []
+  turbulence: 2
+--- !u!4 &1082859919
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1082859917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.013731, y: -10.6180496, z: 5.50785446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1092454175
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +573,105 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 10
+--- !u!1 &1476018147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1476018149}
+  - 114: {fileID: 1476018148}
+  m_Layer: 0
+  m_Name: Hallway (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1476018148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476018147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1961508053}
+  tilePool: {fileID: 1961508052}
+  seed: 0
+  anchors: []
+  startPoint: {x: -2, y: 20, z: 0}
+  endPoint: {x: -15, y: 20, z: 10}
+  shouldBalanceCorners: 0
+  pathBackBone: []
+  pathPositions: []
+  turbulence: 8
+--- !u!4 &1476018149
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476018147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.013731, y: -10.6180496, z: 5.50785446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!1 &1560517270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1560517272}
+  - 114: {fileID: 1560517271}
+  m_Layer: 0
+  m_Name: Hallway (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1560517271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1560517270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1961508053}
+  tilePool: {fileID: 1961508052}
+  seed: 0
+  anchors: []
+  startPoint: {x: 0, y: -30, z: 4}
+  endPoint: {x: -1, y: -30, z: 6}
+  shouldBalanceCorners: 0
+  pathBackBone: []
+  pathPositions: []
+  turbulence: 2
+--- !u!4 &1560517272
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1560517270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.013731, y: -10.6180496, z: 5.50785446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &1961508049
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +713,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 12
 --- !u!114 &1961508052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,3 +741,52 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 1
+--- !u!1 &2135495924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2135495926}
+  - 114: {fileID: 2135495925}
+  m_Layer: 0
+  m_Name: Hallway (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2135495925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135495924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5c0fc87ef3c408e9cf805a270c58c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1961508053}
+  tilePool: {fileID: 1961508052}
+  seed: 0
+  anchors: []
+  startPoint: {x: 10, y: 30, z: 0}
+  endPoint: {x: 0, y: 30, z: 10}
+  shouldBalanceCorners: 0
+  pathBackBone: []
+  pathPositions: []
+  turbulence: 2
+--- !u!4 &2135495926
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135495924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.013731, y: -10.6180496, z: 5.50785446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
