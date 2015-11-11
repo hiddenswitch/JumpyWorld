@@ -29,7 +29,10 @@ namespace JumpyWorld
 
 			Generate (seed: seed);
 			Draw (tileDrawer: tileDrawer, tilePool: tilePool);
-
+            for (int i = 0; i < anchors.Length; i++)
+            {
+                anchors[i].generator = this;
+            }
 			Random.seed = oldSeed;
 		}
 

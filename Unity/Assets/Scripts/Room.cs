@@ -68,10 +68,10 @@ namespace JumpyWorld
 						// Compute the placement of the anchor based on the side (should be one off from the border)
 						var displacement = info.side.ToVector();
 
-						// Place anchor
-						anchorList.Add (new Anchor () {
-							PositionGrid = info.position + displacement,
-							Directions = info.side
+                        // Place anchor
+                        anchorList.Add(new Anchor() {
+                            PositionGrid = info.position + displacement,
+                            Directions = info.side,
 						});
 						// Consume the anchor.
 						anchorPositions.Remove (info.side);

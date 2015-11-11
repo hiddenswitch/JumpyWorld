@@ -47,7 +47,6 @@ namespace JumpyWorld
 						// A tile was found. Do not create a tile
 						// TODO: Replace it?
 						hasCollided = true;
-						Debug.Log ("collision at "+ at);
 						return;
 					}
 				}
