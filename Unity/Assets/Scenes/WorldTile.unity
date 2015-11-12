@@ -222,12 +222,32 @@ MonoBehaviour:
   startRoom: {fileID: 1647307481}
   rooms: []
   iterations: 6
-  minHallwayLength: 8
-  maxHallwayLength: 12
-  minRoomDimension: 7
-  maxRoomDimension: 12
+  minHallwayLength: 4
+  maxHallwayLength: 7
+  minRoomDimension: 3
+  maxRoomDimension: 7
   connectLooseDistance: 20
   newHallwayProbability: .899999976
+  hallwayTurbulenceDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 1.07879519
+      outSlope: 1.07879519
+      tangentMode: 10
+    - time: .0889344737
+      value: .09594208
+      inSlope: .449751168
+      outSlope: .449751168
+      tangentMode: 10
+    - time: .582025707
+      value: .00753434747
+      inSlope: -.179292858
+      outSlope: -.179292858
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &274888150
 MonoBehaviour:
   m_ObjectHideFlags: 0

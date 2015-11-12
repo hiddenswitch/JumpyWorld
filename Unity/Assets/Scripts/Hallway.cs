@@ -10,12 +10,12 @@ namespace JumpyWorld
         public Vector3
             startPoint;
         public Vector3 endPoint;
-        public bool shouldBalanceCorners = false;
+        public bool shouldBalanceCorners = true;
         [Header("Runtime")]
         public List<Vector3>
             pathBackBone;
         public List<Vector3> pathPositions = new List<Vector3> ();
-        public float turbulence = 2;
+        public float turbulence = 0f;
 
         // Use this for initialization
         public override void Generate (int seed)

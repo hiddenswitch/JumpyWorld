@@ -30,7 +30,9 @@ namespace JumpyWorld
 
         public float connectLooseDistance;
 
+		[Header("Hallways")]
 		public float newHallwayProbability;
+		public AnimationCurve hallwayTurbulenceDistribution;
 
         private class WorldBuilderInfo
         {
@@ -211,6 +213,9 @@ namespace JumpyWorld
 
             hallway.startPoint = startPoint;
             hallway.endPoint = endPoint;
+			hallway.turbulence = hallwayTurbulenceDistribution.Evaluate(Random.value);
+			hallway.shouldBalanceCorners = true;
+			hallway.seed = Random.Range (0, 65535);
 
 			tileDrawer.startCollisionTest ();
             hallway.Build();

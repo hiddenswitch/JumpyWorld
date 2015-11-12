@@ -10,15 +10,14 @@ namespace JumpyWorld
 		public TilePool tilePool;
 		public int seed;
 		public Anchor[] anchors;
-        public bool generateOnStart = false;
+		public bool generateOnStart = false;
 
-        void Start ()
-        {
-            if (generateOnStart)
-            {
-                Build ();
-            }
-        }
+		void Start ()
+		{
+			if (generateOnStart) {
+				Build ();
+			}
+		}
 
 		public void Build ()
 		{
@@ -30,10 +29,9 @@ namespace JumpyWorld
 
 			Generate (seed: seed);
 			Draw (tileDrawer: tileDrawer, tilePool: tilePool);
-            for (int i = 0; i < anchors.Length; i++)
-            {
-                anchors[i].generator = this;
-            }
+			for (int i = 0; i < anchors.Length; i++) {
+				anchors [i].generator = this;
+			}
 			Random.seed = oldSeed;
 		}
 
@@ -57,44 +55,27 @@ namespace JumpyWorld
 
 		public static List<Vector3> Perturb (List<Vector3> points, float turbulence=2.0f)
 		{
-            Vector3 newpoint;
+			Vector3 newPoint;
 			var newPoints = new List<Vector3> (points.Count);
-            newPoints.Add (points[0]);
+			newPoints.Add (points [0]);
 			foreach (var point in points.GetRange (1,points.Count-2)) {
 				var displacement = turbulence * Random.insideUnitSphere;
 				displacement.y = 0;
-                newpoint=(displacement + point);
-                newpoint.x=Mathf.Round (newpoint.x);
-                newpoint.z=Mathf.Round(newpoint.z);
-				newPoints.Add(newpoint);
+				newPoint = (displacement + point);
+				newPoint.x = Mathf.Round (newPoint.x);
+				newPoint.z = Mathf.Round (newPoint.z);
+				newPoints.Add (newPoint);
 			}
-            newPoints.Add (points[points.Count-1]);
+			newPoints.Add (points [points.Count - 1]);
 			return newPoints;
-//			for (int i =0; i< points.Count; i++) {
-//				int index = 3 * Random.Range (1, (points.Count - 2) / 3);
-//				Vector3 old = points [index];
-//				points [index] = old + new Vector3 (Random.Range (0, 3), 0, Random.Range (0, 3));
-//			}
 		}
 
 		public static List<Vector3> MakePathable (List<Vector3> points)
 		{
-//			points.Sort(delegate(Vector3 pt1, Vector3 pt2) {
-//				return ;
-//			});
 			List<Vector3> path = new List<Vector3> ();
 			for (int i=1; i < points.Count; i++) {
-//				if (points [i - 1] != points [i]) {
-//					path.Add (points [i - 1]);
-//					if (Vector3.Distance (points [i - 1], points [i]) < 2) {
-//						if (points [i - 1].z != points [i].z || points [i - 1].x != points [i].x) {
-//							path.Add (FillPath (points [i - 1], points [i]));
-//						}
-//					} else {
-						List<Vector3> PathPostions = Hallway.BresenhamFilledPath (points [i - 1], points [i]);
-						path.AddRange (PathPostions);
-//					}
-//				}
+				List<Vector3> PathPostions = Hallway.BresenhamFilledPath (points [i - 1], points [i]);
+				path.AddRange (PathPostions);
 			}
 			return path;
 		}
