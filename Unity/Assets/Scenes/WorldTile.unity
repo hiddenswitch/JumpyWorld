@@ -221,15 +221,13 @@ MonoBehaviour:
   hallwayPrefab: {fileID: 148112, guid: de634f2216b95d04a8116597022a3e59, type: 2}
   startRoom: {fileID: 1647307481}
   rooms: []
-  iterations: 10
+  iterations: 6
   minHallwayLength: 8
   maxHallwayLength: 12
-  HallwayShift: 3
   minRoomDimension: 7
   maxRoomDimension: 12
-  RoomShift: 5
-  newHallwayProbablity: .5
   connectLooseDistance: 20
+  newHallwayProbability: .899999976
 --- !u!114 &274888150
 MonoBehaviour:
   m_ObjectHideFlags: 0
