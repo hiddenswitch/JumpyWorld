@@ -9,15 +9,14 @@ namespace JumpyWorld
 		public TilePool tilePool;
 		public int seed;
 		public Anchor[] anchors;
-        public bool generateOnStart = false;
+		public bool generateOnStart = false;
 
-        void Start ()
-        {
-            if (generateOnStart)
-            {
-                Build ();
-            }
-        }
+		void Start ()
+		{
+			if (generateOnStart) {
+				Build ();
+			}
+		}
 
 		public void Build ()
 		{
@@ -29,10 +28,9 @@ namespace JumpyWorld
 
 			Generate (seed: seed);
 			Draw (tileDrawer: tileDrawer, tilePool: tilePool);
-            for (int i = 0; i < anchors.Length; i++)
-            {
-                anchors[i].generator = this;
-            }
+			for (int i = 0; i < anchors.Length; i++) {
+				anchors [i].generator = this;
+			}
 			Random.seed = oldSeed;
 		}
 
@@ -45,11 +43,14 @@ namespace JumpyWorld
 		{
 
 		}
-
 		
 		public virtual void OnDrawGizmos ()
 		{
 			Gizmos.color = Color.blue;
+			if (anchors == null
+				|| anchors.Length == 0) {
+				return;
+			}
 			foreach (var anchor in anchors) {
 				Gizmos.DrawWireCube (anchor.position, new Vector3 (1, 1, 1));
 			}
