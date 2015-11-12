@@ -16,107 +16,128 @@ namespace JumpyWorld
 
         public Room startRoom;
         public List<Room> rooms = new List<Room>();
-        public int iterations = 2;
+        public int iterations;
 
         bool roomGeneratingIteration = false;
 
-        public int minHallwayLength = 8;
-        public int maxHallwayLength = 11;
+        public int minHallwayLength;
+        public int maxHallwayLength ;
 
-		public int HallwayShift = 5;		
 
-        public int minRoomDimension = 12;
-        public int maxRoomDimension = 15;
+        public int minRoomDimension ;
+        public int maxRoomDimension;
 
-		public int RoomShift = 5;
 
-        public float newHallwayProbablity = 0.4f;
         public float connectLooseDistance;
 
-        struct WorldBuilderInfo
+		public float newHallwayProbability;
+
+        private class WorldBuilderInfo
         {
             public Anchor anchor;
-            public Generator generator;
+			public WorldBuilderInfo parent;
+			public WorldBuilderInfo(Anchor anchor, WorldBuilderInfo info){
+				this.anchor = anchor;
+				this.parent = info;
+			}
+
         }
 		// Use this for initialization
 		void Start ()
 		{
             var oldSeed = Random.seed;
             Random.seed = seed;
-            List<Anchor> pendingAnchors = new List<Anchor>();
             List<WorldBuilderInfo> pendingInfos = new List<WorldBuilderInfo>();
+
+
+
             startRoom.Build();
-            pendingAnchors.AddRange(startRoom.anchors);
-            Debug.Log(startRoom.anchors.Length);
-            List<Anchor> looseAnchors = new List<Anchor>();
+
+			foreach (Anchor anchor in startRoom.anchors) {
+				pendingInfos.Add (new WorldBuilderInfo(anchor, null));
+			}
+
+			List<Anchor> looseAnchors = new List<Anchor>();
 
             for (int i = 0; i < iterations; i++)
             {
-                List<Anchor> newAnchors = new List<Anchor>();
-                if (roomGeneratingIteration)
-                {
-                    foreach(Anchor anchor in pendingAnchors)
-                    {
-                        int w = Random.Range(minRoomDimension, maxRoomDimension);
-                        int h = Random.Range(minRoomDimension, maxRoomDimension);
+				List<WorldBuilderInfo> newInfo = new List<WorldBuilderInfo>();
 
+				foreach (WorldBuilderInfo info in pendingInfos){
+					Anchor anchor = info.anchor;
+					if (anchor.position.x == 9 && anchor.position.y == 0 && anchor.position.z == -26){
+						Debug.Log ("hi");
+					}
 
-                        int x = (int)anchor.position.x + Mathf.Min (0,(int)(anchor.directions.ToVector().x)) * w;
+					if (roomGeneratingIteration)
+					{
+						int w = Random.Range(minRoomDimension, maxRoomDimension);
+						int h = Random.Range(minRoomDimension, maxRoomDimension);
+						
+						
+						int x = (int)anchor.position.x + Mathf.Min (0,(int)(anchor.directions.ToVector().x)) * w;
 						int y = (int)anchor.position.z + Mathf.Min (0,(int)(anchor.directions.ToVector().z)) * h;
-
-
+						
+						
 						if (anchor.directions.ToVector().x == 0){
-                            x -= Random.Range(0, RoomShift);// * (int) anchor.directions.ToVector().z;
+							x -= Random.Range(1, w - 1);// * (int) anchor.directions.ToVector().z;
 						} else {
-                            y -= Random.Range(0, RoomShift);// * (int) anchor.directions.ToVector().x;
+							y -= Random.Range(1, h - 1);// * (int) anchor.directions.ToVector().x;
 						}
-
-                        Room newRoom = generateRoom(new Rect(x, y, w, h));
-
-
-
+						
+						Room newRoom = generateRoom(new Rect(x, y, w, h));
+						
 						if (newRoom != null){
+							
+							foreach (Anchor newAnchor in newRoom.anchors)
+							{
 
-	                        foreach (Anchor newAnchor in newRoom.anchors)
-	                        {
-	                            if (newAnchor.directions.ToVector() != - anchor.directions.ToVector())
-	                            {
-	                                newAnchors.Add(newAnchor);
-	                            }
-	                        }
+								if (newAnchor.directions.ToVector() != - anchor.directions.ToVector())
+								{
+
+									newInfo.Add(new WorldBuilderInfo(newAnchor, info));
+								}
+							}
 						} else {
-                            Destroy(anchor.generator.gameObject);
-                            //looseAnchors.Add(anchor);
+							looseAnchors.Add(info.parent.anchor);
+							Debug.Log (info.parent.anchor.position);
+							Destroy(anchor.generator.gameObject);
 						}
 
-                    }
-                    pendingAnchors = newAnchors;
-                } else
-                {
-                    foreach (Anchor anchor in pendingAnchors)
-                    {
-                        if (Random.value < newHallwayProbablity) { 
-                            Vector3 endPoint = Random.Range(minHallwayLength, maxHallwayLength) * anchor.directions.ToVector() + anchor.position;
-                            Hallway newHallway = generateHallway(anchor.position, endPoint);
+					} else {
+						if (Random.value < newHallwayProbability) { 
+							Vector3 endPoint = Random.Range(minHallwayLength, maxHallwayLength) * anchor.directions.ToVector() + anchor.position;
+							Hallway newHallway = generateHallway(anchor.position, endPoint);
 							if (newHallway == null){
-                                looseAnchors.Add(anchor);
-								break;
+								looseAnchors.Add(anchor);
+								Debug.Log (anchor.position);
+								continue;
 							}
-                            newAnchors.Add(newHallway.anchors[1]);  //Hardcoding this for now.
-                            
-                        } else
-                        {
-                            looseAnchors.Add(anchor);
-                        }
-                    }
+							newInfo.Add(new WorldBuilderInfo(newHallway.anchors[1], info));  //Hardcoding this for now.
+							
+						} else {
+							looseAnchors.Add (anchor);
+						}
+
+					}
+
+				}
+				pendingInfos = newInfo;
+
+				foreach (WorldBuilderInfo info in pendingInfos){
+					Anchor anchor = info.anchor;
+
+				}
 
 
-                    pendingAnchors = newAnchors;
-                }
-                roomGeneratingIteration = !roomGeneratingIteration;
+				roomGeneratingIteration = !roomGeneratingIteration;
             }
-
-            looseAnchors.AddRange(pendingAnchors);
+			Debug.Log (pendingInfos.Count);
+			Debug.Log (looseAnchors.Count);
+            foreach (WorldBuilderInfo info in pendingInfos) {
+				Anchor anchor = info.anchor;
+				looseAnchors.Add(info.anchor);
+			}
 
             HashSet<Anchor> filledAnchors = new HashSet<Anchor>();
             foreach(Anchor a in looseAnchors)
@@ -136,6 +157,12 @@ namespace JumpyWorld
                 }
             }
 
+			foreach (Anchor a in looseAnchors) {
+				if (!filledAnchors.Contains(a) && a.generator is Hallway){
+					Destroy (a.generator.gameObject);
+				}
+			}
+
             Random.seed = oldSeed;
         }
 	
@@ -144,27 +171,7 @@ namespace JumpyWorld
 		{
 	
 		}
-
-        Anchor findCloestAnchorOfDifferentParent(Anchor a, List<Anchor> all)
-        {
-            Anchor cloest = all[0];
-            float d = a.generator != cloest.generator ? Vector3.Distance(cloest.position, a.position) : float.MaxValue;
-            foreach (Anchor b in all)
-            {
-                if (b.generator == a.generator)
-                {
-                   
-                    continue;
-                }
-                float dNew = Vector3.Distance(a.position, b.position);
-                if (dNew < d)
-                {
-                    dNew = d;
-                    cloest = b;
-                }
-            }
-            return cloest;
-        }
+		
 
         bool shouldGenerate(Anchor a, Anchor b)
         {
