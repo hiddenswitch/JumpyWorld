@@ -8,6 +8,8 @@ namespace JumpyWorld
 	{
 		public Vector3 position;
 		public Directions directions;
+        public Generator generator;
+
 
 		public Vector3 PositionGrid {
 			get {
@@ -35,5 +37,10 @@ namespace JumpyWorld
 				directions = value;
 			}
 		}
+
+        public bool equals(Anchor other)
+        {
+            return position == other.position && directions == other.directions && generator == other.generator;
+        }
 	}
 }

@@ -9,8 +9,17 @@ namespace JumpyWorld
 		public TilePool tilePool;
 		public int seed;
 		public Anchor[] anchors;
+        public bool generateOnStart = false;
 
-		void Start ()
+        void Start ()
+        {
+            if (generateOnStart)
+            {
+                Build ();
+            }
+        }
+
+		public void Build ()
 		{
 			tileDrawer = tileDrawer ?? GetComponent<TileDrawer> () ?? TileDrawer.instance;
 			tilePool = tilePool ?? GetComponent<TilePool> () ?? TilePool.instance;
@@ -20,7 +29,10 @@ namespace JumpyWorld
 
 			Generate (seed: seed);
 			Draw (tileDrawer: tileDrawer, tilePool: tilePool);
-
+            for (int i = 0; i < anchors.Length; i++)
+            {
+                anchors[i].generator = this;
+            }
 			Random.seed = oldSeed;
 		}
 
