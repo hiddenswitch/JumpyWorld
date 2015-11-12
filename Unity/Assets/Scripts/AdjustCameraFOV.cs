@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace JumpyWorld
@@ -34,13 +34,13 @@ namespace JumpyWorld
 			switch (Screen.orientation) {
 			case ScreenOrientation.LandscapeLeft:
 			case ScreenOrientation.LandscapeRight:
-				if (previousFOV != landscapeFOV) {
-					camera.fieldOfView = previousFOV = landscapeFOV;
+				if (previousFOV != landscapeSize) {
+					camera.fieldOfView = previousFOV = landscapeSize;
 				}
 				break;
 			default:
-				if (previousFOV != portraitFOV) {
-					camera.fieldOfView = previousFOV = portraitFOV;
+				if (previousFOV != portraitSize) {
+					camera.fieldOfView = previousFOV = portraitSize;
 				}
 				break;
 			}
