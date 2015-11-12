@@ -1,25 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class TileDrawer : MonoBehaviour
+	public class TileDrawer : MonoBehaviour, IList<Vector3>
 	{
+		struct TileInfo
+		{
+			public Vector3 position;
+			public GameObject gameObject;
+
+			public override int GetHashCode ()
+			{
+				return position.GetHashCode () ^ gameObject.GetHashCode () << 1;
+			}
+		}
+
 		public static TileDrawer instance { get; private set; }
 
 		public Transform parent;
 		public LayerMask terrainLayer;
-		/// <summary>
-		/// This bloom filter stores whether or not tiles exist at a certain position. A very space efficient data structure.
-		/// </summary>
-		private BloomFilter.Filter<Vector3> bloomFilter;
-
+		private Dictionary<Vector3, TileInfo> tiles = new Dictionary<Vector3, TileInfo> ();
 		private bool hasCollided = false;
-
-		TileDrawer ()
-		{
-			bloomFilter = new BloomFilter.Filter<Vector3> (capacity: 100000, hashFunction: HashFunction);
-		}
 
 		void Awake ()
 		{
@@ -37,55 +40,128 @@ namespace JumpyWorld
 			// Don't place terrain if it already exists
 			at = Tile.ToGrid (at);
 
-			if (bloomFilter.Contains (at)) {
-				// Bloom filters are only probabilistically accurate for positives.
-				// Check for certain if a tile exists there
-				var colliders = Physics.OverlapSphere (at, Tile.gridSize / 2f - Physics.defaultContactOffset);
-				foreach (var collider in colliders) {
-					// Is this a terrain tile?
-					if (((1 << collider.gameObject.layer) & terrainLayer.value) != 0) {
-						// A tile was found. Do not create a tile
-						// TODO: Replace it?
-						hasCollided = true;
-						return;
-					}
-				}
+			if (this.Contains (at)) {
+				return;
 			}
 
 			GameObject instance = Instantiate (tile, at, Quaternion.identity) as GameObject;
-			bloomFilter.Add (at);
+			tiles.Add (at, new TileInfo () {position = at, gameObject = instance});
 			instance.transform.SetParent (parent, worldPositionStays: false);
 		}
 
-		public bool TestCollision (Vector3 at=default(Vector3)){
-			// Don't place terrain if it already exists
-			at = Tile.ToGrid (at);
-			
-			if (bloomFilter.Contains (at)) {
-				// Bloom filters are only probabilistically accurate for positives.
-				// Check for certain if a tile exists there
-				var colliders = Physics.OverlapSphere (at, Tile.gridSize / 2f - Physics.defaultContactOffset);
-				foreach (var collider in colliders) {
-					// Is this a terrain tile?
-					if (((1 << collider.gameObject.layer) & terrainLayer.value) != 0) {
-						// A tile was found. Do not create a tile
-						return true;
-					}
-				}
-			}
-			return false;
+		public bool TestCollision (Vector3 at=default(Vector3))
+		{
+			return this.Contains (at);
 		}
 
-		public void startCollisionTest(){
+		public void startCollisionTest ()
+		{
 			hasCollided = false;
 		}
 
-		public bool getCollisionTestResult(bool reset = true){
+		public bool getCollisionTestResult (bool reset = true)
+		{
 			bool result = hasCollided;
 			if (reset) {
 				hasCollided = false;
 			}
 			return result;
 		}
+
+		#region IList implementation
+
+		public int IndexOf (Vector3 item)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		public void Insert (int index, Vector3 item)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		public void RemoveAt (int index)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		public Vector3 this [int index] {
+			get {
+				throw new System.NotImplementedException ();
+			}
+			set {
+				throw new System.NotImplementedException ();
+			}
+		}
+
+		#endregion
+
+		#region ICollection implementation
+
+		public void Add (Vector3 item)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		public void Clear ()
+		{
+			foreach (var kv in tiles) {
+				Destroy (kv.Value.gameObject);
+			}
+
+			tiles.Clear ();
+		}
+
+		public bool Contains (Vector3 item)
+		{
+			return tiles.ContainsKey (item);
+		}
+
+		public void CopyTo (Vector3[] array, int arrayIndex)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		public bool Remove (Vector3 item)
+		{
+			if (!tiles.ContainsKey (item)) {
+				return false;
+			}
+
+			Destroy (tiles [item].gameObject);
+			return tiles.Remove (item);
+		}
+
+		public int Count {
+			get {
+				return tiles.Count;
+			}
+		}
+
+		public bool IsReadOnly {
+			get {
+				throw new System.NotImplementedException ();
+			}
+		}
+
+		#endregion
+
+		#region IEnumerable implementation
+
+		public IEnumerator<Vector3> GetEnumerator ()
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		#endregion
+
+		#region IEnumerable implementation
+
+		IEnumerator IEnumerable.GetEnumerator ()
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		#endregion
 	}
 }

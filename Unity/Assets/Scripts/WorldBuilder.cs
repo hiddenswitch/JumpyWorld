@@ -39,7 +39,7 @@ namespace JumpyWorld
             public Generator generator;
         }
 		// Use this for initialization
-		void Start ()
+		public void Start ()
 		{
             var oldSeed = Random.seed;
             Random.seed = seed;
