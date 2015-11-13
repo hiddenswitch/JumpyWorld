@@ -40,7 +40,7 @@ namespace JumpyWorld
 
 		}
 
-		public virtual void Draw (TileDrawer tileDrawer, TilePool tilePool)
+		public virtual void Draw (TileDrawer tileDrawer=null, TilePool tilePool=null)
 		{
 
 		}
