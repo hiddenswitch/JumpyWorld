@@ -8,7 +8,7 @@ QualitySettings:
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
-    pixelLightCount: 1
+    pixelLightCount: 4
     shadows: 1
     shadowResolution: 2
     shadowProjection: 1
