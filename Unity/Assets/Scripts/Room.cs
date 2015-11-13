@@ -11,6 +11,10 @@ namespace JumpyWorld
 			public Vector3 position;
 			public Directions side;
 			public bool isBorder;
+			/// <summary>
+			/// The distance from {North, East, South, West} borders
+			/// </summary>
+			public Vector4 distanceFromBorders;
 		}
 
 		[Header("Options")]
@@ -66,10 +70,10 @@ namespace JumpyWorld
 					// than the amount indicated by anchor positions.
 						progressAlongBorder > anchorPositions [info.side]) {
 						// Compute the placement of the anchor based on the side (should be one off from the border)
-						var displacement = info.side.ToVector();
+						var displacement = info.side.ToVector ();
 
-                        // Place anchor
-                        anchorList.Add(new Anchor() {
+						// Place anchor
+						anchorList.Add (new Anchor () {
                             PositionGrid = info.position + displacement,
                             Directions = info.side,
 						});
@@ -123,10 +127,13 @@ namespace JumpyWorld
 						}
 					}
 
+					var distanceFromBorders = new Vector4 (Mathf.Abs (rect.yMax - z), Mathf.Abs (x - rect.xMax), Mathf.Abs (z - rect.yMin), Mathf.Abs (x - rect.xMin));
+
 					var point = new RectanglePoint () {
 						position = new Vector3 (x, y, z),
 						side = side,
-						isBorder = isBorder
+						isBorder = isBorder,
+						distanceFromBorders = distanceFromBorders
 					};
 
 					yield return point;

@@ -12,8 +12,18 @@ namespace JumpyWorld
 		West = 8
 	}
 
+	public static class Vector4DirectionIndex
+	{
+		public const int Vector4North = 0;
+		public const int Vector4East = 1;
+		public const int Vector4South = 2;
+		public const int Vector4West = 3;
+	}
+
 	public static class DirectionsExtensions
 	{
+
+
 		public static Vector3 ToVector (this Directions value)
 		{
 			var direction = Vector3.zero;
