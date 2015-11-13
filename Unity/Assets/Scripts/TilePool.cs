@@ -8,6 +8,7 @@ namespace JumpyWorld
 		public static TilePool instance { get; private set; }
 
 		public GameObject defaultGround;
+		public GameObject[] decorative;
 
 		void Awake ()
 		{

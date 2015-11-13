@@ -34,13 +34,13 @@ namespace JumpyWorld
 			switch (Screen.orientation) {
 			case ScreenOrientation.LandscapeLeft:
 			case ScreenOrientation.LandscapeRight:
-				if (previousFOV != landscapeSize) {
-					camera.fieldOfView = previousFOV = landscapeSize;
+				if (previousFOV != landscapeFOV) {
+					camera.fieldOfView = previousFOV = landscapeFOV;
 				}
 				break;
 			default:
-				if (previousFOV != portraitSize) {
-					camera.fieldOfView = previousFOV = portraitSize;
+				if (previousFOV != portraitFOV) {
+					camera.fieldOfView = previousFOV = portraitFOV;
 				}
 				break;
 			}

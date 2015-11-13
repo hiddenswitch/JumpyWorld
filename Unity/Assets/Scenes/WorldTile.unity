@@ -85,6 +85,121 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10217442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 10217445}
+  - 114: {fileID: 10217444}
+  - 114: {fileID: 10217443}
+  m_Layer: 0
+  m_Name: Tree Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &10217443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10217442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 0}
+  decorative:
+  - {fileID: 184728, guid: 90bec4992210646be854a884a5ab93e7, type: 2}
+  - {fileID: 187932, guid: 57711b5cebac44e668ca0789e41ebd4a, type: 2}
+  - {fileID: 133472, guid: 5c89d8de50c7a4862bf9d51cbaaa1df9, type: 2}
+  - {fileID: 105874, guid: a717a7ee541ef495098822a1151058d9, type: 2}
+--- !u!114 &10217444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10217442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ae52ff7d8bd458ab2a8f5560f5a173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 274888146}
+  tilePool: {fileID: 10217443}
+  seed: 0
+  anchors: []
+  generateOnStart: 0
+  room: {fileID: 0}
+  xDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .0946709216
+      value: .200699165
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .928753018
+      value: .200699165
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  zDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .0946709216
+      value: .20009464
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .928753018
+      value: .20009464
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  height: 1
+  step: 2
+--- !u!4 &10217445
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10217442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274888148}
+  m_RootOrder: 0
 --- !u!1 &107910905
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  decorative: []
 --- !u!4 &274888148
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +316,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 10217445}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &274888149
@@ -248,6 +365,7 @@ MonoBehaviour:
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
+  treeDecorator: {fileID: 10217444}
 --- !u!114 &274888150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,15 +617,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 495646, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 495646, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 495646, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 495646, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: m_LocalRotation.x

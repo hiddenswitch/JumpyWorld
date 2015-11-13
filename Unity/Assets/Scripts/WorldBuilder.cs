@@ -34,6 +34,9 @@ namespace JumpyWorld
 		public float newHallwayProbability;
 		public AnimationCurve hallwayTurbulenceDistribution;
 
+		[Header("Decorations")]
+		public RandomPlacerForRoom treeDecorator;
+
         private class WorldBuilderInfo
         {
             public Anchor anchor;
@@ -199,6 +202,11 @@ namespace JumpyWorld
 				Destroy(roomObj);
 				return null;
 			}
+
+			// Generate trees
+			treeDecorator.room = room;
+			treeDecorator.Generate(seed: Random.Range(0, 65536));
+			treeDecorator.Draw(tileDrawer: tileDrawer);
             return room;
 
 
