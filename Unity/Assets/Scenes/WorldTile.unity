@@ -359,34 +359,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 11497972, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: screenSpaceNorth.x
-      value: -.707000017
-      objectReference: {fileID: 0}
-    - target: {fileID: 11497972, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: screenSpaceNorth.y
-      value: .707000017
-      objectReference: {fileID: 0}
-    - target: {fileID: 11497972, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: screenSpaceEast.x
-      value: .707000017
-      objectReference: {fileID: 0}
-    - target: {fileID: 11497972, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: screenSpaceEast.y
-      value: .707000017
-      objectReference: {fileID: 0}
     - target: {fileID: 11415558, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
       propertyPath: recipient
       value: 
       objectReference: {fileID: 274888145}
-    - target: {fileID: 11415558, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: message
-      value: RandomizeAndRebuild
-      objectReference: {fileID: 0}
-    - target: {fileID: 11415558, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: depth
-      value: -8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
   m_IsPrefabParent: 0

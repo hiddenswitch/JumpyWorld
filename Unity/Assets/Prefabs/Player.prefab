@@ -958,7 +958,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400064}
@@ -1055,9 +1055,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6c10c6268a645f6bd6f8fee66fdf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: -10
+  depth: -8
   recipient: {fileID: 0}
-  message: Fell
+  message: RandomizeAndRebuild
+  debounce: .300000012
 --- !u!114 &11448246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1134,10 +1135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbaefa57c22b044891221546318be12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSwipeDistance: 5
-  tolerance: .906000018
-  screenSpaceNorth: {x: 0, y: 1}
-  screenSpaceEast: {x: 1, y: 0}
+  minSwipeDistance: 2.5
+  tolerance: .707000017
+  screenSpaceNorth: {x: -.707000017, y: .707000017}
+  screenSpaceEast: {x: .707000017, y: .707000017}
   worldSpaceUp: {x: 0, y: 1, z: 0}
   swipeNorth: SwipeNorth
   swipeSouth: SwipeSouth

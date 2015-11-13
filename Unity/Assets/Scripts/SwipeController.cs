@@ -50,15 +50,17 @@ namespace JumpyWorld
 			Vector2 touchPosition = Vector2.zero;
 			
 			if (Application.isMobilePlatform) {
-				if (Input.touchCount == 0) {
+				var down = Input.touchCount > 0;
+				if (down) {
+					var touch = Input.GetTouch (0);
+					if (!prevFrameDown) {
+						prevFrameDown = true;
+						touchDown = touch.position;
+					}
+					touchPosition = touch.position;
+				} else {
+					prevFrameDown = false;
 					return;
-				}
-				
-				var touch = Input.GetTouch (0);
-				touchPosition = touch.position;
-				
-				if (touch.phase == TouchPhase.Began) {
-					touchDown = touchPosition;
 				}
 			} else {
 				var down = Input.GetMouseButton (0);
