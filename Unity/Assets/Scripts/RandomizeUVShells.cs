@@ -10,12 +10,12 @@ namespace JumpyWorld
 		{
 			public int[] uvIndices;
 			public Rect location;
+			public bool clamp;
 		}
 		public MeshFilter meshFilter;
 		public bool randomizeOnStart;
 		public UVShellInfo[] shells;
-
-		public Vector2[] startUVs;
+		Vector2[] startUVs;
 		Mesh mesh;
 		// Use this for initialization
 		void Start ()
@@ -36,7 +36,12 @@ namespace JumpyWorld
 				var displacement = Vector2.Lerp (shell.location.min, shell.location.max, Random.value) - startUVs [shell.uvIndices [0]];
 				for (var j = 0; j < shell.uvIndices.Length; j++) {
 					var k = shell.uvIndices [j];
-					newUVs [k] = startUVs [k] + displacement;
+					var newVal = startUVs [k] + displacement;
+					if (shell.clamp) {
+						newUVs [k] = new Vector2 (Mathf.Clamp (newVal.x, shell.location.xMin, shell.location.xMax), Mathf.Clamp (newVal.y, shell.location.yMin, shell.location.yMax));
+					} else {
+						newUVs [k] = newVal;
+					}
 				}
 			}
 			mesh.uv = newUVs;
