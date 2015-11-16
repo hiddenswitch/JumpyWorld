@@ -11,6 +11,8 @@ namespace JumpyWorld
         public TileDrawer tileDrawer;
 		public TilePool tilePool;
 
+		public Transform generatorParent;
+
         public GameObject roomPrefab;
         public GameObject hallwayPrefab;
 
@@ -192,14 +194,16 @@ namespace JumpyWorld
         Room generateRoom (Rect options)
         {
             GameObject roomObj = Instantiate(roomPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-			tileDrawer.parent = roomObj.transform;
+			roomObj.transform.SetParent(this.generatorParent);
             Room room = roomObj.GetComponent<Room>();
 
             room.size = options;
 
 
 			tileDrawer.startCollisionTest ();
-            room.Build();
+			room.tilePool = tilePool;
+			room.tileDrawer = tileDrawer;
+			room.Build();
 
 			if (tileDrawer.getCollisionTestResult()) {
 				Destroy(roomObj);
@@ -222,9 +226,11 @@ namespace JumpyWorld
         Hallway generateHallway(Vector3 startPoint, Vector3 endPoint, bool ignoreCollision=false)
         {
             GameObject hallwayObj = Instantiate(hallwayPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-			tileDrawer.parent = hallwayObj.transform;
+			hallwayObj.transform.SetParent(generatorParent);
             Hallway hallway = hallwayObj.GetComponent<Hallway>();
 
+			hallway.tilePool = tilePool;
+			hallway.tileDrawer = tileDrawer;
             hallway.startPoint = startPoint;
             hallway.endPoint = endPoint;
 			hallway.turbulence = hallwayTurbulenceDistribution.Evaluate(Random.value);
@@ -232,7 +238,7 @@ namespace JumpyWorld
 			hallway.seed = Random.Range (0, 65535);
 
 			tileDrawer.startCollisionTest ();
-            hallway.Build();
+			hallway.Build();
 			if (tileDrawer.getCollisionTestResult () && !ignoreCollision) {
 				Destroy (hallwayObj);
 				return null;

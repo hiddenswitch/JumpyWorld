@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 440322}
   - 114: {fileID: 11457226}
   - 65: {fileID: 6564674}
+  - 114: {fileID: 11454156}
   m_Layer: 10
   m_Name: Coin
   m_TagString: Untagged
@@ -120,6 +121,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11454156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a3b677fe9744de094d5be2a73d2c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 512
+  effect: {fileID: 100000, guid: d9d64543c9675f2498b17b97f782bfdf, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11457226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +163,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: triggersWith.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 100000, guid: d9d64543c9675f2498b17b97f782bfdf, type: 2}
+    - target: {fileID: 0}
+      propertyPath: scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
