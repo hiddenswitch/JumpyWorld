@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace JumpyWorld
 {
 	public class RandomPlacerForRoom : Generator
 	{
-		public Room room;
+		public Floor room;
 		public AnimationCurve xDensity;
 		public AnimationCurve zDensity;
 		public float height = 1f;
@@ -15,7 +15,7 @@ namespace JumpyWorld
 		{
 			tilePool = tilePool ?? this.tilePool;
 			tileDrawer = tileDrawer ?? this.tileDrawer;
-			foreach (var point in Room.Rectangle(room.size, step, height)) {
+			foreach (var point in Floor.Rectangle(room.size, step, height)) {
 				var random = Random.value;
 				var xz = Mathf.Sqrt (xDensity.Evaluate (Mathf.InverseLerp (room.size.xMin, room.size.xMax, point.position.x))
 					* zDensity.Evaluate (Mathf.InverseLerp (room.size.yMin, room.size.yMax, point.position.z)));

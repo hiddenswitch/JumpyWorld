@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class Room : Generator
+	public class Floor : Generator
 	{
 		public struct RectanglePoint
 		{

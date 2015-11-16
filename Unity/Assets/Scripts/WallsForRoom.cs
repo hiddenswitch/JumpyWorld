@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,7 +6,7 @@ namespace JumpyWorld
 {
 	public class WallsForRoom : Generator
 	{
-		public Room room;
+		public Floor room;
 		public float height = 1f;
 		[BitMaskAttribute(typeof(Directions))]
 		public Directions
@@ -19,7 +19,7 @@ namespace JumpyWorld
 		{
 			base.Generate (seed);
 		
-			foreach (var point in Room.Rectangle(room.size,1f,height)) {
+			foreach (var point in Floor.Rectangle(room.size,1f,height)) {
 				if (point.isBorder
 					&& (wallsForSides & point.side) > 0) {
 					obstaclePositions.Add (point.position);

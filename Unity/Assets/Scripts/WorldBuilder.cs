@@ -16,8 +16,8 @@ namespace JumpyWorld
         public GameObject roomPrefab;
         public GameObject hallwayPrefab;
 
-        public Room startRoom;
-        public List<Room> rooms = new List<Room>();
+        public Floor startRoom;
+        public List<Floor> rooms = new List<Floor>();
         public int iterations;
 
         bool roomGeneratingIteration = false;
@@ -95,7 +95,7 @@ namespace JumpyWorld
 							y -= Random.Range(1, h - 1);// * (int) anchor.directions.ToVector().x;
 						}
 						
-						Room newRoom = generateRoom(new Rect(x, y, w, h));
+						Floor newRoom = generateRoom(new Rect(x, y, w, h));
 						
 						if (newRoom != null){
 							
@@ -191,11 +191,11 @@ namespace JumpyWorld
             return angleCheck && distanceCheck && parentCheck;
         }
 
-        Room generateRoom (Rect options)
+        Floor generateRoom (Rect options)
         {
             GameObject roomObj = Instantiate(roomPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 			roomObj.transform.SetParent(this.generatorParent);
-            Room room = roomObj.GetComponent<Room>();
+            Floor room = roomObj.GetComponent<Floor>();
 
             room.size = options;
 
