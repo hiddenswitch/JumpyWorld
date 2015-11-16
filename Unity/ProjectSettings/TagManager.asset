@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - platformConnection
+  - FxTemporaire
+  - coin
   layers:
   - Default
   - TransparentFX
