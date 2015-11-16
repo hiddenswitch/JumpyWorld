@@ -540,22 +540,6 @@ Prefab:
       propertyPath: recipient
       value: 
       objectReference: {fileID: 274888145}
-    - target: {fileID: 6592698, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: m_Center.y
-      value: .75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6592698, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: m_Size.x
-      value: .75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6592698, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: m_Size.y
-      value: .75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6592698, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
-      propertyPath: m_Size.z
-      value: .75
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
   m_IsPrefabParent: 0
@@ -971,27 +955,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1 &1974994659 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 160434, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
-  m_PrefabInternal: {fileID: 1990778010}
---- !u!114 &1974994661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1974994659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  threshold: .852999985
-  intensity: 1.74800003
-  blurSize: 2.36999989
-  blurIterations: 2
-  blurType: 0
-  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
 --- !u!1001 &1990778010
 Prefab:
   m_ObjectHideFlags: 0
@@ -1029,16 +992,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495646, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11405694, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 1025331909}
-    - target: {fileID: 2097882, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
-      propertyPath: orthographic size
-      value: 9.55000019
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
   m_IsPrefabParent: 0
