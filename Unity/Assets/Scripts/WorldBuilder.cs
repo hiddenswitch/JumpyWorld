@@ -37,6 +37,9 @@ namespace JumpyWorld
 		[Header("Decorations")]
 		public RandomPlacerForRoom treeDecorator;
 
+		[Header("Treasure")]
+		public RandomPlacerForRoom coinPlacer;
+
         private class WorldBuilderInfo
         {
             public Anchor anchor;
@@ -207,9 +210,12 @@ namespace JumpyWorld
 			treeDecorator.room = room;
 			treeDecorator.Generate(seed: Random.Range(0, 65536));
 			treeDecorator.Draw(tileDrawer: tileDrawer);
+
+			// Generate treasure
+			coinPlacer.room = room;
+			coinPlacer.Generate (seed: Random.Range(0, 65536));
+			coinPlacer.Draw (tileDrawer: tileDrawer);
             return room;
-
-
         }
 
 
