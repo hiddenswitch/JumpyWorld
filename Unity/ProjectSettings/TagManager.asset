@@ -7,6 +7,7 @@ TagManager:
   - platformConnection
   - FxTemporaire
   - coin
+  - Portal
   layers:
   - Default
   - TransparentFX

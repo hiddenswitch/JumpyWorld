@@ -260,6 +260,7 @@ Transform:
   m_Children:
   - {fileID: 10217445}
   - {fileID: 399988470}
+  - {fileID: 502739150}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &274888149
@@ -310,6 +311,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   treeDecorator: {fileID: 10217444}
   coinPlacer: {fileID: 399988469}
+  portalGenerator: {fileID: 502739152}
 --- !u!114 &274888150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +499,176 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
   m_PrefabInternal: {fileID: 409511114}
+--- !u!1 &502739149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 502739150}
+  - 114: {fileID: 502739152}
+  - 114: {fileID: 502739151}
+  m_Layer: 0
+  m_Name: Portal Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &502739150
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502739149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274888148}
+  m_RootOrder: 2
+--- !u!114 &502739151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502739149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 0}
+  decorative:
+  - {fileID: 123082, guid: 00dd1fe0e2802614bb72bdb829d23339, type: 2}
+--- !u!114 &502739152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502739149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda2fdd5f4e31a841b93faa5d51ef295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 274888146}
+  tilePool: {fileID: 502739151}
+  seed: 0
+  anchors: []
+  generateOnStart: 0
+  room: {fileID: 0}
+  xDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.0333333313
+      value: -.0624998957
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .279617995
+      value: .811643243
+      inSlope: 1.18464231
+      outSlope: 1.18464231
+      tangentMode: 0
+    - time: .719920099
+      value: .808553338
+      inSlope: .890791416
+      outSlope: .890791416
+      tangentMode: 0
+    - time: .995833337
+      value: .0125001073
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  zDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.0333333313
+      value: -.0624998957
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .279617995
+      value: .811643243
+      inSlope: 1.18464231
+      outSlope: 1.18464231
+      tangentMode: 0
+    - time: .719920099
+      value: .808553338
+      inSlope: .890791416
+      outSlope: .890791416
+      tangentMode: 0
+    - time: .995833337
+      value: .0125001073
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  height: 2
+  step: 1
+  maxPortalCount: 5
+  minPortalDistance: 30
+--- !u!1 &543961652 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 193858, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+  m_PrefabInternal: {fileID: 550441252}
+--- !u!114 &543961654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543961652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daa289431cbf3f428856f254f559fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  otherTag: Portal
+  recepient: {fileID: 274888145}
+  message: RandomizeAndRebuild
+--- !u!114 &543961656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543961652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ebed38a47414f9d86b6d659dc850ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleSavePrefix: Collectible.
+  collectibleTag: Portal
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  count: 0
+  lifetime: 0
+--- !u!114 &543961657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543961652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daa289431cbf3f428856f254f559fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  otherTag: Portal
+  recepient: {fileID: 1123425557}
+  message: ResetPosition
 --- !u!1001 &550441252
 Prefab:
   m_ObjectHideFlags: 0
@@ -625,6 +797,10 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 550441252}
   m_Script: {fileID: 11500000, guid: 20ebed38a47414f9d86b6d659dc850ed, type: 3}
+--- !u!1 &1123425557 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+  m_PrefabInternal: {fileID: 550441252}
 --- !u!1 &1212273418
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1313398857
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1174,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1025331909}
+    - target: {fileID: 2097882, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: orthographic size
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
   m_IsPrefabParent: 0
