@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &486887177
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 0}
+  decorative: []
 --- !u!114 &486887180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &915718671
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &915718674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 0}
+  decorative: []
 --- !u!114 &915718675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,9 +348,108 @@ MonoBehaviour:
   generateOnStart: 1
   room: {fileID: 915718672}
   height: 1
-  obstaclePositions: []
   side: 1
-  isMaze: 0
+--- !u!1 &1010917325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1010917330}
+  - 114: {fileID: 1010917329}
+  - 114: {fileID: 1010917328}
+  - 114: {fileID: 1010917327}
+  - 114: {fileID: 1010917326}
+  m_Layer: 0
+  m_Name: Should have holes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1010917326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bab15950d91244cdaca0224b9ac3422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1010917328}
+  tilePool: {fileID: 1010917327}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1010917329}
+  height: 1
+--- !u!114 &1010917327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
+--- !u!114 &1010917328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1010917330}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1010917329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1010917328}
+  tilePool: {fileID: 1010917327}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 0
+    y: -60
+    width: 40
+    height: 40
+  shouldGenerateAnchors: 1
+--- !u!4 &1010917330
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1778899385
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1954165028
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 0}
+  decorative: []
 --- !u!114 &1954165031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,14 +619,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1954165034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954165028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abf07d63020e049868e1aecbe4fb5d18, type: 3}
   m_Name: 
@@ -552,4 +657,3 @@ MonoBehaviour:
   generateOnStart: 1
   room: {fileID: 1954165032}
   height: 1
-  obstaclePositions: []
