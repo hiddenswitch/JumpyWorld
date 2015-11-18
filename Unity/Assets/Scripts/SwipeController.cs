@@ -26,29 +26,22 @@ namespace JumpyWorld
 		public Vector2 swipe;
 		public bool prevFrameDown;
 		public float distanceTraveled;
-		
-		
+		private bool directionSet;
+        
 		// Use this for initialization
 		void Start ()
 		{
-			// Disable the controller for non-local player objects
-			/*
-			if (!isLocalPlayer) {
-				enabled = false;
-				return;
-			}*/
-			
 			screenSpaceNorth = screenSpaceNorth.normalized;
 			screenSpaceEast = screenSpaceEast.normalized;
 		}
-		
-		
-		
+        
+        
+        
 		// Update is called once per frame
 		void Update ()
 		{
 			Vector2 touchPosition = Vector2.zero;
-			
+            
 			if (Application.isMobilePlatform) {
 				var down = Input.touchCount > 0;
 				if (down) {
@@ -60,11 +53,12 @@ namespace JumpyWorld
 					touchPosition = touch.position;
 				} else {
 					prevFrameDown = false;
+					directionSet = false;
 					return;
 				}
 			} else {
 				var down = Input.GetMouseButton (0);
-				
+                
 				if (down) {
 					if (!prevFrameDown) {
 						prevFrameDown = true;
@@ -73,44 +67,51 @@ namespace JumpyWorld
 					touchPosition = Input.mousePosition;
 				} else {
 					prevFrameDown = false;
+					directionSet = false;
 					return;
 				}
 			}
-			
+            
 			swipe = touchPosition - touchDown;
 			distanceTraveled = swipe.magnitude;
-			
+            
 			if (distanceTraveled < minSwipeDistance) {
 				return;
 			}
-			
+			if (directionSet) {
+				return;
+			}
 			swipe = swipe.normalized;
-			
+            
 			var northness = Vector2.Dot (swipe, screenSpaceNorth);
 			if (northness > tolerance) {
 				BroadcastMessage (swipeNorth);
 				touchDown = touchPosition;
+				directionSet = true;
 				return;
 			}
-			
+            
 			if (northness < -tolerance) {
 				// South
 				BroadcastMessage (swipeSouth);
 				touchDown = touchPosition;
+				directionSet = true;
 				return;
 			}
-			
+            
 			var eastness = Vector2.Dot (swipe, screenSpaceEast);
 			if (eastness > tolerance) {
 				BroadcastMessage (swipeEast);
 				touchDown = touchPosition;
+				directionSet = true;
 				return;
 			}
-			
+            
 			if (eastness < -tolerance) {
 				// West
 				BroadcastMessage (swipeWest);
 				touchDown = touchPosition;
+				directionSet = true;
 				return;
 			}
 		}
