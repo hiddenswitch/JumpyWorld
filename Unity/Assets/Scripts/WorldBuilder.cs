@@ -42,6 +42,9 @@ namespace JumpyWorld
 		[Header("Treasure")]
 		public RandomPlacerForRoom coinPlacer;
 
+        [Header("Portal")]
+        public RandomPlacerForRoom portalGenerator;
+
         private class WorldBuilderInfo
         {
             public Anchor anchor;
@@ -75,9 +78,6 @@ namespace JumpyWorld
 
 				foreach (WorldBuilderInfo info in pendingInfos){
 					Anchor anchor = info.anchor;
-					if (anchor.position.x == 9 && anchor.position.y == 0 && anchor.position.z == -26){
-						Debug.Log ("hi");
-					}
 
 					if (roomGeneratingIteration)
 					{
@@ -110,7 +110,6 @@ namespace JumpyWorld
 							}
 						} else {
 							looseAnchors.Add(info.parent.anchor);
-							Debug.Log (info.parent.anchor.position);
 							Destroy(anchor.generator.gameObject);
 						}
 
@@ -120,7 +119,6 @@ namespace JumpyWorld
 							Hallway newHallway = generateHallway(anchor.position, endPoint);
 							if (newHallway == null){
 								looseAnchors.Add(anchor);
-								Debug.Log (anchor.position);
 								continue;
 							}
 							newInfo.Add(new WorldBuilderInfo(newHallway.anchors[1], info));  //Hardcoding this for now.
@@ -219,6 +217,15 @@ namespace JumpyWorld
 			coinPlacer.room = room;
 			coinPlacer.Generate (seed: Random.Range(0, 65536));
 			coinPlacer.Draw (tileDrawer: tileDrawer);
+
+
+            // Generate portal, if needed
+            portalGenerator.room = room;
+            portalGenerator.Generate(seed: Random.Range(0, 65536));
+            portalGenerator.Draw(tileDrawer: tileDrawer);
+
+
+
             return room;
         }
 
