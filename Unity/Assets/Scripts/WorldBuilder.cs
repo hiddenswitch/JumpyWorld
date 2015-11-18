@@ -132,18 +132,12 @@ namespace JumpyWorld
 				}
 				pendingInfos = newInfo;
 
-				foreach (WorldBuilderInfo info in pendingInfos){
-					Anchor anchor = info.anchor;
-
-				}
-
 
 				roomGeneratingIteration = !roomGeneratingIteration;
             }
 			Debug.Log (pendingInfos.Count);
 			Debug.Log (looseAnchors.Count);
             foreach (WorldBuilderInfo info in pendingInfos) {
-				Anchor anchor = info.anchor;
 				looseAnchors.Add(info.anchor);
 			}
 

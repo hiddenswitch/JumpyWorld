@@ -28,9 +28,7 @@ namespace JumpyWorld
 		private Dictionary<Vector3, TileInfo> tiles = new Dictionary<Vector3, TileInfo> (400);
 		private Queue<TileInfo> batchQueue = new Queue<TileInfo> ();
 		private bool hasCollided = false;
-		private bool queueProcessing = false;
 		private bool clearing = false;
-		private int batched = 0;
 
 		void Awake ()
 		{
@@ -77,7 +75,7 @@ namespace JumpyWorld
 			while (true) {
 				while (batchQueue.Count > 0) {
 					var tileInfo = batchQueue.Dequeue ();
-					var instance = tileInfo.gameObject = InstantiateTile (tileInfo);
+					tileInfo.gameObject = InstantiateTile (tileInfo);
 					tilesInBatch.Add (tileInfo);
 					batched++;
 					if (batched > batchSize) {

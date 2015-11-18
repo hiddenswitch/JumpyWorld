@@ -47,8 +47,6 @@ namespace JumpyWorld
 			// visitedMazePositions keeps track of which points have been traveled to, so we know
 			// when to stop creating paths to the same point
 			List<Vector3> visitedMazePositions = new List<Vector3>();
-			
-			int numIterations = 0;
 
 			// keep iterating until we have exhausted the possible maze positions
 			while (activeMazePositions.Count > 0) {
