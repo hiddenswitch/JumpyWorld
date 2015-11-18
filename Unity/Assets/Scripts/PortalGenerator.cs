@@ -27,7 +27,7 @@ namespace JumpyWorld
                     if (random < xz)
                     {
                         Debug.Log("generating portal");
-                        tileDrawer.DrawTerrain(tile: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: point.position);
+                        tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: point.position);
                         portalCount += 1;
                         return;//up to 1 per room;
                     }
@@ -50,7 +50,7 @@ namespace JumpyWorld
             {
                 Debug.Log("running");
                 Vector3 target = new Vector3(previousRoom.size.center.x, height, previousRoom.size.center.y);
-                tileDrawer.DrawTerrain(tile: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: target);
+                tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: target);
                 checkStarted = false; //resets so that this works over multiple worlds.
             }
             portalCount = 0;

@@ -18,7 +18,7 @@ namespace JumpyWorld
 		Vector2[] startUVs;
 		Mesh mesh;
 		// Use this for initialization
-		void Start ()
+		void Awake ()
 		{
 			mesh = meshFilter.mesh;
 			startUVs = mesh.uv;

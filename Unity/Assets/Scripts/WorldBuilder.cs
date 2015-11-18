@@ -11,13 +11,12 @@ namespace JumpyWorld
         public TileDrawer tileDrawer;
 		public TilePool tilePool;
 
-		public Transform generatorParent;
+		GameObject generatorParent;
 
         public GameObject roomPrefab;
         public GameObject hallwayPrefab;
 
         public Floor startRoom;
-        public List<Floor> rooms = new List<Floor>();
         public int iterations;
 
         bool roomGeneratingIteration = false;
@@ -58,6 +57,7 @@ namespace JumpyWorld
 		// Use this for initialization
 		public void Start ()
 		{
+			CreateNewGeneratorParent ();
             var oldSeed = Random.seed;
             Random.seed = seed;
             List<WorldBuilderInfo> pendingInfos = new List<WorldBuilderInfo>();
@@ -95,7 +95,7 @@ namespace JumpyWorld
 							y -= Random.Range(1, h - 1);// * (int) anchor.directions.ToVector().x;
 						}
 						
-						Floor newRoom = generateRoom(new Rect(x, y, w, h));
+						Floor newRoom = GenerateRoom(new Rect(x, y, w, h));
 						
 						if (newRoom != null){
 							
@@ -116,7 +116,7 @@ namespace JumpyWorld
 					} else {
 						if (Random.value < newHallwayProbability) { 
 							Vector3 endPoint = Random.Range(minHallwayLength, maxHallwayLength) * anchor.directions.ToVector() + anchor.position;
-							Hallway newHallway = generateHallway(anchor.position, endPoint);
+							Hallway newHallway = GenerateHallway(anchor.position, endPoint);
 							if (newHallway == null){
 								looseAnchors.Add(anchor);
 								continue;
@@ -158,7 +158,7 @@ namespace JumpyWorld
                     }
                     if (shouldGenerate(a, b))
                     {
-                        generateHallway(a.position, b.position, true);
+                        GenerateHallway(a.position, b.position, true);
                         filledAnchors.Add(a);
                         filledAnchors.Add(b);
                     }
@@ -174,10 +174,12 @@ namespace JumpyWorld
             Random.seed = oldSeed;
         }
 	
-		// Update is called once per frame
-		void Update ()
-		{
-	
+		void CreateNewGeneratorParent() {
+			if (generatorParent != null) {
+				Destroy(generatorParent);
+				// TODO: Possibly destroy old objects that have been added to lists.
+			}
+			generatorParent = new GameObject("Generator Parent");
 		}
 		
 
@@ -189,10 +191,10 @@ namespace JumpyWorld
             return angleCheck && distanceCheck && parentCheck;
         }
 
-        Floor generateRoom (Rect options)
+        Floor GenerateRoom (Rect options)
         {
             GameObject roomObj = Instantiate(roomPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-			roomObj.transform.SetParent(this.generatorParent);
+			roomObj.transform.SetParent(generatorParent.transform);
             Floor room = roomObj.GetComponent<Floor>();
 
             room.size = options;
@@ -230,10 +232,10 @@ namespace JumpyWorld
         }
 
 
-        Hallway generateHallway(Vector3 startPoint, Vector3 endPoint, bool ignoreCollision=false)
+        Hallway GenerateHallway(Vector3 startPoint, Vector3 endPoint, bool ignoreCollision=false)
         {
             GameObject hallwayObj = Instantiate(hallwayPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-			hallwayObj.transform.SetParent(generatorParent);
+			hallwayObj.transform.SetParent(generatorParent.transform);
             Hallway hallway = hallwayObj.GetComponent<Hallway>();
 
 			hallway.tilePool = tilePool;

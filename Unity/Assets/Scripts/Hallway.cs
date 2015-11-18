@@ -82,7 +82,7 @@ namespace JumpyWorld
         {
             // Draw the terrain
             for (int i = 0; i < pathPositions.Count; i++) {
-                tileDrawer.DrawTerrain (tile: tilePool.defaultGround, at: pathPositions [i]);
+                tileDrawer.DrawTerrain (prefab: tilePool.defaultGround, at: pathPositions [i], isDynamic: false);
             }
         }
 
