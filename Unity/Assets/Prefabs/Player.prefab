@@ -528,9 +528,11 @@ GameObject:
   - 114: {fileID: 11462424}
   - 114: {fileID: 11410274}
   - 114: {fileID: 11488956}
-  - 114: {fileID: 11415558}
   - 114: {fileID: 11499166}
   - 114: {fileID: 11450854}
+  - 114: {fileID: 11440112}
+  - 114: {fileID: 11427490}
+  - 114: {fileID: 11446296}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -563,7 +565,9 @@ GameObject:
   - 4: {fileID: 464366}
   - 65: {fileID: 6592698}
   - 114: {fileID: 11483146}
-  - 114: {fileID: 11467356}
+  - 114: {fileID: 11428212}
+  - 114: {fileID: 11454326}
+  - 114: {fileID: 11498358}
   m_Layer: 9
   m_Name: Collector
   m_TagString: Untagged
@@ -1115,7 +1119,7 @@ MonoBehaviour:
   rigidBody: {fileID: 5400150}
   speedScale: 1
   isAlive: 1
---- !u!114 &11415558
+--- !u!114 &11427490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1123,13 +1127,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 100066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6c10c6268a645f6bd6f8fee66fdf49, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b01c739837ec4a8bab2300f01795daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: -8
-  recipient: {fileID: 0}
+  objectWithPosition: {fileID: 11499166}
+--- !u!114 &11428212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daa289431cbf3f428856f254f559fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  otherTag: Portal
+  recepient: {fileID: 0}
   message: RandomizeAndRebuild
-  debounce: .300000012
+--- !u!114 &11440112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6645a3e3e061b4a7fabaf84f2095e4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depth: -10
+  eventHandlers:
+  - {fileID: 0}
+  - {fileID: 100066}
+  - {fileID: 193858}
+  message: OnObjectDied
+  isAlive: 1
+--- !u!114 &11446296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135726a4d4822448084e611e5007ec97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11448246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,6 +1200,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3ce4be644da46689dc6b458292bc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11454326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ebed38a47414f9d86b6d659dc850ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleSavePrefix: Collectible.
+  collectibleTag: Portal
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  count: 0
+  lifetime: 0
 --- !u!114 &11462424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1166,21 +1231,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellSize: 1
   smoothFrames: 5
---- !u!114 &11467356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6c10c6268a645f6bd6f8fee66fdf49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  depth: -8
-  recipient: {fileID: 100066}
-  message: Reset
-  debounce: .300000012
 --- !u!114 &11470812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1252,6 +1302,23 @@ MonoBehaviour:
   swipe: {x: 0, y: 0}
   prevFrameDown: 0
   distanceTraveled: 0
+--- !u!114 &11498358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daa289431cbf3f428856f254f559fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  otherTag: Portal
+  recepient: {fileID: 100066}
+  message: ResetPosition
 --- !u!114 &11499166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1260,10 +1327,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a801de44ad2d3304289a2a5b9e62c8bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f104d8e9757c422ba59f7d956c9b060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnDepth: -10
+  startPosition: {x: 0, y: 10, z: 0}
 --- !u!136 &13683530
 CapsuleCollider:
   m_ObjectHideFlags: 1

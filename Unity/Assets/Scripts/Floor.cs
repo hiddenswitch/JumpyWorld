@@ -89,7 +89,7 @@ namespace JumpyWorld
 		public override void Draw (TileDrawer tileDrawer, TilePool tilePool)
 		{
 			foreach (var info in Rectangle(rect: size)) {
-				tileDrawer.DrawTerrain (tilePool.defaultGround, at: info.position);
+				tileDrawer.DrawTerrain (tilePool.defaultGround, at: info.position, isDynamic: false);
 			}
 		}
 

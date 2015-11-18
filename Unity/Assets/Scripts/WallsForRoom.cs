@@ -32,7 +32,7 @@ namespace JumpyWorld
 			base.Draw (tileDrawer, tilePool);
 		
 			foreach (var point in obstaclePositions) {
-				tileDrawer.DrawTerrain (tilePool.defaultGround, at: point);
+				tileDrawer.DrawTerrain (tilePool.defaultGround, at: point, isDynamic: false);
 			}
 		}
 	}

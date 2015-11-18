@@ -20,7 +20,7 @@ namespace JumpyWorld
 				var xz = Mathf.Sqrt (xDensity.Evaluate (Mathf.InverseLerp (room.size.xMin, room.size.xMax, point.position.x))
 					* zDensity.Evaluate (Mathf.InverseLerp (room.size.yMin, room.size.yMax, point.position.z)));
 				if (random < xz) {
-					tileDrawer.DrawTerrain (tile: tilePool.decorative [Random.Range (0, tilePool.decorative.Length - 1)], at: point.position);
+					tileDrawer.DrawTerrain (prefab: tilePool.decorative [Random.Range (0, tilePool.decorative.Length - 1)], at: point.position);
 				}
 			}
 		}
