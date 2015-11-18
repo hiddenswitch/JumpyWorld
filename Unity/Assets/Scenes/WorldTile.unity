@@ -248,6 +248,10 @@ Prefab:
       propertyPath: eventHandlers.Array.data[0]
       value: 
       objectReference: {fileID: 274888145}
+    - target: {fileID: 11498358, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+      propertyPath: message
+      value: StartPortalAnimation
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
   m_IsPrefabParent: 0
@@ -784,6 +788,25 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 274599400}
   m_Script: {fileID: 11500000, guid: 20ebed38a47414f9d86b6d659dc850ed, type: 3}
+--- !u!1 &1095363450 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+  m_PrefabInternal: {fileID: 274599400}
+--- !u!114 &1095363466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095363450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c17682bf31be4d98fb0068de3b275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevationTime: 2
+  fallTime: 2
+  elevationVector: {x: 0, y: 5, z: 0}
+  fallVector: {x: 0, y: -5, z: 0}
 --- !u!1 &1212273418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1182,7 @@ Prefab:
       objectReference: {fileID: 1025331909}
     - target: {fileID: 2097882, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: orthographic size
-      value: 9.55000019
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}

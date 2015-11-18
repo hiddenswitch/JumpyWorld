@@ -17,7 +17,8 @@ namespace JumpyWorld
 			{
 				return position.GetHashCode ();
 			}
-		}
+
+        }
 
 		public static TileDrawer instance { get; private set; }
 
@@ -53,14 +54,30 @@ namespace JumpyWorld
 			destroyableParent.transform.SetParent (parent);
 		}
 
-		public void DrawTerrain (GameObject prefab=null, Vector3 at=default(Vector3), bool isDynamic=true)
+		public void DrawTerrain (GameObject prefab=null, Vector3 at=default(Vector3), bool isDynamic=true, bool overwriteIfExists = false)
 		{
 			// Don't place terrain if it already exists
 			at = Tile.ToGrid (at);
 
 			if (this.Contains (at)) {
-				return;
-			}
+                if (!overwriteIfExists)
+                {
+                    return;
+                } else
+                {
+                    var infoToBeReplaced = tiles[at];
+                    if (batchQueue.Contains(infoToBeReplaced))
+                    {
+                        infoToBeReplaced.prefab = prefab;
+                        infoToBeReplaced.isDynamic = isDynamic;
+                        return;
+                    } else
+                    {
+                        Destroy(infoToBeReplaced.gameObject);
+                        tiles.Remove(at);
+                    }
+                }
+            }
 
 			var tileInfo = new TileInfo () {position = at, prefab = prefab, isDynamic = isDynamic};
 

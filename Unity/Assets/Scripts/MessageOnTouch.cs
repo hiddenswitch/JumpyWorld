@@ -20,11 +20,9 @@ public class MessageOnTouch : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
         if (((1 << other.gameObject.layer) & triggersWith.value) > 0
         && other.gameObject.CompareTag(this.otherTag))
         {
-            Debug.Log("hit portal");
             recepient.SendMessage(message, SendMessageOptions.DontRequireReceiver);
         }
     }
