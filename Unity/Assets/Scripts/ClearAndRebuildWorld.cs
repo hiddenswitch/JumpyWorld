@@ -24,5 +24,10 @@ namespace JumpyWorld
 			tileDrawer.Clear ();
 			worldBuilder.Start ();
 		}
+
+		public void OnObjectDied (GameObject sender)
+		{
+			RandomizeAndRebuild ();
+		}
 	}
 }

@@ -34,6 +34,11 @@ namespace JumpyWorld
 			}
 		}
 
+		void OnObjectDied (GameObject sender)
+		{
+			Reset ();
+		}
+
 		void OnTriggerEnter (Collider other)
 		{
 			if (((1 << other.gameObject.layer) & triggersWith.value) > 0
@@ -41,7 +46,7 @@ namespace JumpyWorld
 				count += 1;
 				PlayerPrefs.SetInt (collectibleSavePrefix + collectibleTag, count);
 				// record coin balance to Mixpanel 
-				Mixpanel.SuperProperties["Coin Balance"] = count;
+				Mixpanel.SuperProperties ["Coin Balance"] = count;
 				Mixpanel.SendEvent ("Item Collected", new Dictionary<string, object>{
 					{"Type", "Coin" },
 					{"Count", count}

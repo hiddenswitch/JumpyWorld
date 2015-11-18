@@ -35,8 +35,6 @@ namespace JumpyWorld
 			screenSpaceEast = screenSpaceEast.normalized;
 		}
         
-        
-        
 		// Update is called once per frame
 		void Update ()
 		{
