@@ -18,8 +18,14 @@ namespace JumpyWorld
 		void Update ()
 		{
 			if (transform.position.y < respawnDepth) {
-				transform.position = startPosition;
+                ResetPosition();
 			}
 		}
-	}
+
+
+        public void ResetPosition()
+        {
+            transform.position = startPosition;
+        }
+    }
 }

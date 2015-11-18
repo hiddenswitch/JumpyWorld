@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JumpyWorld
 {
@@ -39,6 +40,12 @@ namespace JumpyWorld
 				&& other.gameObject.CompareTag (this.collectibleTag)) {
 				count += 1;
 				PlayerPrefs.SetInt (collectibleSavePrefix + collectibleTag, count);
+				// record coin balance to Mixpanel 
+				Mixpanel.SuperProperties["Coin Balance"] = count;
+				Mixpanel.SendEvent ("Item Collected", new Dictionary<string, object>{
+					{"Type", "Coin" },
+					{"Count", count}
+				});
 			}
 		}
 	}
