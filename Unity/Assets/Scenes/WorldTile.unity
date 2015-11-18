@@ -252,7 +252,16 @@ Prefab:
       propertyPath: message
       value: StartPortalAnimation
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5400150, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499166, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+      propertyPath: startPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11428212, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &274888145
@@ -803,10 +812,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252c17682bf31be4d98fb0068de3b275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevationTime: 2
-  fallTime: 2
-  elevationVector: {x: 0, y: 5, z: 0}
-  fallVector: {x: 0, y: -5, z: 0}
+  elevationTime: 1
+  fallTime: 1
+  elevationVelocityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1.65226471
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1.00710535
+      value: 14.9794235
+      inSlope: .00699488306
+      outSlope: .00699488306
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  fallVelocityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .0171571262
+      value: 13.0624447
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1.03635848
+      value: -2.726578
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  rebuild: {fileID: 274888150}
 --- !u!1 &1212273418
 GameObject:
   m_ObjectHideFlags: 0
