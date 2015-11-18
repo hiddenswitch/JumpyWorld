@@ -543,6 +543,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &813791211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 813791213}
+  - 114: {fileID: 813791212}
+  m_Layer: 0
+  m_Name: Mixpanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &813791212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 813791211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1d29ba2ef1a4a62be3c0d5d7244c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  token: 87257aeb7ebfa610ed50736aa131a3b2
+--- !u!4 &813791213
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 813791211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.75134635, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!4 &1025331909 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400066, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
@@ -998,6 +1038,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1025331909}
+    - target: {fileID: 2097882, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: orthographic size
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
   m_IsPrefabParent: 0
