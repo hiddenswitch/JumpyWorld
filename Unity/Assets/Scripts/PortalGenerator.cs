@@ -13,6 +13,7 @@ namespace JumpyWorld
 
         public override void Draw(TileDrawer tileDrawer = null, TilePool tilePool = null)
         {
+
             previousRoom = room;
             if (Vector2.Distance(room.size.center, Vector2.zero) > minPortalDistance && portalCount < maxPortalCount)
             {
@@ -26,8 +27,7 @@ namespace JumpyWorld
                         * zDensity.Evaluate(Mathf.InverseLerp(room.size.yMin, room.size.yMax, point.position.z)));
                     if (random < xz)
                     {
-                        Debug.Log("generating portal");
-                        tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: point.position);
+                        tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: point.position, overwriteIfExists: true);
                         portalCount += 1;
                         return;//up to 1 per room;
                     }
@@ -36,7 +36,7 @@ namespace JumpyWorld
             if (!checkStarted)
             {
                 checkStarted = true;
-                //guarentees at least 1 portal is map is somehow small.
+                //guarentees at least 1 portal if map is somehow small.
                 StartCoroutine(checkRoomSpawn());
             }
 
@@ -44,15 +44,13 @@ namespace JumpyWorld
 
         private IEnumerator checkRoomSpawn()
         {
-            Debug.Log("checking");
             yield return new WaitForEndOfFrame();
             if (portalCount == 0)
             {
-                Debug.Log("running");
                 Vector3 target = new Vector3(previousRoom.size.center.x, height, previousRoom.size.center.y);
                 tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: target);
-                checkStarted = false; //resets so that this works over multiple worlds.
             }
+            checkStarted = false; //resets so that this works over multiple worlds.
             portalCount = 0;
         }
 
