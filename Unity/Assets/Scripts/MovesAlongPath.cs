@@ -6,16 +6,26 @@ namespace JumpyWorld
 	[RequireComponent(typeof(CharacterController))]
 	public class MovesAlongPath : MonoBehaviour
 	{
-		/// <summary>
+		//<summary>
 		/// Path in world space
 		/// </summary>
 		public Vector3[] path;
 		CharacterController characterController;
 		public bool shouldTeleportToStartOfPath;
+		// speed is > 0
+		public float speed;
+		private int pathIndex = -1;
+		private float arrivedThreshold;
 		// Use this for initialization
 		void Start ()
 		{
 			this.characterController = this.GetComponent<CharacterController> ();
+			arrivedThreshold = speed / 2 * Time.fixedDeltaTime;
+			if (shouldTeleportToStartOfPath) {
+				pathIndex = 0;
+				transform.position = new Vector3 (path [0].x, transform.position.y, path [0].z);
+			} 
+			transform.forward = calculateForward (transform.position, path [0]);
 		}
 	
 		// Update is called once per frame
@@ -24,8 +34,46 @@ namespace JumpyWorld
 			// Somewhere, I use the path to move
 			// Somewhere, I'm keeping track of my progress along the path, etc. etc.
 			// Somewhere, this happens
-			var velocity = Vector3.zero;
-			characterController.Move (velocity * Time.deltaTime);
+
+			/*var currentPosition = transform.position;
+
+			var velocity = Vector3.forward * speed;
+			var timeForFrame = Time.deltaTime;
+
+			while (timeForFrame != 0) {
+				Debug.Log(pathIndex);
+				var timeForMove = timeToPosition(currentPosition, path[(pathIndex + 1) % (path.Length - 1)]);
+				Debug.Log (timeForMove);
+				if (timeForFrame < timeForMove) {
+					characterController.Move (velocity * timeForFrame);
+					timeForFrame = 0;
+					//Debug.Log (currentPosition);
+				} else {
+					characterController.Move (velocity * timeForMove);
+					timeForFrame -= timeForMove;
+					pathIndex = (pathIndex + 1) % (path.Length -1);
+					//Debug.Log ("turn time");
+					//Debug.Log (pathIndex);
+					transform.Rotate(Vector3.right);
+				}
+			}*/
+		}
+
+		void FixedUpdate ()
+		{
+			var timeForFrame = Time.fixedDeltaTime;
+			var currentPosition = transform.position;
+			var nextPosition = path [(pathIndex + 1) % (path.Length - 1)];
+			var hasArrived = xzDistance (currentPosition, nextPosition) < arrivedThreshold;
+			if (hasArrived) {
+				// move to the nextPosition, update forward direction
+				transform.position = new Vector3 (nextPosition.x, transform.position.y, nextPosition.z);
+				pathIndex = (pathIndex + 1) % (path.Length - 1);
+				transform.forward = calculateForward (nextPosition, path [(pathIndex + 1) % (path.Length - 1)]);
+			} 
+			// move the character forward
+			var velocity = transform.forward * speed;
+			characterController.Move (velocity * timeForFrame);
 		}
 
 		void OnDrawGizmos ()
@@ -38,6 +86,20 @@ namespace JumpyWorld
 				p1.y += 0.5f;
 				Gizmos.DrawLine (p0, p1);
 			}
+		}
+
+		// Returns the distance between p1 and p2 ignoring the y component
+		float xzDistance (Vector3 p1, Vector3 p2)
+		{
+			var p1V2 = new Vector2 (p1.x, p1.z);
+			var p2V2 = new Vector2 (p2.x, p2.z);
+			return (p1V2 - p2V2).magnitude;
+		}
+
+		// Returns the forward vector corresponding to starting in p1 and ending at p2
+		Vector3 calculateForward (Vector3 start, Vector3 end)
+		{
+			return (end - start).normalized;
 		}
 	}
 }
