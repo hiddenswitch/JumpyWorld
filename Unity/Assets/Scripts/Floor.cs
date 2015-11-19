@@ -15,6 +15,7 @@ namespace JumpyWorld
 			/// The distance from {North, East, South, West} borders
 			/// </summary>
 			public Vector4 distanceFromBorders;
+			public Vector4 distanceFromCenter;
 		}
 
 		[Header("Options")]
@@ -129,11 +130,14 @@ namespace JumpyWorld
 
 					var distanceFromBorders = new Vector4 (Mathf.Abs (rect.yMax - z), Mathf.Abs (x - rect.xMax), Mathf.Abs (z - rect.yMin), Mathf.Abs (x - rect.xMin));
 
+					var distanceFromCenter = new Vector4 (Mathf.Abs (rect.center.y - z), Mathf.Abs (x - rect.center.x), Mathf.Abs (z - rect.center.y), Mathf.Abs (x - rect.center.x));
+
 					var point = new RectanglePoint () {
 						position = new Vector3 (x, y, z),
 						side = side,
 						isBorder = isBorder,
-						distanceFromBorders = distanceFromBorders
+						distanceFromBorders = distanceFromBorders,
+						distanceFromCenter = distanceFromCenter
 					};
 
 					yield return point;
