@@ -40,77 +40,78 @@ namespace JumpyWorld
 		{
 			Vector2 touchPosition = Vector2.zero;
             
-			if (Application.isMobilePlatform) {
-				var down = Input.touchCount > 0;
-				if (down) {
-					var touch = Input.GetTouch (0);
-					if (!prevFrameDown) {
-						prevFrameDown = true;
-						touchDown = touch.position;
-					}
-					touchPosition = touch.position;
-				} else {
-					prevFrameDown = false;
-					directionSet = false;
-					return;
-				}
+			bool down;
+			Vector2 position;
+
+			if (Input.touchSupported) {
+				down = Input.touchCount > 0;
+				position = Input.touchCount > 0 ? Input.GetTouch (0).position : Vector2.zero;
 			} else {
-				var down = Input.GetMouseButton (0);
-                
-				if (down) {
-					if (!prevFrameDown) {
-						prevFrameDown = true;
-						touchDown = Input.mousePosition;
-					}
-					touchPosition = Input.mousePosition;
-				} else {
-					prevFrameDown = false;
-					directionSet = false;
+				down = Input.GetMouseButton (0);
+				position = Input.mousePosition;
+			}
+
+			// Is the mouse / touch down on this frame?
+			if (down) {
+				// Is this the first touch?
+				if (!prevFrameDown) {
+					prevFrameDown = true;
+					touchDown = position;
+				}
+
+				touchPosition = position;
+
+				swipe = touchPosition - touchDown;
+				distanceTraveled = swipe.magnitude;
+				
+				// This is the sensitivity constraint.
+				if (distanceTraveled < minSwipeDistance) {
 					return;
 				}
+				
+				// Did we already choose a direction during this swipe?
+				if (directionSet) {
+					return;
+				}
+				
+				
+				touchDown = touchPosition;
+				directionSet = true;
+				
+				SetDirectionForSwipe (swipe);
+			} else {
+				// If we just lifted up the touch / click and we set a direction, change the direction in case
+				// the final direction is different
+				if (prevFrameDown
+					&& directionSet) {
+					// directionSet will only be true if the sensitivity constraint has already been met,
+					// so it's redundant to check sensitivity here again
+					SetDirectionForSwipe (position - touchDown);
+				}
+
+				// Now, officially register a new swipe
+				prevFrameDown = false;
+				directionSet = false;
 			}
-            
-			swipe = touchPosition - touchDown;
-			distanceTraveled = swipe.magnitude;
-            
-			if (distanceTraveled < minSwipeDistance) {
-				return;
-			}
-			if (directionSet) {
-				return;
-			}
+		}
+
+		void SetDirectionForSwipe (Vector3 swipe)
+		{
 			swipe = swipe.normalized;
-            
+
 			var northness = Vector2.Dot (swipe, screenSpaceNorth);
+			var eastness = Vector2.Dot (swipe, screenSpaceEast);
+			
 			if (northness > tolerance) {
 				BroadcastMessage (swipeNorth);
-				touchDown = touchPosition;
-				directionSet = true;
-				return;
-			}
-            
-			if (northness < -tolerance) {
+			} else if (northness < -tolerance) {
 				// South
 				BroadcastMessage (swipeSouth);
-				touchDown = touchPosition;
-				directionSet = true;
-				return;
-			}
-            
-			var eastness = Vector2.Dot (swipe, screenSpaceEast);
-			if (eastness > tolerance) {
+			} else if (eastness > tolerance) {
 				BroadcastMessage (swipeEast);
-				touchDown = touchPosition;
-				directionSet = true;
-				return;
-			}
-            
-			if (eastness < -tolerance) {
+			} else if (eastness < -tolerance) {
 				// West
 				BroadcastMessage (swipeWest);
-				touchDown = touchPosition;
-				directionSet = true;
-				return;
 			}
 		}
 	}
