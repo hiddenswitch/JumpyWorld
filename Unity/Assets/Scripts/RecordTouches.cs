@@ -9,7 +9,6 @@ using System.Threading;
 
 namespace JumpyWorld
 {
-	[ExecuteInEditMode()]
 	public sealed class RecordTouches : BaseInput
 	{
 		static Touch[] emptyTouch = new Touch[0];
@@ -63,12 +62,13 @@ namespace JumpyWorld
 		// Use this for initialization
 		void Start ()
 		{
-			listener = new System.Net.Sockets.TcpListener (System.Net.IPAddress.Any, port);
-			timeOffset = Time.time;
-			if (Application.isEditor) {
-				// Create a listening socket
-				DoBeginAcceptSocket (listener);
-			}
+			// TODO: make this work
+//			listener = new System.Net.Sockets.TcpListener (System.Net.IPAddress.Any, port);
+//			timeOffset = Time.time;
+//			if (Application.isEditor) {
+//				// Create a listening socket
+//				DoBeginAcceptSocket (listener);
+//			}
 		}
 	
 		public static ManualResetEvent clientConnected = 
