@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - coin
   - Portal
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Terrain
   - Player
   - Pickups
-  - 
+  - Monsters
   - 
   - 
   - 
