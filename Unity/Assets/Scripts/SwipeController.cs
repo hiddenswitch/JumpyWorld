@@ -81,35 +81,31 @@ namespace JumpyWorld
 			}
 			swipe = swipe.normalized;
             
+			touchDown = touchPosition;
+			directionSet = true;
+
 			var northness = Vector2.Dot (swipe, screenSpaceNorth);
+
 			if (northness > tolerance) {
 				BroadcastMessage (swipeNorth);
-				touchDown = touchPosition;
-				directionSet = true;
 				return;
 			}
             
 			if (northness < -tolerance) {
 				// South
 				BroadcastMessage (swipeSouth);
-				touchDown = touchPosition;
-				directionSet = true;
 				return;
 			}
             
 			var eastness = Vector2.Dot (swipe, screenSpaceEast);
 			if (eastness > tolerance) {
 				BroadcastMessage (swipeEast);
-				touchDown = touchPosition;
-				directionSet = true;
 				return;
 			}
             
 			if (eastness < -tolerance) {
 				// West
 				BroadcastMessage (swipeWest);
-				touchDown = touchPosition;
-				directionSet = true;
 				return;
 			}
 		}

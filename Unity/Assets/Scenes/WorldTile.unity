@@ -201,6 +201,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 274888148}
   m_RootOrder: 0
+--- !u!1 &263491236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 263491237}
+  - 114: {fileID: 263491238}
+  m_Layer: 0
+  m_Name: Diagnostics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263491237
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 263491236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+--- !u!114 &263491238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 263491236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecb2b54a35bc46bcb3250f4ffb5112b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hostName: 
+  port: 6001
 --- !u!1001 &274599400
 Prefab:
   m_ObjectHideFlags: 0
@@ -1220,7 +1261,31 @@ Prefab:
       objectReference: {fileID: 1025331909}
     - target: {fileID: 2097882, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: orthographic size
-      value: 4
+      value: 9.55000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: threshold
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: intensity
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: blurSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: blurIterations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: fastBloomShader
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
