@@ -599,6 +599,7 @@ MonoBehaviour:
   - {x: 4, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   shouldTeleportToStartOfPath: 0
+  speed: 3
 --- !u!143 &1744447564
 CharacterController:
   m_ObjectHideFlags: 0

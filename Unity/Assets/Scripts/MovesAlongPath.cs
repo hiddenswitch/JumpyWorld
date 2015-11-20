@@ -12,10 +12,12 @@ namespace JumpyWorld
 		public Vector3[] path;
 		CharacterController characterController;
 		public bool shouldTeleportToStartOfPath;
+
 		// speed is > 0
 		public float speed;
 		private int pathIndex = -1;
 		private float arrivedThreshold;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -31,32 +33,6 @@ namespace JumpyWorld
 		// Update is called once per frame
 		void Update ()
 		{
-			// Somewhere, I use the path to move
-			// Somewhere, I'm keeping track of my progress along the path, etc. etc.
-			// Somewhere, this happens
-
-			/*var currentPosition = transform.position;
-
-			var velocity = Vector3.forward * speed;
-			var timeForFrame = Time.deltaTime;
-
-			while (timeForFrame != 0) {
-				Debug.Log(pathIndex);
-				var timeForMove = timeToPosition(currentPosition, path[(pathIndex + 1) % (path.Length - 1)]);
-				Debug.Log (timeForMove);
-				if (timeForFrame < timeForMove) {
-					characterController.Move (velocity * timeForFrame);
-					timeForFrame = 0;
-					//Debug.Log (currentPosition);
-				} else {
-					characterController.Move (velocity * timeForMove);
-					timeForFrame -= timeForMove;
-					pathIndex = (pathIndex + 1) % (path.Length -1);
-					//Debug.Log ("turn time");
-					//Debug.Log (pathIndex);
-					transform.Rotate(Vector3.right);
-				}
-			}*/
 		}
 
 		void FixedUpdate ()
