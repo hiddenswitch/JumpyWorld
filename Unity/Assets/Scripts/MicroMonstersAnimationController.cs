@@ -7,7 +7,6 @@ namespace JumpyWorld
 	{
 		public Animator animator;
 		public string speedParameter = "speed_f";
-
 		private Vector3 previous;
 		private float speed = 0;
 
