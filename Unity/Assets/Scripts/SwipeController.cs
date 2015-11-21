@@ -27,6 +27,7 @@ namespace JumpyWorld
 		public bool prevFrameDown;
 		public float distanceTraveled;
 		private bool directionSet;
+		public Vector2 lastPosition;
         
 		// Use this for initialization
 		void Start ()
@@ -41,14 +42,13 @@ namespace JumpyWorld
 			Vector2 touchPosition = Vector2.zero;
             
 			bool down;
-			Vector2 position;
 
 			if (Input.touchSupported) {
 				down = Input.touchCount > 0;
-				position = Input.touchCount > 0 ? Input.GetTouch (0).position : Vector2.zero;
+				lastPosition = Input.touchCount > 0 ? Input.GetTouch (0).position : Vector2.zero;
 			} else {
 				down = Input.GetMouseButton (0);
-				position = Input.mousePosition;
+				lastPosition = Input.mousePosition;
 			}
 
 			// Is the mouse / touch down on this frame?
@@ -56,10 +56,10 @@ namespace JumpyWorld
 				// Is this the first touch?
 				if (!prevFrameDown) {
 					prevFrameDown = true;
-					touchDown = position;
+					touchDown = lastPosition;
 				}
 
-				touchPosition = position;
+				touchPosition = lastPosition;
 
 				swipe = touchPosition - touchDown;
 				distanceTraveled = swipe.magnitude;
@@ -86,7 +86,7 @@ namespace JumpyWorld
 					&& directionSet) {
 					// directionSet will only be true if the sensitivity constraint has already been met,
 					// so it's redundant to check sensitivity here again
-					SetDirectionForSwipe (position - touchDown);
+					SetDirectionForSwipe (lastPosition - touchDown);
 				}
 
 				// Now, officially register a new swipe
