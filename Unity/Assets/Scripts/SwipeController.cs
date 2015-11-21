@@ -45,7 +45,9 @@ namespace JumpyWorld
 
 			if (Input.touchSupported) {
 				down = Input.touchCount > 0;
-				lastPosition = Input.touchCount > 0 ? Input.GetTouch (0).position : Vector2.zero;
+				if (down) {
+					lastPosition = Input.GetTouch (0).position;
+				}
 			} else {
 				down = Input.GetMouseButton (0);
 				lastPosition = Input.mousePosition;
