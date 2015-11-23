@@ -254,6 +254,7 @@ MonoBehaviour:
     m_Bits: 1024
   count: 0
   lifetime: 0
+  condition: {fileID: 145717445}
 --- !u!1001 &274599400
 Prefab:
   m_ObjectHideFlags: 0
@@ -1327,7 +1328,7 @@ Prefab:
       objectReference: {fileID: 1025331909}
     - target: {fileID: 2097882, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
       propertyPath: orthographic size
-      value: 4
+      value: 9.55000019
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
