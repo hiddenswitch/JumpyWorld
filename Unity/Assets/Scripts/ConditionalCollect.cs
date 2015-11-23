@@ -4,19 +4,19 @@ using System;
 
 namespace JumpyWorld
 {
+    [RequireComponent (typeof (ICondition))]
     public class ConditionalCollect : Collects
     {
-        
-        public Func<bool> condition;
+        public ICondition condition;
 
-        void receiveCondition(Func<bool> condition)
+        void Start()
         {
-            this.condition = condition;
+            this.condition = condition ?? GetComponent<ICondition>();
         }
 
         public override void OnTriggerEnter(Collider other)
         {
-            if (condition())
+            if (condition.evaluate())
             {
                 base.OnTriggerEnter(other);
             }

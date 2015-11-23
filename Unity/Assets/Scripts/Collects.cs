@@ -34,8 +34,9 @@ namespace JumpyWorld
 		{
 			if (lifetime == LifetimeTypes.PerRun) {
 				count = 0;
-			}
-		}
+                PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, 0);
+            }
+        }
 
 		void OnObjectDied (GameObject sender)
 		{

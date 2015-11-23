@@ -2,21 +2,16 @@
 using System.Collections;
 using System;
 
-public class RequirePlayerCollectibleOfType : MonoBehaviour {
-    public string collectibleSavePrefix = "Collectible.";
-    public string collectibleTag;
-    // Use this for initialization
-    void Start () {
-        Func<bool> requireObject = () =>
+namespace JumpyWorld
+{
+    public class RequirePlayerCollectibleOfType : ICondition
+    {
+        public string collectibleSavePrefix = "Collectible.";
+        public string collectibleTag;
+
+        public override bool evaluate()
         {
             return PlayerPrefs.GetInt(collectibleSavePrefix + collectibleTag) >= 1;
-        };
-
-        this.SendMessage("receiveCondition", requireObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        }
+    }
 }
