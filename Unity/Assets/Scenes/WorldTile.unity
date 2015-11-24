@@ -730,6 +730,7 @@ GameObject:
   - 224: {fileID: 1050630547}
   - 222: {fileID: 1050630546}
   - 114: {fileID: 1050630545}
+  - 114: {fileID: 1050630548}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -791,9 +792,41 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -600, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &1050630548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1050630544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bc0401c7059fa40a182f62e1240b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inX: -600
+  outX: 600
+  FadeInFrames: 20
+  FadeOutFrames: 30
+  smoothCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  DelayResponseFrames: 7
+  tileDrawer: {fileID: 274888146}
 --- !u!1 &1058445445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1246,7 @@ RectTransform:
   m_GameObject: {fileID: 1806200868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1}
   m_Children:
   - {fileID: 1050630547}
   m_Father: {fileID: 1212273419}
@@ -1234,8 +1267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971f89f4f27b0704ea732ebeec106244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeInFrames: 1
+  FadeInFrames: 5
   FadeOutFrames: 15
+  DelayResponseFrames: 3
   tileDrawer: {fileID: 274888146}
 --- !u!114 &1806200872
 MonoBehaviour:
