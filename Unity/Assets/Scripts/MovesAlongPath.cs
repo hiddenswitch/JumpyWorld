@@ -4,13 +4,19 @@ using System.Collections;
 namespace JumpyWorld
 {
 	[RequireComponent(typeof(Rigidbody))]
-	public class MovesAlongPath : MonoBehaviour
+	public class MovesAlongPath : Source<Vector3[]>
 	{
-		//<summary>
-		/// Path in world space
-		/// </summary>
-		public Vector3[] path;
 		Rigidbody rigidbody;
+
+		public Vector3[] path {
+			get {
+				return this.value;
+			}
+			set {
+				this.value = value;
+			}
+		}
+
 		public bool shouldTeleportToStartOfPath;
 
 		// speed is > 0
@@ -22,12 +28,16 @@ namespace JumpyWorld
 		// Use this for initialization
 		void Start ()
 		{
+		}
+
+		private void DelayedStart() {
+			Debug.Log (path.Length);
 			// check that speed is positive
 			if (speed <= 0) {
 				enabled = false;
 				Debug.LogError ("Speed needs to be positive");
 			}
-
+			
 			// check if closed path
 			if (path [0] != path [path.Length - 1]) {
 				enabled = false;
@@ -43,7 +53,7 @@ namespace JumpyWorld
 					Debug.LogError ("Not rectilinear path.");
 				}
 			}
-
+			
 			this.rigidbody = this.GetComponent<Rigidbody> ();
 			arrivedThreshold = speed / 2 * Time.fixedDeltaTime;
 			height = transform.position.y;
@@ -57,7 +67,8 @@ namespace JumpyWorld
 				}
 			}
 			transform.forward = xzCalculateForward (transform.position, path [0]);
-		}
+		}∫
+
 
 		void FixedUpdate ()
 		{
