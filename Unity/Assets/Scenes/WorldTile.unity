@@ -1330,6 +1330,30 @@ Prefab:
       propertyPath: orthographic size
       value: 9.55000019
       objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: threshold
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: intensity
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: blurSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: blurIterations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
+      propertyPath: fastBloomShader
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
   m_IsPrefabParent: 0
