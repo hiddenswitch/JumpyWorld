@@ -21,7 +21,10 @@ namespace JumpyWorld
 		{
 			if (lifetime == LifetimeTypes.PerUser) {
 				count = PlayerPrefs.GetInt (collectibleSavePrefix + collectibleTag);
-			}
+			} else
+            {
+                PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, 0);
+            }
 		}
 
 		/// <summary>
@@ -31,15 +34,16 @@ namespace JumpyWorld
 		{
 			if (lifetime == LifetimeTypes.PerRun) {
 				count = 0;
-			}
-		}
+                PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, 0);
+            }
+        }
 
 		void OnObjectDied (GameObject sender)
 		{
 			Reset ();
 		}
 
-		void OnTriggerEnter (Collider other)
+		public virtual void OnTriggerEnter (Collider other)
 		{
 			if (((1 << other.gameObject.layer) & triggersWith.value) > 0
 				&& other.gameObject.CompareTag (this.collectibleTag)) {
