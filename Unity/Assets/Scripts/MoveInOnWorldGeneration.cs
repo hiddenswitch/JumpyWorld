@@ -26,7 +26,6 @@ public class MoveInOnWorldGeneration : MonoBehaviour {
 		// Update is called once per frame
 		void Update () {
 			if (tileDrawer.isDrawingTiles) {
-				Debug.Log ("is drawing");
 				inDelay ++;
 				outDelay = 0;
 				if ((!fadedIn) && (inDelay >= DelayResponseFrames)){
@@ -36,7 +35,6 @@ public class MoveInOnWorldGeneration : MonoBehaviour {
 					StartCoroutine(FadeIn ());
 				}
 			} else {
-				Debug.Log ("not drawing");
 				outDelay ++ ;
 				inDelay = 0;
 				if (!fadedOut && (outDelay >= DelayResponseFrames)){
