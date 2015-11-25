@@ -6,9 +6,7 @@ namespace JumpyWorld {
 
 
         public float elevationTime;
-        public float fallTime;
         public AnimationCurve elevationVelocityCurve;
-        public AnimationCurve fallVelocityCurve;
         public ClearAndRebuildWorld rebuild;
         Rigidbody rb;
 
@@ -41,14 +39,6 @@ namespace JumpyWorld {
 
             rebuild.RandomizeAndRebuild();
             BroadcastMessage("ResetPosition");
-            time = Time.time;
-
-
-            while (Time.time - time < fallTime)
-            {
-                gameObject.transform.position += fallVelocityCurve.Evaluate((Time.time - time) / fallTime) * gameObject.transform.up * Time.deltaTime * -1;
-                yield return new WaitForEndOfFrame();
-            }
 
             rb.useGravity = true;
             rb.isKinematic = false;

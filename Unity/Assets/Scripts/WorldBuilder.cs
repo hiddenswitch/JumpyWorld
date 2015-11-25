@@ -16,6 +16,7 @@ namespace JumpyWorld
         public GameObject roomPrefab;
         public GameObject hallwayPrefab;
 
+
         public Floor startRoom;
         public int iterations;
 
@@ -57,6 +58,7 @@ namespace JumpyWorld
 		// Use this for initialization
 		public void Start ()
 		{
+
 			CreateNewGeneratorParent ();
             var oldSeed = Random.seed;
             Random.seed = seed;
