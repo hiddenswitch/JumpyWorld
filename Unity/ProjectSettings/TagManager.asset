@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - coin
   - Portal
+  - Axe
+  - Tree
   layers:
   - Default
   - TransparentFX
