@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 10
+  batchSize: 45
   parent: {fileID: 1237080147}
   terrainLayer:
     serializedVersion: 2
