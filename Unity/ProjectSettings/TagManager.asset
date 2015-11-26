@@ -9,6 +9,7 @@ TagManager:
   - coin
   - Portal
   - Axe
+  - Ghost
   - Tree
   layers:
   - Default
@@ -22,7 +23,7 @@ TagManager:
   - Terrain
   - Player
   - Pickups
-  - 
+  - Monsters
   - 
   - 
   - 
