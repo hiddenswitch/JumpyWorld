@@ -85,6 +85,258 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &124347935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 124347941}
+  - 114: {fileID: 124347940}
+  - 114: {fileID: 124347939}
+  - 114: {fileID: 124347938}
+  - 114: {fileID: 124347937}
+  - 114: {fileID: 124347936}
+  m_Layer: 0
+  m_Name: Should have holes mixed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &124347936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124347935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1de4e786072463e8c9ec83d0d1b86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 124347939}
+  tilePool: {fileID: 124347938}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 124347940}
+  height: 1
+--- !u!114 &124347937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124347935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bab15950d91244cdaca0224b9ac3422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 124347939}
+  tilePool: {fileID: 124347938}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 124347940}
+  height: 1
+  holePattern: 6
+  holeProbability: .25
+  checkerSpacing: 3
+  centerThresholdNorthSouth: 6
+  centerThresholdEastWest: 6
+--- !u!114 &124347938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124347935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
+--- !u!114 &124347939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124347935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 0
+  parent: {fileID: 124347941}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &124347940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124347935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 124347939}
+  tilePool: {fileID: 124347938}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 0
+    y: -80
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &124347941
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124347935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!1 &159959801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 159959806}
+  - 114: {fileID: 159959805}
+  - 114: {fileID: 159959804}
+  - 114: {fileID: 159959803}
+  - 114: {fileID: 159959807}
+  - 114: {fileID: 159959802}
+  m_Layer: 0
+  m_Name: Should have holes center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &159959802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159959801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1de4e786072463e8c9ec83d0d1b86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 159959804}
+  tilePool: {fileID: 159959803}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 159959805}
+  height: 1
+--- !u!114 &159959803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159959801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
+--- !u!114 &159959804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159959801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 0
+  parent: {fileID: 159959806}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &159959805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159959801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 159959804}
+  tilePool: {fileID: 159959803}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 40
+    y: -40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &159959806
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159959801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!114 &159959807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159959801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bab15950d91244cdaca0224b9ac3422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 159959804}
+  tilePool: {fileID: 159959803}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 159959805}
+  height: 1
+  holePattern: 4
+  holeProbability: .25
+  checkerSpacing: 3
+  centerThresholdNorthSouth: 3
+  centerThresholdEastWest: 8
 --- !u!1 &341296017
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 8
 --- !u!1 &486887177
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
 --- !u!114 &486887180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  batchSize: 0
   parent: {fileID: 486887182}
   terrainLayer:
     serializedVersion: 2
@@ -228,10 +483,10 @@ MonoBehaviour:
   generateOnStart: 1
   size:
     serializedVersion: 2
-    x: 60
+    x: 40
     y: 0
-    width: 40
-    height: 40
+    width: 20
+    height: 20
   shouldGenerateAnchors: 1
 --- !u!4 &486887182
 Transform:
@@ -244,7 +499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
 --- !u!1 &915718671
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +513,7 @@ GameObject:
   - 114: {fileID: 915718674}
   - 114: {fileID: 915718676}
   m_Layer: 0
-  m_Name: Room
+  m_Name: Should have obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,8 +539,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 40
-    height: 40
+    width: 20
+    height: 20
   shouldGenerateAnchors: 1
 --- !u!4 &915718673
 Transform:
@@ -298,7 +553,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!114 &915718674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
 --- !u!114 &915718675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  batchSize: 0
   parent: {fileID: 915718673}
   terrainLayer:
     serializedVersion: 2
@@ -344,9 +602,259 @@ MonoBehaviour:
   generateOnStart: 1
   room: {fileID: 915718672}
   height: 1
-  obstaclePositions: []
-  side: 1
-  isMaze: 0
+  side: 4
+--- !u!1 &1010917325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1010917330}
+  - 114: {fileID: 1010917329}
+  - 114: {fileID: 1010917328}
+  - 114: {fileID: 1010917327}
+  - 114: {fileID: 1010917326}
+  - 114: {fileID: 1010917332}
+  m_Layer: 0
+  m_Name: Should have holes random
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1010917326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bab15950d91244cdaca0224b9ac3422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1010917328}
+  tilePool: {fileID: 1010917327}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1010917329}
+  height: 1
+  holePattern: 1
+  holeProbability: .25
+  checkerSpacing: 3
+  centerThresholdNorthSouth: 3
+  centerThresholdEastWest: 5
+--- !u!114 &1010917327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
+--- !u!114 &1010917328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 0
+  parent: {fileID: 1010917330}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1010917329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1010917328}
+  tilePool: {fileID: 1010917327}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 0
+    y: -40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &1010917330
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+--- !u!114 &1010917332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010917325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1de4e786072463e8c9ec83d0d1b86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1010917328}
+  tilePool: {fileID: 1010917327}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1010917329}
+  height: 1
+--- !u!1 &1280491224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1280491230}
+  - 114: {fileID: 1280491229}
+  - 114: {fileID: 1280491228}
+  - 114: {fileID: 1280491227}
+  - 114: {fileID: 1280491226}
+  - 114: {fileID: 1280491225}
+  m_Layer: 0
+  m_Name: Should have holes checkers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1280491225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280491224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1de4e786072463e8c9ec83d0d1b86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1280491228}
+  tilePool: {fileID: 1280491227}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1280491229}
+  height: 1
+--- !u!114 &1280491226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280491224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bab15950d91244cdaca0224b9ac3422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1280491228}
+  tilePool: {fileID: 1280491227}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1280491229}
+  height: 1
+  holePattern: 2
+  holeProbability: .25
+  checkerSpacing: 2
+  centerThresholdNorthSouth: 3
+  centerThresholdEastWest: 5
+--- !u!114 &1280491227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280491224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
+--- !u!114 &1280491228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280491224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 0
+  parent: {fileID: 1280491230}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1280491229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280491224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1280491228}
+  tilePool: {fileID: 1280491227}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: -40
+    y: -40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &1280491230
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280491224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1778899385
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +940,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
 --- !u!1 &1954165028
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,13 +954,32 @@ GameObject:
   - 114: {fileID: 1954165030}
   - 114: {fileID: 1954165035}
   - 114: {fileID: 1954165034}
+  - 114: {fileID: 1954165029}
   m_Layer: 0
-  m_Name: Maze Room
+  m_Name: Should have maze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1954165029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954165028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1de4e786072463e8c9ec83d0d1b86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1954165031}
+  tilePool: {fileID: 1954165030}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1954165032}
+  height: 1
 --- !u!114 &1954165030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  decorative: []
 --- !u!114 &1954165031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  batchSize: 0
   parent: {fileID: 1954165033}
   terrainLayer:
     serializedVersion: 2
@@ -498,10 +1028,10 @@ MonoBehaviour:
   generateOnStart: 1
   size:
     serializedVersion: 2
-    x: -60
+    x: -40
     y: 0
-    width: 40
-    height: 40
+    width: 20
+    height: 20
   shouldGenerateAnchors: 1
 --- !u!4 &1954165033
 Transform:
@@ -514,14 +1044,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
 --- !u!114 &1954165034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954165028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abf07d63020e049868e1aecbe4fb5d18, type: 3}
   m_Name: 
@@ -552,4 +1082,3 @@ MonoBehaviour:
   generateOnStart: 1
   room: {fileID: 1954165032}
   height: 1
-  obstaclePositions: []
