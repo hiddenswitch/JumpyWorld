@@ -290,6 +290,14 @@ Prefab:
       propertyPath: path.Array.data[3].x
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11496184, guid: 0037431c1d956479085ac0a933936da3, type: 2}
+      propertyPath: shouldTeleportToStartOfPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496184, guid: 0037431c1d956479085ac0a933936da3, type: 2}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0037431c1d956479085ac0a933936da3, type: 2}
   m_IsPrefabParent: 0
@@ -308,13 +316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936fdec3ae14e41cd9dfb8312867454b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 6
+  seed: 11
   bounds:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 6
-    height: 5
+    width: 10
+    height: 10
   height: 0
   minLength: 10
   maxLength: 20

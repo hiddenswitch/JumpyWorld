@@ -31,7 +31,6 @@ namespace JumpyWorld
 		}
 
 		private void DelayedStart() {
-			Debug.Log (path.Length);
 			// check that speed is positive
 			if (speed <= 0) {
 				enabled = false;
