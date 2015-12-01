@@ -30,7 +30,9 @@ namespace JumpyWorld
 		{
 		}
 
-		private void DelayedStart() {
+		private void DelayedStart ()
+		{
+
 			// check that speed is positive
 			if (speed <= 0) {
 				enabled = false;
@@ -45,6 +47,7 @@ namespace JumpyWorld
 
 			// check if path is rectilinear
 			for (var i = 0; i < path.Length - 1; i++) {
+				Debug.Log (path [i]);
 				var p0 = path [i];
 				var p1 = path [i + 1];
 				if (!isXZRectilinearLine (p0, p1)) {
@@ -66,8 +69,7 @@ namespace JumpyWorld
 				}
 			}
 			transform.forward = xzCalculateForward (transform.position, path [0]);
-		}∫
-
+		}
 
 		void FixedUpdate ()
 		{

@@ -14,7 +14,6 @@ namespace JumpyWorld
 		public int minLength;
 		public int maxLength;
 		public Source<Vector3[]> pathSource;
-
 		private List<Vector3> path = new List<Vector3> ();
 		private Vector3 start;
 		private int stepsLeft;
@@ -31,15 +30,19 @@ namespace JumpyWorld
 			stepsLeft = maxLength;
 
 			if (maxLength < minLength + 5) {
-				Debug.LogError ("maxLength needs to be at least  greater than minLength");
+				Debug.LogError ("maxLength needs to be at least 5 greater than minLength");
+			}
+
+			if (minLength < 5) {
+				Debug.LogError ("minLength needs to be at least 5");
 			}
 
 			// set a random starting point
 			int startX = Random.Range ((int)bounds.xMin, (int)bounds.xMax);
 			int startZ = Random.Range ((int)bounds.yMin, (int)bounds.yMax);
 			start = new Vector3 (startX, height, startZ);
-			currentPt = start;
 			path.Add (start);
+			currentPt = start;
 
 			// pick each successive point in the path
 			while (stepsLeft > maxLength - minLength) {
@@ -56,27 +59,13 @@ namespace JumpyWorld
 				path.Add (start);
 			}
 
-			Debug.Log (pathSource);
+			//Debug.Log (pathSource);
 			pathSource.value = path.ToArray ();
 
 			this.gameObject.BroadcastMessage ("DelayedStart");
 			//Debug.Log (pathSource.value);
 
 			Random.seed = oldSeed;
-		}
-
-		// drawing the path
-		void OnDrawGizmos ()
-		{
-			Gizmos.color = Color.red;
-			if (path == null 
-				|| path.Count == 0) {
-				return;
-			}
-
-			for (var i = 0; i < path.Count - 1; i++) {
-				Gizmos.DrawLine (path [i], path [i + 1]);
-			}
 		}
 
 		// picking the next point where stepsLeft is the number of steps left
