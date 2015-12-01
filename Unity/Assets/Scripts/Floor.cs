@@ -16,6 +16,10 @@ namespace JumpyWorld
 			/// </summary>
 			public Vector4 distanceFromBorders;
 			public Vector4 distanceFromCenter;
+			public override int GetHashCode ()
+			{
+				return position.GetHashCode();
+			}
 		}
 
 		[Header("Options")]
