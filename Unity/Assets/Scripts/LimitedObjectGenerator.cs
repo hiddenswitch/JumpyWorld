@@ -2,12 +2,12 @@
 using System.Collections;
 namespace JumpyWorld
 {
-    public class PortalGenerator : RandomPlacerForRoom
+    public class LimitedObjectGenerator : RandomPlacerForRoom
     {
-        int portalCount;
-        public int maxPortalCount;
+        int objectCount;
+        public int maxObjectCount;
         bool checkStarted;
-        public float minPortalDistance;
+        public float minObjectDistance;
         Floor previousRoom;
 
 
@@ -15,7 +15,7 @@ namespace JumpyWorld
         {
 
             previousRoom = room;
-            if (Vector2.Distance(room.size.center, Vector2.zero) > minPortalDistance && portalCount < maxPortalCount)
+            if (Vector2.Distance(room.size.center, Vector2.zero) > minObjectDistance && objectCount < maxObjectCount)
             {
 
                 tilePool = tilePool ?? this.tilePool;
@@ -28,7 +28,7 @@ namespace JumpyWorld
                     if (random < xz)
                     {
                         tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: point.position, overwriteIfExists: true);
-                        portalCount += 1;
+                        objectCount += 1;
                         return;//up to 1 per room;
                     }
                 }
@@ -45,13 +45,13 @@ namespace JumpyWorld
         private IEnumerator checkRoomSpawn()
         {
             yield return new WaitForEndOfFrame();
-            if (portalCount == 0)
+            if (objectCount == 0)
             {
                 Vector3 target = new Vector3(previousRoom.size.center.x, height, previousRoom.size.center.y);
                 tileDrawer.DrawTerrain(prefab: tilePool.decorative[Random.Range(0, tilePool.decorative.Length - 1)], at: target);
             }
             checkStarted = false; //resets so that this works over multiple worlds.
-            portalCount = 0;
+            objectCount = 0;
         }
 
     }
