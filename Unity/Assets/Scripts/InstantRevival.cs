@@ -7,7 +7,7 @@ namespace JumpyWorld
 	{
 
 		// Use this for initialization
-		void OnObjectDied (GameObject sender)
+		protected virtual void OnObjectDied (GameObject sender)
 		{
 			var death = sender.GetComponent<DiesBelowDepth> ();
 			if (death == null) {

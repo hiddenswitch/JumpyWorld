@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 0
+  m_CurrentQuality: 1
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
@@ -29,9 +29,42 @@ QualitySettings:
     lodBias: .300000012
     maximumLODLevel: 0
     particleRaycastBudget: 4
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
+  - serializedVersion: 2
+    name: ShadowsOff
+    pixelLightCount: 4
+    shadows: 0
+    shadowResolution: 3
+    shadowProjection: 1
+    shadowCascades: 1
+    shadowDistance: 100
+    shadowNearPlaneOffset: 2
+    shadowCascade2Split: .333333343
+    shadowCascade4Split: {x: .0666666701, y: .200000003, z: .466666669}
+    blendWeights: 1
+    textureQuality: 0
+    anisotropicTextures: 0
+    antiAliasing: 0
+    softParticles: 0
+    softVegetation: 0
+    realtimeReflectionProbes: 0
+    billboardsFaceCameraPosition: 0
+    vSyncCount: 1
+    lodBias: .300000012
+    maximumLODLevel: 0
+    particleRaycastBudget: 4
+    excludedTargetPlatforms:
+    - iPhone
+    - Web
+    - Standalone
+    - Tizen
+    - Windows Store Apps
+    - WP8
+    - WebGL
+    - Samsung TV
   m_PerPlatformDefaultQuality:
-    Android: 0
+    Android: 1
     BlackBerry: 0
     GLES Emulation: 0
     Nintendo 3DS: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class TileDrawer : MonoBehaviour, IList<Vector3>
+	public class TileDrawer : PinBool, IList<Vector3>
 	{
 		class TileInfo
 		{
@@ -26,6 +26,18 @@ namespace JumpyWorld
 		public Transform parent;
 		public LayerMask terrainLayer;
 		private GameObject destroyableParent;
+		
+		public bool isDrawingTiles = false;
+
+		public override bool value {
+			get {
+				return isDrawingTiles;
+			}
+			set {
+				isDrawingTiles = value;
+			}
+		}
+
 		private Dictionary<Vector3, TileInfo> tiles = new Dictionary<Vector3, TileInfo> (400);
 		private Queue<TileInfo> batchQueue = new Queue<TileInfo> ();
 		private bool hasCollided = false;
@@ -91,6 +103,7 @@ namespace JumpyWorld
 			var batched = 0;
 			while (true) {
 				while (batchQueue.Count > 0) {
+					isDrawingTiles = true;
 					var tileInfo = batchQueue.Dequeue ();
 					tileInfo.gameObject = InstantiateTile (tileInfo);
 					tilesInBatch.Add (tileInfo);
@@ -112,19 +125,20 @@ namespace JumpyWorld
 						if (clearing) {
 							Destroy (batchParent);
 						}
-
+						
 						batched = 0;
 						tilesInBatch.Clear ();
 					}
 				}
-
+				if (batchQueue.Count == 0){
+					isDrawingTiles = false;
+				}
 				if (tilesInBatch.Count > 0
 					&& !clearing) {
 					var batchParentFinal = new GameObject ("Batch Parent");
 					batchParentFinal.transform.SetParent (destroyableParent.transform);
 					StaticBatchingUtility.Combine (batchParentFinal);
 				}
-
 				batched = 0;
 				tilesInBatch.Clear ();
 				yield return null;
