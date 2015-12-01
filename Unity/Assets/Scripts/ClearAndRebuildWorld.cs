@@ -7,6 +7,7 @@ namespace JumpyWorld
 	{
 		public WorldBuilder worldBuilder;
 		public TileDrawer tileDrawer;
+		public float delay = 2f;
 
 		void Awake ()
 		{
@@ -27,6 +28,12 @@ namespace JumpyWorld
 
 		public void OnObjectDied (GameObject sender)
 		{
+			StartCoroutine (OnObjectDiedDelayed (sender));
+		}
+
+		IEnumerator OnObjectDiedDelayed (GameObject sender)
+		{
+			yield return new WaitForSeconds (delay);
 			RandomizeAndRebuild ();
 		}
 	}
