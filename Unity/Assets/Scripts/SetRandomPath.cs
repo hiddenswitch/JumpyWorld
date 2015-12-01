@@ -10,57 +10,25 @@ namespace JumpyWorld
 		//public Vector3[] obstacles;
 		public int seed;
 		public Rect bounds;
-		public int height;
+		public float height;
 		public int minLength;
 		public int maxLength;
 		public Source<Vector3[]> pathSource;
-		private List<Vector3> path = new List<Vector3> ();
-		private Vector3 start;
-		private int stepsLeft;
-		private Vector3 currentPt;
-		private Vector3 lastDirection = Vector3.zero;
+		public List<Vector3> path;
 
 		// Use this for initialization
-		void Start ()
+		public void Start ()
 		{
-			pathSource = this.gameObject.GetComponent<Source<Vector3[]>> ();
+			pathSource = pathSource ?? this.gameObject.GetComponent<Source<Vector3[]>> ();
 			var oldSeed = Random.seed;
 			Random.seed = seed;
 
-			stepsLeft = maxLength;
-
-			if (maxLength < minLength + 5) {
-				Debug.LogError ("maxLength needs to be at least 5 greater than minLength");
-			}
-
-			if (minLength < 5) {
-				Debug.LogError ("minLength needs to be at least 5");
-			}
-
-			// set a random starting point
-			int startX = Random.Range ((int)bounds.xMin, (int)bounds.xMax);
-			int startZ = Random.Range ((int)bounds.yMin, (int)bounds.yMax);
-			start = new Vector3 (startX, height, startZ);
-			path.Add (start);
-			currentPt = start;
-
-			// pick each successive point in the path
-			while (stepsLeft > maxLength - minLength) {
-				stepsLeft -= PickNextPoint (stepsLeft);
-			}
-
-			// close the path
-			if (currentPt != start) {
-				if (lastDirection == Vector3.left || lastDirection == Vector3.right) {
-					path.Add (new Vector3 (currentPt.x, height, start.z));
-				} else {
-					path.Add (new Vector3 (start.x, height, currentPt.z));
-				}
-				path.Add (start);
-			}
+			path = createPath (bounds, height, minLength, maxLength);
 
 			//Debug.Log (pathSource);
-			pathSource.value = path.ToArray ();
+			if (pathSource != null) {
+				pathSource.value = path.ToArray ();
+			}
 
 			this.gameObject.BroadcastMessage ("DelayedStart");
 			//Debug.Log (pathSource.value);
@@ -68,21 +36,73 @@ namespace JumpyWorld
 			Random.seed = oldSeed;
 		}
 
-		// picking the next point where stepsLeft is the number of steps left
-		int PickNextPoint (int stepsLeft)
+		public static List<Vector3> createPath(Rect rectangle, float height, int lengthLB, int lengthUB) {
+			int stepsLeft = lengthUB;
+			Vector3 start;
+			Vector3 currentPt;
+
+			List<Vector3> generatedPath = new List<Vector3> ();
+
+			if (lengthUB < lengthLB + 5) {
+				Debug.LogError ("maxLength needs to be at least 5 greater than minLength");
+			}
+			
+			if (lengthLB < 5) {
+				Debug.LogError ("minLength needs to be at least 5");
+			}
+			
+			// set a random starting point
+			int startX = Random.Range ((int)rectangle.xMin, (int)rectangle.xMax);
+			int startZ = Random.Range ((int)rectangle.yMin, (int)rectangle.yMax);
+			start = new Vector3 (startX, height, startZ);
+
+			generatedPath.Add (start);
+			currentPt = start;
+
+			// pick each successive point in the path
+			Vector3 nextPt;
+			while (stepsLeft > lengthUB - lengthLB) {
+				nextPt = PickNextPoint (stepsLeft, generatedPath, lengthUB, rectangle);
+				generatedPath.Add (nextPt);
+				stepsLeft -= XZEuclideanDistance(currentPt, nextPt);
+				currentPt = nextPt;
+			}
+			
+			// close the path
+			if (currentPt != start) {
+				Vector3 lastDirection = (generatedPath[generatedPath.Count - 2] - currentPt).normalized;
+				if ((lastDirection == Vector3.left || lastDirection == Vector3.right) && currentPt.z != start.z) {
+					generatedPath.Add (new Vector3 (currentPt.x, height, start.z));
+				} else if ((lastDirection == Vector3.up || lastDirection == Vector3.down) && currentPt.x != start.x){
+					generatedPath.Add (new Vector3 (start.x, height, currentPt.z));
+				}
+				if(generatedPath[generatedPath.Count -1] != start){
+					generatedPath.Add (start);
+				}
+			}
+
+			return generatedPath;
+		}
+
+		// picking the next point for generatedPath, where stepsLeft is the number of steps left
+		// lengthUB is the upper bound on the length of the path, and rectangle is the bounds of the path
+		static Vector3 PickNextPoint (int stepsLeft, List<Vector3> generatedPath, int lengthUB, Rect rectangle)
 		{
-			List<Vector3> allPossibleNext = GetAllPossibleNext (currentPt, stepsLeft);
+			Vector3 currentPt = generatedPath [generatedPath.Count - 1];
+			Vector3 lastDirection = Vector3.zero;
+			if (generatedPath.Count > 1) {
+				lastDirection = (generatedPath[generatedPath.Count - 2] - currentPt).normalized;
+			} 
+			List<Vector3> allPossibleNext = GetAllPossibleNext (currentPt, stepsLeft, generatedPath[0], lastDirection, lengthUB, rectangle);
 			Vector3 randomNext = allPossibleNext [Random.Range (0, allPossibleNext.Count - 1)];
-			var distanceTraveled = XZEuclideanDistance (currentPt, randomNext);
-			lastDirection = (randomNext - currentPt).normalized;
-			path.Add (randomNext);
-			currentPt = randomNext;
-			return distanceTraveled;
+			return randomNext;
 		}
 
 
-		// gets all points that point can got to and back to start ing stepLeft steps
-		List<Vector3> GetAllPossibleNext (Vector3 point, int stepsLeft)
+		// gets all points that point can got to and back to start when stepsLeft is the
+		// number of steps it can take max, lastDirection is the last direction of the path, 
+		// lengthUB is the UB on the entire path, and bounds is the bounds of the path
+		static List<Vector3> GetAllPossibleNext (Vector3 point, int stepsLeft, Vector3 start, Vector3 lastDirection, int lengthUB, Rect bounds)
 		{
 			Vector3[] directions = {
 				Vector3.left,
@@ -98,8 +118,8 @@ namespace JumpyWorld
 					while (!noMoreSteps) {
 						Vector3 potentialStep = direction * stepSize + point;
 						if (XZEuclideanDistance (potentialStep, start) > stepsLeft || 
-							!inBounds (potentialStep) ||
-							(point - potentialStep).magnitude > maxLength / 4) {
+							!inBounds (potentialStep, bounds) ||
+						    (point - potentialStep).magnitude > lengthUB / 4) {
 							noMoreSteps = true;
 						} else {
 							stepSize += 1;
@@ -112,13 +132,13 @@ namespace JumpyWorld
 		}
 
 		// check if the point is in bounds
-		bool inBounds (Vector3 point)
+		static bool inBounds (Vector3 point, Rect bounds)
 		{
 			return (bounds.xMin <= point.x) && (point.x <= bounds.xMax) && (bounds.yMin <= point.z) && (point.z <= bounds.yMax);
 		}
 
 		// get the Euclidean distance in the XZ plane from a to b
-		int XZEuclideanDistance (Vector3 a, Vector3 b)
+		static int XZEuclideanDistance (Vector3 a, Vector3 b)
 		{
 			int xDist = (int)Mathf.Abs (a.x - b.x);
 			int zDist = (int)Mathf.Abs (a.z - b.z);
