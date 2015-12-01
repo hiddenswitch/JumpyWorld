@@ -896,11 +896,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
       propertyPath: objectsToPreload.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
       propertyPath: objectsToPreloadTimes.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -941,6 +941,22 @@ Prefab:
     - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
       propertyPath: objectsToPreloadTimes.Array.data[0]
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
+      propertyPath: objectsToPreload.Array.data[1]
+      value: 
+      objectReference: {fileID: 100000, guid: 45003d3699e5e1c4689eed86bda6a26e, type: 2}
+    - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
+      propertyPath: objectsToPreloadTimes.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
+      propertyPath: objectsToPreload.Array.data[2]
+      value: 
+      objectReference: {fileID: 100000, guid: 45003d3699e5e1c4689eed86bda6a26e, type: 2}
+    - target: {fileID: 11400000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
+      propertyPath: objectsToPreloadTimes.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f752d70fdcea284c8c3e3129cc58ff4, type: 2}
