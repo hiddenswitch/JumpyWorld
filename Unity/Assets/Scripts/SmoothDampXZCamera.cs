@@ -9,16 +9,16 @@ namespace JumpyWorld
 		public Transform
 			target;
 		public float smoothTime = 0.3f;
+		public bool automaticallySetDifference = true;
 		public Vector3 difference;
 		[Header("Runtime")]
 		public Vector3
 			velocity;
-		public bool needsStart = true;
-		
+
 		// Use this for initialization
 		public void Start ()
 		{
-			if (!needsStart) {
+			if (!automaticallySetDifference) {
 				return;
 			}
 			
@@ -27,7 +27,7 @@ namespace JumpyWorld
 			}
 			
 			difference = transform.position - target.position;
-			needsStart = false;
+			automaticallySetDifference = false;
 		}
 		
 		// Update is called once per frame
@@ -36,9 +36,10 @@ namespace JumpyWorld
 			if (target == null) {
 				return;
 			}
-			if (needsStart) {
+			if (automaticallySetDifference) {
 				Start ();
 			}
+
 			transform.position = Vector3.SmoothDamp (transform.position, target.transform.position + difference, ref velocity, smoothTime);
 		}
 	}

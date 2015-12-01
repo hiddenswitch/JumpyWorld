@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class TileDrawer : MonoBehaviour, IList<Vector3>
+	public class TileDrawer : PinBool, IList<Vector3>
 	{
 		class TileInfo
 		{
@@ -28,6 +28,15 @@ namespace JumpyWorld
 		private GameObject destroyableParent;
 		
 		public bool isDrawingTiles = false;
+
+		public override bool value {
+			get {
+				return isDrawingTiles;
+			}
+			set {
+				isDrawingTiles = value;
+			}
+		}
 
 		private Dictionary<Vector3, TileInfo> tiles = new Dictionary<Vector3, TileInfo> (400);
 		private Queue<TileInfo> batchQueue = new Queue<TileInfo> ();

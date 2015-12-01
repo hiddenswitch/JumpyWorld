@@ -2,65 +2,84 @@
 using System.Collections;
 using UnityEngine.UI;
 
-namespace JumpyWorld{
+namespace JumpyWorld
+{
 	[RequireComponent (typeof(Image))]
-	public class ShowOnWorldBuilding : MonoBehaviour {
+	public class ShowOnWorldBuilding : MonoBehaviour
+	{
 		Image image;
-		public int FadeInFrames = 1;
-		public int FadeOutFrames = 15;
-		public int DelayResponseFrames = 5;
-		int inDelay = 0;
-		int outDelay = 0;
+		public float fadeInSeconds = 0.25f;
+		public float fadeOutSeconds = 0.25f;
+		public float delayResponseSeconds = 0.125f;
+		float inDelay = 0;
+		float outDelay = 0;
 		public TileDrawer tileDrawer;
 		bool fadingIn = false;
 		bool fadingOut = false;
 		bool fadedIn = true;
 		bool fadedOut = false;
-		void Start () {
+		Color opaque;
+		Color transparent;
+
+		void Start ()
+		{
 			image = gameObject.GetComponent<Image> ();
+			opaque = image.color;
+			transparent = new Color (image.color.r, image.color.g, image.color.b, 0);
 		}
 		
 		// Update is called once per frame
-		void Update () {
+		void Update ()
+		{
 			if (tileDrawer.isDrawingTiles) {
-				inDelay ++;
+				inDelay += Time.deltaTime;
 				outDelay = 0;
-				if ((!fadedIn) && (inDelay >= DelayResponseFrames)){
+				if ((!fadedIn) && (inDelay >= delayResponseSeconds)) {
 					fadingIn = true;
 					fadedOut = false;
 					fadingOut = false;
-					StartCoroutine(FadeIn ());
+					StartCoroutine (FadeIn ());
 				}
 			} else {
-				outDelay ++ ;
+				outDelay += Time.deltaTime;
 				inDelay = 0;
-				if (!fadedOut && (outDelay >= DelayResponseFrames)){
+				if (!fadedOut && (outDelay >= delayResponseSeconds)) {
 					fadingOut = true;
 					fadedIn = false;
 					fadingIn = false;
-					StartCoroutine (FadeOut());
+					StartCoroutine (FadeOut ());
 				}
 			}
 		}
 
-
-		IEnumerator FadeIn(){
-			for (int i = 0; i < FadeInFrames + 1; i ++) {
-				if (fadingOut) break;
-				image.color = new Color(image.color.r, image.color.g, image.color.b, (float) i / FadeInFrames);
-				yield return new WaitForEndOfFrame();
+		IEnumerator FadeIn ()
+		{
+			var time = 0f;
+			while (time < fadeInSeconds) {
+				if (fadingOut) {
+					break;
+				}
+				time += Time.deltaTime;
+				image.color = Color.Lerp (transparent, opaque, time / fadeInSeconds);
+				yield return new WaitForEndOfFrame ();
 			}
+
 			fadingIn = false;
 			fadedIn = true;
 		}
 
-		IEnumerator FadeOut(){
-			for (int i = 0; i < FadeOutFrames + 1; i ++) {
-				if (fadingIn) break;
-
-				image.color = new Color(image.color.r, image.color.g, image.color.b, 1 - (float) i / FadeOutFrames);
-				yield return new WaitForEndOfFrame();
+		IEnumerator FadeOut ()
+		{
+			var time = 0f;
+			while (time < fadeInSeconds) {
+				if (fadingIn) {
+					break;
+				}
+				time += Time.deltaTime;
+				image.color = Color.Lerp (opaque, transparent, time / fadeInSeconds);
+				yield return new WaitForEndOfFrame ();
 			}
+			
 			fadingOut = false;
 			fadedOut = true;
 		}

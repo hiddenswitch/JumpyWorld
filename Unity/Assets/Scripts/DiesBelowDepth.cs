@@ -3,14 +3,24 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class DiesBelowDepth : MonoBehaviour
+	public class DiesBelowDepth : PinBool
 	{
 		public float depth;
 		public GameObject[] eventHandlers;
 		public string message = "OnObjectDied";
+		public string reviveMessage = "OnObjectRevived";
 		[Header("Runtime")]
 		public bool
 			isAlive = true;
+
+		public override bool value {
+			get {
+				return isAlive;
+			}
+			set {
+				isAlive = value;
+			}
+		}
 		// Use this for initialization
 	
 		// Update is called once per frame
@@ -27,7 +37,12 @@ namespace JumpyWorld
 
 		public void ResetDies ()
 		{
-			isAlive = true;
+			if (!isAlive) {
+				isAlive = true;
+				foreach (var handler in eventHandlers) {
+					handler.SendMessage (reviveMessage, this.gameObject, SendMessageOptions.DontRequireReceiver);
+				}
+			}
 		}
 	}
 }
