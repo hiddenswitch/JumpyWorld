@@ -1826,6 +1826,8 @@ GameObject:
   - 114: {fileID: 1095363467}
   - 114: {fileID: 1095363470}
   - 114: {fileID: 1095363469}
+  - 114: {fileID: 1095363471}
+  - 114: {fileID: 1095363463}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -2013,6 +2015,21 @@ MonoBehaviour:
   rigidBody: {fileID: 1095363461}
   speedScale: 1
   isAlive: 1
+--- !u!114 &1095363463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095363450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2704eced05039fe4b98ad0486d3ea72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: {fileID: 1095363471}
+  tileDrawer: {fileID: 274888146}
+  tilePool: {fileID: 274888147}
+  woodCollector: {fileID: 145717446}
 --- !u!114 &1095363464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2138,6 +2155,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 274888146}
   right: {fileID: 1095363469}
+--- !u!114 &1095363471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095363450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd16fa1898ef72d4e8f0513d2faece71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleSavePrefix: Collectible.
+  collectibleTag: Tree
 --- !u!1 &1144286084
 GameObject:
   m_ObjectHideFlags: 0

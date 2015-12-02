@@ -2,7 +2,7 @@
 using System.Collections;
 
 namespace JumpyWorld { 
-    public abstract class ICondition : ScriptableObject
+    public abstract class ICondition : MonoBehaviour
     {
         public abstract bool evaluate();
     }
