@@ -78,6 +78,8 @@ namespace JumpyWorld
 
             startRoom.Build();
 
+			floors.Add(startRoom);
+
 			foreach (Anchor anchor in startRoom.anchors) {
 				pendingInfos.Add (new WorldBuilderInfo(anchor, null));
 			}
