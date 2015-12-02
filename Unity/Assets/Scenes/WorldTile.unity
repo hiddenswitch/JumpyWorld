@@ -382,6 +382,7 @@ GameObject:
   - 114: {fileID: 145717444}
   - 114: {fileID: 145717445}
   - 114: {fileID: 145717446}
+  - 114: {fileID: 145717443}
   m_Layer: 9
   m_Name: Collector
   m_TagString: Untagged
@@ -433,6 +434,24 @@ MonoBehaviour:
   otherTag: Portal
   recepient: {fileID: 1095363450}
   message: StartPortalAnimation
+--- !u!114 &145717443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 145717439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ebed38a47414f9d86b6d659dc850ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleSavePrefix: Collectible.
+  collectibleTag: Hammer
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 1024
+  count: 0
+  lifetime: 0
 --- !u!114 &145717444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +728,7 @@ Transform:
   - {fileID: 399988470}
   - {fileID: 502739150}
   - {fileID: 1541092308}
+  - {fileID: 1174779484}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &274888149
@@ -760,6 +780,7 @@ MonoBehaviour:
   - {fileID: 399988469}
   - {fileID: 502739152}
   - {fileID: 1541092310}
+  - {fileID: 1174779485}
   wallProbability:
     serializedVersion: 2
     m_Curve:
@@ -1842,7 +1863,10 @@ GameObject:
   - 114: {fileID: 1095363470}
   - 114: {fileID: 1095363469}
   - 114: {fileID: 1095363471}
+  - 114: {fileID: 1095363474}
   - 114: {fileID: 1095363463}
+  - 114: {fileID: 1095363472}
+  - 114: {fileID: 1095363473}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -2041,9 +2065,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2704eced05039fe4b98ad0486d3ea72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: {fileID: 1095363471}
+  condition: {fileID: 1095363473}
   tileDrawer: {fileID: 274888146}
-  tilePool: {fileID: 274888147}
+  tilePool: {fileID: 1095363472}
+  platformHeight: 0
   woodCollector: {fileID: 145717446}
 --- !u!114 &1095363464
 MonoBehaviour:
@@ -2182,6 +2207,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleSavePrefix: Collectible.
+  collectibleTag: Hammer
+--- !u!114 &1095363472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095363450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 171730, guid: e5fde66e59447374c9df41fb27b1c6cc, type: 2}
+  defaultEmpty: {fileID: 0}
+  decorative: []
+--- !u!114 &1095363473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095363450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c26eb8cea423b947aaa15bcf6537bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition1: {fileID: 1095363471}
+  condition2: {fileID: 1095363474}
+--- !u!114 &1095363474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095363450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd16fa1898ef72d4e8f0513d2faece71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleSavePrefix: Collectible.
   collectibleTag: Tree
 --- !u!1 &1144286084
 GameObject:
@@ -2253,6 +2318,121 @@ SkinnedMeshRenderer:
     m_Center: {x: .167728096, y: .413059473, z: -.118819609}
     m_Extent: {x: .754405856, y: 1.01121938, z: .391964018}
   m_DirtyAABB: 0
+--- !u!1 &1174779483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1174779484}
+  - 114: {fileID: 1174779485}
+  - 114: {fileID: 1174779486}
+  m_Layer: 0
+  m_Name: Hammer Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1174779484
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174779483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274888148}
+  m_RootOrder: 4
+--- !u!114 &1174779485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174779483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda2fdd5f4e31a841b93faa5d51ef295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 274888146}
+  tilePool: {fileID: 1174779486}
+  seed: 0
+  anchors: []
+  generateOnStart: 0
+  room: {fileID: 0}
+  xDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.0333333313
+      value: -.0624998957
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .376159012
+      value: .0440052897
+      inSlope: .11139182
+      outSlope: .11139182
+      tangentMode: 0
+    - time: .681493461
+      value: .0402923711
+      inSlope: -.047228273
+      outSlope: -.047228273
+      tangentMode: 0
+    - time: .995833337
+      value: .0125001073
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  zDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.0333333313
+      value: -.0624998957
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .387840897
+      value: .0281262696
+      inSlope: .0109261703
+      outSlope: .0109261703
+      tangentMode: 0
+    - time: .577745736
+      value: .0306020528
+      inSlope: -.0325637907
+      outSlope: -.0325637907
+      tangentMode: 0
+    - time: .992491901
+      value: -.015790334
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  height: 1
+  step: 1
+  maxObjectCount: 1
+  minObjectDistance: 10
+--- !u!114 &1174779486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174779483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 0}
+  defaultEmpty: {fileID: 0}
+  decorative:
+  - {fileID: 120550, guid: 0f2f8cbee6a6a464b99946bd4f8675e7, type: 2}
 --- !u!1 &1190012589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,15 +3052,15 @@ MonoBehaviour:
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: .279617995
-      value: .811643243
-      inSlope: 1.18464231
-      outSlope: 1.18464231
+    - time: .376159012
+      value: .0440052897
+      inSlope: .11139182
+      outSlope: .11139182
       tangentMode: 0
-    - time: .719920099
-      value: .808553338
-      inSlope: .890791416
-      outSlope: .890791416
+    - time: .681493461
+      value: .0402923711
+      inSlope: -.047228273
+      outSlope: -.047228273
       tangentMode: 0
     - time: .995833337
       value: .0125001073
@@ -2897,18 +3077,18 @@ MonoBehaviour:
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: .279617995
-      value: .811643243
-      inSlope: 1.18464231
-      outSlope: 1.18464231
+    - time: .387840897
+      value: .0281262696
+      inSlope: .0109261703
+      outSlope: .0109261703
       tangentMode: 0
-    - time: .719920099
-      value: .808553338
-      inSlope: .890791416
-      outSlope: .890791416
+    - time: .577745736
+      value: .0306020528
+      inSlope: -.0325637907
+      outSlope: -.0325637907
       tangentMode: 0
-    - time: .995833337
-      value: .0125001073
+    - time: .992491901
+      value: -.015790334
       inSlope: 0
       outSlope: 0
       tangentMode: 0

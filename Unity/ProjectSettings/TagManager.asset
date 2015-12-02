@@ -11,6 +11,7 @@ TagManager:
   - Axe
   - Ghost
   - Tree
+  - Hammer
   layers:
   - Default
   - TransparentFX

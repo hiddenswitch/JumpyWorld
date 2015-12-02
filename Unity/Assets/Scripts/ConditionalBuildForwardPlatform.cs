@@ -9,7 +9,7 @@ namespace JumpyWorld {
         public ICondition condition;
         public TileDrawer tileDrawer;
         public TilePool tilePool;
-
+        public float platformHeight;
         public Collects woodCollector;
 
         GridLocateable gridLocatable;
@@ -22,10 +22,11 @@ namespace JumpyWorld {
         void Update()
         {
             if (condition.evaluate()) {
-                Vector3 forward = gridLocatable.PositionGrid;// + transform.forward;
-                if (!tileDrawer.Contains(forward))
+                Vector3 pos = gridLocatable.PositionGrid;
+                pos = new Vector3(pos.x, platformHeight, pos.z);
+                if (!tileDrawer.Contains(pos))
                 {
-                    tileDrawer.DrawTerrain(prefab: tilePool.defaultGround,at: forward);
+                    tileDrawer.DrawTerrain(prefab: tilePool.defaultGround,at: pos);
                     woodCollector.decrement(1);
                 }
                 
