@@ -11,7 +11,7 @@ namespace JumpyWorld
 
 		public static Vector3 ToGrid (Vector3 position)
 		{
-			return new Vector3 (Mathf.Floor (position.x / gridSize), Mathf.Floor (position.y / gridSize), Mathf.Floor (position.z / gridSize));
+			return new Vector3 (Mathf.Round (position.x / gridSize), Mathf.Floor(position.y / gridSize), Mathf.Round(position.z / gridSize));
 		}
 
 		public virtual Vector3 PositionGrid {
