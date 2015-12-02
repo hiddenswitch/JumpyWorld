@@ -20,6 +20,12 @@ namespace JumpyWorld
 			{
 				return position.GetHashCode();
 			}
+
+			public override bool Equals (object obj)
+			{
+				var other = (RectanglePoint)obj;
+				return position.Equals(other.position);
+			}
 		}
 
 		[Header("Options")]

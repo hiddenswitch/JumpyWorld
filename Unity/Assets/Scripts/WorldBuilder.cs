@@ -243,6 +243,7 @@ namespace JumpyWorld
 				}
 
 				var walls = floor.gameObject.AddComponent<WallsForRoom>();
+				walls.height = 1f;
 				walls.room = floor;
 				walls.openingsForDoors = true;
 				walls.seed = Random.Range(0, 65536);

@@ -18,14 +18,14 @@ namespace JumpyWorld
 		public override void Generate (int seed)
 		{
 			base.Generate (seed);
-			var floorPoints = new HashSet<Floor.RectanglePoint> ((int)(room.size.width * room.size.height));
+			var floorPoints = new HashSet<Vector3> ();
 
 			// Convert to hash set for easy lookups
-			foreach (var point in floorPoints) {
-				floorPoints.Add (Floor.Rectangle (room.size, 1f, height));
+			foreach (var point in Floor.Rectangle(room.size, step:1, y: height)) {
+				floorPoints.Add (point.position);
 			}
 
-			foreach (var point in floorPoints) {
+			foreach (var point in Floor.Rectangle(room.size, step:1, y: height)) {
 				// In order to determine whether or not there should be a hole for a door, check for a T
 				// pattern or a cross pattern of floors. Add on Vector3.down since we're checking below us
 				// for floor
@@ -34,28 +34,69 @@ namespace JumpyWorld
 					&& tileDrawer.Contains (point.position + Vector3.right + Vector3.down)
 					&& tileDrawer.Contains (point.position + Vector3.forward + Vector3.down)
 					&& tileDrawer.Contains (point.position + Vector3.back + Vector3.down);
-				// Encode the four T patterns. All three T points must NOT belong on the floor
-				var hasTeePattern = tileDrawer.Contains (point.position + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.left + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.right + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.forward + Vector3.down);
-				hasTeePattern = hasTeePattern || tileDrawer.Contains (point.position + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.left + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.right + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.back + Vector3.down);
-				hasTeePattern = hasTeePattern || tileDrawer.Contains (point.position + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.forward + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.right + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.back + Vector3.down);
-				hasTeePattern = hasTeePattern || tileDrawer.Contains (point.position + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.forward + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.left + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.back + Vector3.down);
+
+//				// Encode the four T patterns.
+//				var teePoints = new Vector3[][] {
+//					new Vector3[] {
+//						Vector3.zero,
+//						Vector3.left,
+//						Vector3.right,
+//						Vector3.forward
+//					},
+//					new Vector3[] {
+//						Vector3.zero,
+//						Vector3.left,
+//						Vector3.right,
+//						Vector3.back
+//					},
+//					new Vector3[] {
+//						Vector3.zero,
+//						Vector3.forward,
+//						Vector3.right,
+//						Vector3.back
+//					},
+//					new Vector3[] {
+//						Vector3.zero,
+//						Vector3.forward,
+//						Vector3.left,
+//						Vector3.back
+//					},
+//				};
+//
+//				// In order for there to be a T pattern, all four points (the three "tee" points plus the current point
+//				// must exist and at least one must not belong to this floor.
+//				var hasAnyTeePattern = false;
+//				foreach (var tee in teePoints) {
+//					var isTeePattern = true;
+//					var allBelongToFloor = true;
+//
+//					foreach (var teePoint in tee) {
+//						var testPosition = point.position + teePoint + Vector3.down;
+//						// All four points must exist
+//						if (!tileDrawer.Contains (testPosition)) {
+//							isTeePattern = false;
+//							break;
+//						}
+//
+//						if (!floorPoints.Contains(testPosition)) {
+//							allBelongToFloor = false;
+//						}
+//					}
+//
+//					if (allBelongToFloor) {
+//						isTeePattern = false;
+//					}
+//
+//					if (isTeePattern) {
+//						hasAnyTeePattern = true;
+//						break;
+//					}
+//				}
 
 				// If we want to save openings for doors and we detected a floor pattern where a door should go (or
 				// we're bordering another room's walls) don't build the opening.
 				if (openingsForDoors
-					&& (hasTeePattern || hasCrossPattern)) {
+				    && ( /*hasAnyTeePattern || */ hasCrossPattern)) {
 					continue;
 				}
 
