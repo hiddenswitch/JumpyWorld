@@ -36,14 +36,9 @@ namespace JumpyWorld
 		public float newHallwayProbability;
 		public AnimationCurve hallwayTurbulenceDistribution;
 
-		[Header("Decorations")]
-		public RandomPlacerForRoom treeDecorator;
+        [Header("Generators")]
+        public List<RandomPlacerForRoom> generators;
 
-		[Header("Treasure")]
-		public RandomPlacerForRoom coinPlacer;
-
-        [Header("Portal")]
-        public RandomPlacerForRoom portalGenerator;
 
 		[Header("Walls")]
 		/// <summary>
@@ -217,21 +212,14 @@ namespace JumpyWorld
 				return null;
 			}
 
-			// Generate trees
-			treeDecorator.room = room;
-			treeDecorator.Generate(seed: Random.Range(0, 65536));
-			treeDecorator.Draw(tileDrawer: tileDrawer);
 
-			// Generate treasure
-			coinPlacer.room = room;
-			coinPlacer.Generate (seed: Random.Range(0, 65536));
-			coinPlacer.Draw (tileDrawer: tileDrawer);
+            foreach (RandomPlacerForRoom g in generators)
+            {
+                g.room = room;
+                g.Generate(seed: Random.Range(0, 65536));
+                g.Draw(tileDrawer: tileDrawer);
+            }
 
-
-            // Generate portal, if needed
-            portalGenerator.room = room;
-            portalGenerator.Generate(seed: Random.Range(0, 65536));
-            portalGenerator.Draw(tileDrawer: tileDrawer);
 
             return room;
         }

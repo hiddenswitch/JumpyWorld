@@ -17,7 +17,7 @@ namespace JumpyWorld
 		public int count;
 		public LifetimeTypes lifetime = LifetimeTypes.PerRun;
 		// Use this for initialization
-		void Start ()
+		public void Start ()
 		{
 			if (lifetime == LifetimeTypes.PerUser) {
 				count = PlayerPrefs.GetInt (collectibleSavePrefix + collectibleTag);
@@ -38,7 +38,14 @@ namespace JumpyWorld
             }
         }
 
-		void OnObjectDied (GameObject sender)
+        public void decrement (int amount)
+        {
+            count -= amount;
+            PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, count);
+
+        }
+
+        void OnObjectDied (GameObject sender)
 		{
 			Reset ();
 		}
