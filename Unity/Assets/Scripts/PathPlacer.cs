@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace JumpyWorld
 {
 	public class PathPlacer : Generator {
-		public int seed;
 		public Floor room;
 		public float height = 1f;
 		public float step = 1f;
