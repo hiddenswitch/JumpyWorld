@@ -39,6 +39,8 @@ namespace JumpyWorld
 		[Header("Decorations")]
 		public RandomPlacerForRoom treeDecorator;
 
+        public IslandDepthPlacer depthGenerator;
+
 		[Header("Treasure")]
 		public RandomPlacerForRoom coinPlacer;
 
@@ -220,7 +222,10 @@ namespace JumpyWorld
             portalGenerator.Generate(seed: Random.Range(0, 65536));
             portalGenerator.Draw(tileDrawer: tileDrawer);
 
-
+            //Generate terrain depth
+            depthGenerator.room = room;
+            depthGenerator.Generate(seed: Random.Range(0, 65536));
+            depthGenerator.Draw(tileDrawer: tileDrawer);
 
             return room;
         }
