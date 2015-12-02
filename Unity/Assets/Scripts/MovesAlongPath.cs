@@ -24,6 +24,7 @@ namespace JumpyWorld
 		private int pathIndex = -1;
 		private float arrivedThreshold;
 		private float height;
+		public float offset = 0f;
 
 		// Use this for initialization
 		void Start ()
@@ -32,7 +33,6 @@ namespace JumpyWorld
 
 		private void DelayedStart ()
 		{
-
 			// check that speed is positive
 			if (speed <= 0) {
 				enabled = false;
@@ -47,7 +47,6 @@ namespace JumpyWorld
 
 			// check if path is rectilinear
 			for (var i = 0; i < path.Length - 1; i++) {
-				Debug.Log (path [i]);
 				var p0 = path [i];
 				var p1 = path [i + 1];
 				if (!isXZRectilinearLine (p0, p1)) {
@@ -58,10 +57,10 @@ namespace JumpyWorld
 			
 			this.rigidbody = this.GetComponent<Rigidbody> ();
 			arrivedThreshold = speed / 2 * Time.fixedDeltaTime;
-			height = transform.position.y;
+			height = transform.position.y + offset;
 			if (shouldTeleportToStartOfPath) {
 				pathIndex = 0;
-				transform.position = new Vector3 (path [0].x, transform.position.y, path [0].z);
+				transform.position = new Vector3 (path [0].x, height, path [0].z);
 			} else {
 				// check that the starting position is rectilinear to the starting path position
 				if (!isXZRectilinearLine (transform.position, path [0])) {
@@ -69,10 +68,14 @@ namespace JumpyWorld
 				}
 			}
 			transform.forward = xzCalculateForward (transform.position, path [0]);
+
 		}
 
 		void FixedUpdate ()
 		{
+			if (path.Length < 2) {
+				return;
+			}
 			var currentPosition = transform.position;
 			var nextPosition = path [(pathIndex + 1) % (path.Length - 1)];
 			var hasArrived = xzDistance (currentPosition, nextPosition) < arrivedThreshold;

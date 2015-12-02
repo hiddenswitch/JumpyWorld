@@ -5,23 +5,18 @@ using System.Collections.Generic;
 namespace JumpyWorld
 {
 	public class PathPlacer : Generator {
-
+		public int seed;
 		public Floor room;
 		public float height = 1f;
 		public float step = 1f;
-		public int numMosters; // for now assume numMosters = 1
+		// for now assume numMosters = 1
+		public int numMosters = 1;
 		public GameObject pathablePrefab;
 
 		public override void Generate (int seed)
 		{
 			base.Generate (seed);
 		}
-
-		/*public void Start ()
-		{
-			List<Rect> a = (Split (new Rect (0, 0, 10, 10), new Vector2 (3, 3), 9));
-			Debug.Log (a.Count);
-		}*/
 
 		public override void Draw (TileDrawer tileDrawer=null, TilePool tilePool=null)
 		{
@@ -44,6 +39,9 @@ namespace JumpyWorld
 				var movesAlongPath = ghost.GetComponent<MovesAlongPath>();
 				movesAlongPath.path = path.ToArray ();
 				movesAlongPath.shouldTeleportToStartOfPath = true;
+
+				// for now hard codes
+				movesAlongPath.offset = .5f;
 				ghost.BroadcastMessage ("DelayedStart");
 			}
 		}
@@ -56,12 +54,13 @@ namespace JumpyWorld
 		}
 
 		Rect[] partitionRect(Rect rect, int numPartitions) {
-			Rect[] partitions = new Rect[numPartitions];
+			/*Rect[] partitions = new Rect[numPartitions];
 			// Later: do something cute here that actually partitions the room....
 			for (var i = 0; i < numPartitions; i++) {
 				// fix
 				partitions[i] = rect;
-			}
+			}*/
+			Rect[] partitions = Split (rect, new Vector2 (3, 3), numPartitions).ToArray();
 			return partitions;
 		}
 
