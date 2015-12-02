@@ -23,20 +23,28 @@ namespace JumpyWorld
 			var oldSeed = Random.seed;
 			Random.seed = seed;
 
-			path = createPath (bounds, height, minLength, maxLength);
+			path = CreatePath (bounds, height, minLength, maxLength);
 
-			//Debug.Log (pathSource);
 			if (pathSource != null) {
 				pathSource.value = path.ToArray ();
 			}
 
 			this.gameObject.BroadcastMessage ("DelayedStart");
-			//Debug.Log (pathSource.value);
 
 			Random.seed = oldSeed;
 		}
 
-		public static List<Vector3> createPath(Rect rectangle, float height, int lengthLB, int lengthUB) {
+		/// <summary>
+		/// Creates a path of length between lengthLB and lengthUB in the 
+		/// bounds of the rectangle at a y height of height
+		/// </summary>
+		/// <returns>The path.</returns>
+		/// <param name="rectangle">Rectangle.</param>
+		/// <param name="height">Height.</param>
+		/// <param name="lengthLB">Length L.</param>
+		/// <param name="lengthUB">Length U.</param>
+		public static List<Vector3> CreatePath (Rect rectangle, float height, int lengthLB, int lengthUB)
+		{
 			int stepsLeft = lengthUB;
 			Vector3 start;
 			Vector3 currentPt;
@@ -64,19 +72,19 @@ namespace JumpyWorld
 			while (stepsLeft > lengthUB - lengthLB) {
 				nextPt = PickNextPoint (stepsLeft, generatedPath, lengthUB, rectangle);
 				generatedPath.Add (nextPt);
-				stepsLeft -= XZEuclideanDistance(currentPt, nextPt);
+				stepsLeft -= XZEuclideanDistance (currentPt, nextPt);
 				currentPt = nextPt;
 			}
 			
 			// close the path
 			if (currentPt != start) {
-				Vector3 lastDirection = (generatedPath[generatedPath.Count - 2] - currentPt).normalized;
+				Vector3 lastDirection = (generatedPath [generatedPath.Count - 2] - currentPt).normalized;
 				if ((lastDirection == Vector3.left || lastDirection == Vector3.right) && currentPt.z != start.z) {
 					generatedPath.Add (new Vector3 (currentPt.x, height, start.z));
-				} else if ((lastDirection == Vector3.up || lastDirection == Vector3.down) && currentPt.x != start.x){
+				} else if ((lastDirection == Vector3.forward || lastDirection == Vector3.back) && currentPt.x != start.x) {
 					generatedPath.Add (new Vector3 (start.x, height, currentPt.z));
 				}
-				if(generatedPath[generatedPath.Count -1] != start){
+				if (generatedPath [generatedPath.Count - 1] != start) {
 					generatedPath.Add (start);
 				}
 			}
@@ -84,24 +92,38 @@ namespace JumpyWorld
 			return generatedPath;
 		}
 
-		// picking the next point for generatedPath, where stepsLeft is the number of steps left
-		// lengthUB is the upper bound on the length of the path, and rectangle is the bounds of the path
+		/// <summary>
+		/// Helper function that picks the next point for generatedPath
+		/// </summary>
+		/// <returns>The next point.</returns>
+		/// <param name="stepsLeft">Steps left.</param>
+		/// <param name="generatedPath">Generated path.</param>
+		/// <param name="lengthUB">Length U.</param>
+		/// <param name="rectangle">Rectangle.</param>
 		static Vector3 PickNextPoint (int stepsLeft, List<Vector3> generatedPath, int lengthUB, Rect rectangle)
 		{
 			Vector3 currentPt = generatedPath [generatedPath.Count - 1];
 			Vector3 lastDirection = Vector3.zero;
 			if (generatedPath.Count > 1) {
-				lastDirection = (generatedPath[generatedPath.Count - 2] - currentPt).normalized;
+				lastDirection = (generatedPath [generatedPath.Count - 2] - currentPt).normalized;
 			} 
-			List<Vector3> allPossibleNext = GetAllPossibleNext (currentPt, stepsLeft, generatedPath[0], lastDirection, lengthUB, rectangle);
+			List<Vector3> allPossibleNext = GetAllPossibleNext (currentPt, stepsLeft, generatedPath [0], lastDirection, lengthUB, rectangle);
 			Vector3 randomNext = allPossibleNext [Random.Range (0, allPossibleNext.Count - 1)];
 			return randomNext;
 		}
 
 
-		// gets all points that point can got to and back to start when stepsLeft is the
-		// number of steps it can take max, lastDirection is the last direction of the path, 
-		// lengthUB is the UB on the entire path, and bounds is the bounds of the path
+		/// <summary>
+		/// Helper function that calculates all possible next points starting at point,
+		/// ensuring that the next point makes it possible to reach start in stepsLeft
+		/// </summary>
+		/// <returns>All poissible next points.</returns>
+		/// <param name="point">Point.</param>
+		/// <param name="stepsLeft">Steps left.</param>
+		/// <param name="start">Start.</param>
+		/// <param name="lastDirection">Last direction.</param>
+		/// <param name="lengthUB">Length U.</param>
+		/// <param name="bounds">Bounds.</param>
 		static List<Vector3> GetAllPossibleNext (Vector3 point, int stepsLeft, Vector3 start, Vector3 lastDirection, int lengthUB, Rect bounds)
 		{
 			Vector3[] directions = {
@@ -118,8 +140,8 @@ namespace JumpyWorld
 					while (!noMoreSteps) {
 						Vector3 potentialStep = direction * stepSize + point;
 						if (XZEuclideanDistance (potentialStep, start) > stepsLeft || 
-							!inBounds (potentialStep, bounds) ||
-						    (point - potentialStep).magnitude > lengthUB / 4) {
+							!InBounds (potentialStep, bounds) ||
+							(point - potentialStep).magnitude > lengthUB / 4) {
 							noMoreSteps = true;
 						} else {
 							stepSize += 1;
@@ -131,13 +153,23 @@ namespace JumpyWorld
 			return possibleNexts;
 		}
 
-		// check if the point is in bounds
-		static bool inBounds (Vector3 point, Rect bounds)
+		/// <summary>
+		/// Checks if point is in bounds
+		/// </summary>
+		/// <returns><c>true</c>, if point in bounds, <c>false</c> otherwise.</returns>
+		/// <param name="point">Point.</param>
+		/// <param name="bounds">Bounds.</param>
+		static bool InBounds (Vector3 point, Rect bounds)
 		{
 			return (bounds.xMin <= point.x) && (point.x <= bounds.xMax) && (bounds.yMin <= point.z) && (point.z <= bounds.yMax);
 		}
 
-		// get the Euclidean distance in the XZ plane from a to b
+		/// <summary>
+		/// Calculates the XZ Euclidean distance between a and b
+		/// </summary>
+		/// <returns>The euclidean distance.</returns>
+		/// <param name="a">The alpha component.</param>
+		/// <param name="b">The blue component.</param>
 		static int XZEuclideanDistance (Vector3 a, Vector3 b)
 		{
 			int xDist = (int)Mathf.Abs (a.x - b.x);
