@@ -22,13 +22,15 @@ namespace JumpyWorld
 		{
 			bool enabled = true;
 
-			if (Mathf.FloorToInt (floor.size.width / minSizeOfSplit.x) * Mathf.FloorToInt (floor.size.height / minSizeOfSplit.y) < numMonsters) {
+			Rect[] miniRects = PartitionRect (floor.size, numMonsters);
+
+			if (miniRects.Length < numMonsters) {
 				enabled = false;
 				Debug.LogError ("You have too many monsters on the floor");
 			}
 
 			if (enabled) {
-				Rect[] miniRects = PartitionRect (floor.size, numMonsters);
+
 				List<Vector3> path;
 				for (var i = 0; i < numMonsters; i++) {
 					int[] minAndMax = GenerateMinAndMaxForRect (miniRects [i]);

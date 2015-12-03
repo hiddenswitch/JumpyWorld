@@ -227,11 +227,10 @@ MonoBehaviour:
   seed: 1
   anchors: []
   generateOnStart: 1
-  seed: 0
-  room: {fileID: 1279893120}
+  floor: {fileID: 1279893120}
   height: 1
   step: 1
-  numMosters: 2
+  numMonsters: 1
   pathablePrefab: {fileID: 169078, guid: 0037431c1d956479085ac0a933936da3, type: 2}
 --- !u!1 &1519904746
 GameObject:
