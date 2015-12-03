@@ -25,6 +25,8 @@ namespace JumpyWorld
 		private float arrivedThreshold;
 		private float height;
 		public float offset = 0f;
+
+		private bool enabled = true;
 	
 		// Use this for initialization
 		void Start ()
@@ -33,8 +35,6 @@ namespace JumpyWorld
 
 		private void DelayedStart ()
 		{
-			bool enabled = true;
-
 			// check that speed is positive
 			if (speed <= 0) {
 				enabled = false;
@@ -77,21 +77,23 @@ namespace JumpyWorld
 
 		void FixedUpdate ()
 		{
-			if (path.Length < 2) {
-				return;
+			if (enabled) {
+				if (path.Length < 2) {
+					return;
+				}
+				var currentPosition = transform.position;
+				var nextPosition = path [(pathIndex + 1) % (path.Length - 1)];
+				var hasArrived = XZDistance (currentPosition, nextPosition) < arrivedThreshold;
+				if (hasArrived) {
+					// move to the nextPosition, update forward direction
+					transform.position = new Vector3 (nextPosition.x, transform.position.y, nextPosition.z);
+					pathIndex = (pathIndex + 1) % (path.Length - 1);
+				} 
+				transform.forward = XZCalculateForward (currentPosition, path [(pathIndex + 1) % (path.Length - 1)]);
+				// move the character forward
+				var velocity = transform.forward * speed;
+				rigidbody.velocity = velocity;
 			}
-			var currentPosition = transform.position;
-			var nextPosition = path [(pathIndex + 1) % (path.Length - 1)];
-			var hasArrived = XZDistance (currentPosition, nextPosition) < arrivedThreshold;
-			if (hasArrived) {
-				// move to the nextPosition, update forward direction
-				transform.position = new Vector3 (nextPosition.x, transform.position.y, nextPosition.z);
-				pathIndex = (pathIndex + 1) % (path.Length - 1);
-			} 
-			transform.forward = XZCalculateForward (currentPosition, path [(pathIndex + 1) % (path.Length - 1)]);
-			// move the character forward
-			var velocity = transform.forward * speed;
-			rigidbody.velocity = velocity;
 		}
 
 		/// <summary>
