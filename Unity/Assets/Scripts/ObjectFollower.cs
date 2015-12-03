@@ -11,14 +11,6 @@ namespace JumpyWorld
 		public int rotationSpeed = 1;
 		public Floor floor;
 		public float stop = 0f;
-
-
-		// Use this for initialization
-		void Start ()
-		{
-			// for testing purposes only!
-			target.gameObject.BroadcastMessage ("DelayedStart");
-		}
 		
 		// Update is called once per frame
 		// copied and modified from http://answers.unity3d.com/questions/26177/how-to-create-a-basic-follow-ai.html
