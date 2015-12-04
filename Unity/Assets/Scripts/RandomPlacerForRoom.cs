@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class RandomPlacerForRoom : Generator
+	public class RandomPlacerForRoom : Generator, IForFloor
 	{
 		public Floor room;
 		public AnimationCurve xDensity;
@@ -22,6 +22,15 @@ namespace JumpyWorld
 				if (random < xz) {
 					tileDrawer.DrawTerrain (prefab: tilePool.decorative [Random.Range (0, tilePool.decorative.Length - 1)], at: point.position);
 				}
+			}
+		}
+
+		Floor IForFloor.floor {
+			get {
+				return this.room;
+			}
+			set {
+				this.room = value;
 			}
 		}
 	}

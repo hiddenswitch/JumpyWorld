@@ -37,7 +37,7 @@ namespace JumpyWorld
 		public AnimationCurve hallwayTurbulenceDistribution;
 
         [Header("Generators")]
-        public List<RandomPlacerForRoom> generators;
+        public List<Generator> generators;
 
 
 		[Header("Walls")]
@@ -213,9 +213,15 @@ namespace JumpyWorld
 			}
 
 
-            foreach (RandomPlacerForRoom g in generators)
+            foreach (var g in generators)
             {
-                g.room = room;
+				var roomConfigurable = (IForFloor)g;
+				if (roomConfigurable != null) {
+					roomConfigurable.floor = room;
+				}
+				if (g.tilePool == null) {
+					g.tilePool = this.tilePool;
+				}
                 g.Generate(seed: Random.Range(0, 65536));
                 g.Draw(tileDrawer: tileDrawer);
             }
