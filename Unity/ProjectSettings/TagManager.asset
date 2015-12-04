@@ -8,7 +8,10 @@ TagManager:
   - FxTemporaire
   - coin
   - Portal
+  - Axe
   - Ghost
+  - Tree
+  - Hammer
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ namespace JumpyWorld
         public GameObject roomPrefab;
         public GameObject hallwayPrefab;
 
+
         public Floor startRoom;
         public int iterations;
 
@@ -35,14 +36,18 @@ namespace JumpyWorld
 		public float newHallwayProbability;
 		public AnimationCurve hallwayTurbulenceDistribution;
 
-		[Header("Decorations")]
-		public RandomPlacerForRoom treeDecorator;
+        [Header("Generators")]
+        public List<RandomPlacerForRoom> generators;
 
-		[Header("Treasure")]
-		public RandomPlacerForRoom coinPlacer;
 
-        [Header("Portal")]
-        public RandomPlacerForRoom portalGenerator;
+		[Header("Walls")]
+		/// <summary>
+		/// What is the probability that a room will have walls as a function
+		/// of how far away from the center it is?
+		/// </summary>
+		public AnimationCurve wallProbability;
+
+		List<Floor> floors = new List<Floor>();
 
         private class WorldBuilderInfo
         {
@@ -57,14 +62,18 @@ namespace JumpyWorld
 		// Use this for initialization
 		public void Start ()
 		{
+
 			CreateNewGeneratorParent ();
             var oldSeed = Random.seed;
             Random.seed = seed;
             List<WorldBuilderInfo> pendingInfos = new List<WorldBuilderInfo>();
+			floors.Clear();
 
 
 
             startRoom.Build();
+
+			floors.Add(startRoom);
 
 			foreach (Anchor anchor in startRoom.anchors) {
 				pendingInfos.Add (new WorldBuilderInfo(anchor, null));
@@ -95,10 +104,9 @@ namespace JumpyWorld
 							y -= Random.Range(1, h - 1);// * (int) anchor.directions.ToVector().x;
 						}
 						
-						Floor newRoom = GenerateRoom(new Rect(x, y, w, h));
-						
+						Floor newRoom = GenerateFloor(new Rect(x, y, w, h));
 						if (newRoom != null){
-							
+							floors.Add(newRoom);	
 							foreach (Anchor newAnchor in newRoom.anchors)
 							{
 
@@ -163,6 +171,8 @@ namespace JumpyWorld
 				}
 			}
 
+			AddWalls();
+
             Random.seed = oldSeed;
         }
 	
@@ -183,7 +193,7 @@ namespace JumpyWorld
             return angleCheck && distanceCheck && parentCheck;
         }
 
-        Floor GenerateRoom (Rect options)
+        Floor GenerateFloor (Rect options)
         {
             GameObject roomObj = Instantiate(roomPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 			roomObj.transform.SetParent(generatorParent.transform);
@@ -202,26 +212,37 @@ namespace JumpyWorld
 				return null;
 			}
 
-			// Generate trees
-			treeDecorator.room = room;
-			treeDecorator.Generate(seed: Random.Range(0, 65536));
-			treeDecorator.Draw(tileDrawer: tileDrawer);
 
-			// Generate treasure
-			coinPlacer.room = room;
-			coinPlacer.Generate (seed: Random.Range(0, 65536));
-			coinPlacer.Draw (tileDrawer: tileDrawer);
-
-
-            // Generate portal, if needed
-            portalGenerator.room = room;
-            portalGenerator.Generate(seed: Random.Range(0, 65536));
-            portalGenerator.Draw(tileDrawer: tileDrawer);
-
+            foreach (RandomPlacerForRoom g in generators)
+            {
+                g.room = room;
+                g.Generate(seed: Random.Range(0, 65536));
+                g.Draw(tileDrawer: tileDrawer);
+            }
 
 
             return room;
         }
+
+		void AddWalls() {
+			foreach (var floor in floors) {
+				var shouldPlaceWalls = Random.value <= wallProbability.Evaluate(floor.BoundsGrid.center.magnitude);
+
+				if (!shouldPlaceWalls) {
+					continue;
+				}
+
+				var walls = floor.gameObject.AddComponent<WallsForRoom>();
+				walls.height = 1f;
+				walls.room = floor;
+				walls.openingsForDoors = true;
+				walls.seed = Random.Range(0, 65536);
+				walls.tilePool = tilePool;
+				walls.tileDrawer = tileDrawer;
+				walls.Generate(seed: walls.seed);
+				walls.Draw(tileDrawer:tileDrawer, tilePool:tilePool);
+			}
+		}
 
 
         Hallway GenerateHallway(Vector3 startPoint, Vector3 endPoint, bool ignoreCollision=false)

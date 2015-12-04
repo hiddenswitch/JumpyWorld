@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using JumpyWorld;
 
-namespace JumpyWorld
+namespace JumpyWorld.UI
 {
 	public class RenderCollects : MonoBehaviour
 	{

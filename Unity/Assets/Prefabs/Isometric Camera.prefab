@@ -48,7 +48,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: 150}
   m_LocalScale: {x: 19.1898766, y: 19.1898689, z: 19.1898689}
   m_Children: []
   m_Father: {fileID: 495646}
@@ -60,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160434}
   m_LocalRotation: {x: .353553414, y: .353553414, z: -.14644663, w: .853553355}
-  m_LocalPosition: {x: -13, y: 20, z: -13}
+  m_LocalPosition: {x: -13, y: 29, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 481174}
@@ -83,7 +83,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .100000001
-  far clip plane: 100
+  far clip plane: 200
   field of view: 80
   orthographic: 1
   orthographic size: 9.55000019
@@ -118,7 +118,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -170,9 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothTime: .300000012
-  difference: {x: 0, y: 0, z: 0}
+  automaticallySetDifference: 0
+  difference: {x: -13, y: 19, z: -13}
   velocity: {x: 0, y: 0, z: 0}
-  needsStart: 1
 --- !u!114 &11420774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,17 +206,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: .852999985
-  intensity: 1.74800003
-  blurSize: 2.36999989
-  blurIterations: 2
+  threshold: .25
+  intensity: .75
+  blurSize: 1
+  blurIterations: 1
   blurType: 0
-  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+  fastBloomShader: {fileID: 0}
 --- !u!124 &12468082
 Behaviour:
   m_ObjectHideFlags: 1

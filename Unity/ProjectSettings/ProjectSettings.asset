@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  AndroidProfiler: 0
+  AndroidProfiler: 1
   defaultScreenOrientation: 4
   targetDevice: 2
   targetResolution: 3
@@ -33,7 +33,7 @@ PlayerSettings:
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
   allowedAutorotateToLandscapeRight: 1
-  allowedAutorotateToLandscapeLeft: 1
+  allowedAutorotateToLandscapeLeft: 0
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   disableDepthAndStencilBuffers: 0
@@ -94,7 +94,7 @@ PlayerSettings:
   virtualRealitySupported: 0
   productGUID: 014ed2cddd283434e997409f55578261
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 14
+  AndroidMinSdkVersion: 15
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -115,6 +115,7 @@ PlayerSettings:
   iPhoneTargetOSVersion: 22
   uIPrerenderedIcon: 0
   uIRequiresPersistentWiFi: 0
+  uIRequiresFullScreen: 1
   uIStatusBarHidden: 1
   uIExitOnSuspend: 0
   uIStatusBarStyle: 0
@@ -165,8 +166,8 @@ PlayerSettings:
     m_Icons:
     - serializedVersion: 2
       m_Icon: {fileID: 2800000, guid: 54f01c5bb1ed44f6ba6865c3e4766e23, type: 3}
-      m_Width: 128
-      m_Height: 128
+      m_Width: 15
+      m_Height: 15
   m_BuildTargetBatching:
   - m_BuildTarget: Web
     m_StaticBatching: 1
@@ -265,6 +266,8 @@ PlayerSettings:
   ps4ReprojectionSupport: 0
   ps4UseAudio3dBackend: 0
   ps4Audio3dVirtualSpeakerCount: 14
+  ps4attribCpuUsage: 0
+  ps4SocialScreenEnabled: 0
   ps4attribUserManagement: 0
   ps4attribMoveSupport: 0
   ps4attrib3DSupport: 0
