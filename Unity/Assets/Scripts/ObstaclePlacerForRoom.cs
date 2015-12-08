@@ -15,7 +15,7 @@ namespace JumpyWorld
 	public class ObstaclePlacerForRoom : ObstacleGenerator
 	{
 		[BitMaskAttribute(typeof(ObstaclePattern))]
-		public ObstaclePattern obstaclePattern = ObstaclePattern.CenterCross;
+		public ObstaclePattern obstaclePattern = ObstaclePattern.None;
 
 		public float step = 1f;
 
@@ -24,6 +24,9 @@ namespace JumpyWorld
 		public int diagonalsRadius = 6;
 		public int diagonalCenterClearingRadius = 2;
 		public int cornerExtent = 4;
+		public Directions stripeAxis = Directions.North;
+		public int stripeSpacing = 2;
+		public int stripeDistanceFromBorders = 3;
 
 		public override void Generate (int seed)
 		{
@@ -85,6 +88,38 @@ namespace JumpyWorld
 							tile = tilePool.defaultGround
 						});
 
+					}
+
+				}
+
+				if ((obstaclePattern & ObstaclePattern.Stripes) == ObstaclePattern.Stripes) {
+
+					var positionIndex = 0; // x
+					if (stripeAxis == Directions.East
+						|| stripeAxis == Directions.West) {
+						positionIndex = 2; // z
+					}
+
+					// Is the current point that we're about to add on a stripe?
+					var isOnStripe = point.position[positionIndex] % (stripeSpacing) == 0;
+
+					var minDistanceToBorder = Mathf.Min(point.distanceFromBorders[0],
+														point.distanceFromBorders[1],
+														point.distanceFromBorders[2],
+														point.distanceFromBorders[3]);
+
+
+						//						point.distanceFromBorders[0], min(
+//												point.distanceFromBorders[1], min(
+//													point.distanceFromBorders[2], 
+//														point.distanceFromBorders[3])));
+//					Debug.Log(minDistanceToBorder, stripeDistanceFromBorders);
+					if (isOnStripe &&
+						minDistanceToBorder >= stripeDistanceFromBorders) {
+						obstacles.Add (new Obstacle() {
+							position = point.position,
+							tile = tilePool.defaultGround
+						});
 					}
 
 				}

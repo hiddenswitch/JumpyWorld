@@ -8,25 +8,25 @@ SceneSettings:
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
     smallestOccluder: 5
-    smallestHole: .25
+    smallestHole: 0.25
     backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Fog: 0
-  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: .00999999978
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .211999997, g: .226999998, b: .259000003, a: 1}
-  m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
-  m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: .5
+  m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -40,7 +40,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 5
+  serializedVersion: 6
   m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
@@ -66,7 +66,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightmapSnapshot: {fileID: 0}
+  m_LightingDataAsset: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -74,15 +74,15 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .5
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: .400000006
+    agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .166666672
+    cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &124347935
@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &124347936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   room: {fileID: 124347940}
   height: 1
   holePattern: 6
-  holeProbability: .25
+  holeProbability: 0.25
   checkerSpacing: 3
   centerThresholdNorthSouth: 6
   centerThresholdEastWest: 6
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -177,6 +178,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &124347940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &159959801
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &159959802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -281,6 +284,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &159959805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +319,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &159959807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +339,7 @@ MonoBehaviour:
   room: {fileID: 159959805}
   height: 1
   holePattern: 4
-  holeProbability: .25
+  holeProbability: 0.25
   checkerSpacing: 3
   centerThresholdNorthSouth: 3
   centerThresholdEastWest: 8
@@ -364,7 +368,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: 1, g: .956862748, b: .839215696, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -373,8 +377,9 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -393,12 +398,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341296017}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &486887177
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &486887178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +442,7 @@ MonoBehaviour:
   room: {fileID: 486887181}
   height: 1
   wallsForSides: 11
+  openingsForDoors: 1
 --- !u!114 &486887179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -468,6 +475,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &486887181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +510,122 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
+--- !u!1 &620595283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 620595288}
+  - 114: {fileID: 620595287}
+  - 114: {fileID: 620595286}
+  - 114: {fileID: 620595285}
+  - 114: {fileID: 620595284}
+  m_Layer: 0
+  m_Name: Should have geometric obstacles (corner edges)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &620595284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 620595283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c433ed112dc4d5ab22432662cdc5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 620595286}
+  tilePool: {fileID: 620595285}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 620595287}
+  height: 1
+  obstaclePattern: 1
+  step: 1
+  crossRadius: 0
+  crossCenterClearingRadius: 0
+  diagonalsRadius: 0
+  diagonalCenterClearingRadius: 0
+  cornerExtent: 3
+  stripeAxis: 1
+  stripeSpacing: 2
+  stripeDistanceFromBorders: 3
+--- !u!114 &620595285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 620595283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
+  decorative: []
+--- !u!114 &620595286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 620595283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 999999
+  parent: {fileID: 620595288}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isDrawingTiles: 0
+--- !u!114 &620595287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 620595283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 620595286}
+  tilePool: {fileID: 620595285}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 25
+    y: 40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &620595288
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 620595283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1 &806655338
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +639,7 @@ GameObject:
   - 114: {fileID: 806655340}
   - 114: {fileID: 806655339}
   m_Layer: 0
-  m_Name: Should have geometric obstacles
+  m_Name: Should have geometric obstacles (mix)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,6 +670,9 @@ MonoBehaviour:
   diagonalsRadius: 9
   diagonalCenterClearingRadius: 5
   cornerExtent: 6
+  stripeAxis: 1
+  stripeSpacing: 2
+  stripeDistanceFromBorders: 3
 --- !u!114 &806655340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -578,6 +705,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &806655342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +740,122 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
+--- !u!1 &884680027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 884680032}
+  - 114: {fileID: 884680031}
+  - 114: {fileID: 884680030}
+  - 114: {fileID: 884680029}
+  - 114: {fileID: 884680028}
+  m_Layer: 0
+  m_Name: Should have geometric obstacles (stripes)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &884680028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884680027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c433ed112dc4d5ab22432662cdc5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 884680030}
+  tilePool: {fileID: 884680029}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 884680031}
+  height: 1
+  obstaclePattern: 8
+  step: 1
+  crossRadius: 0
+  crossCenterClearingRadius: 0
+  diagonalsRadius: 8
+  diagonalCenterClearingRadius: 1
+  cornerExtent: 0
+  stripeAxis: 2
+  stripeSpacing: 4
+  stripeDistanceFromBorders: 3
+--- !u!114 &884680029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884680027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
+  decorative: []
+--- !u!114 &884680030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884680027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 999999
+  parent: {fileID: 884680032}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isDrawingTiles: 0
+--- !u!114 &884680031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884680027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 884680030}
+  tilePool: {fileID: 884680029}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 100
+    y: 40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &884680032
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884680027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &915718671
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &915718672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +909,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &915718674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -698,6 +942,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &915718676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,6 +962,121 @@ MonoBehaviour:
   room: {fileID: 915718672}
   height: 1
   side: 4
+--- !u!1 &943371501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 943371506}
+  - 114: {fileID: 943371505}
+  - 114: {fileID: 943371504}
+  - 114: {fileID: 943371503}
+  - 114: {fileID: 943371502}
+  m_Layer: 0
+  m_Name: Should have geometric obstacles (random)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &943371502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943371501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c433ed112dc4d5ab22432662cdc5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 943371504}
+  tilePool: {fileID: 943371503}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 943371505}
+  height: 1
+  obstaclePattern: 8
+  step: 1
+  crossRadius: 0
+  crossCenterClearingRadius: 0
+  diagonalsRadius: 8
+  diagonalCenterClearingRadius: 1
+  cornerExtent: 0
+  stripeAxis: 2
+  stripeSpacing: 4
+  stripeDistanceFromBorders: 3
+--- !u!114 &943371503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943371501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
+  decorative: []
+--- !u!114 &943371504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943371501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 999999
+  parent: {fileID: 943371506}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isDrawingTiles: 0
+--- !u!114 &943371505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943371501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 943371504}
+  tilePool: {fileID: 943371503}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 125
+    y: 40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &943371506
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943371501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &1010917325
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1010917326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +1116,7 @@ MonoBehaviour:
   room: {fileID: 1010917329}
   height: 1
   holePattern: 1
-  holeProbability: .25
+  holeProbability: 0.25
   checkerSpacing: 3
   centerThresholdNorthSouth: 3
   centerThresholdEastWest: 5
@@ -772,6 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -791,6 +1152,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &1010917329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +1187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!114 &1010917332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +1206,121 @@ MonoBehaviour:
   generateOnStart: 1
   room: {fileID: 1010917329}
   height: 1
+--- !u!1 &1242449693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1242449698}
+  - 114: {fileID: 1242449697}
+  - 114: {fileID: 1242449696}
+  - 114: {fileID: 1242449695}
+  - 114: {fileID: 1242449694}
+  m_Layer: 0
+  m_Name: Should have geometric obstacles (diagonals)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1242449694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242449693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c433ed112dc4d5ab22432662cdc5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1242449696}
+  tilePool: {fileID: 1242449695}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1242449697}
+  height: 1
+  obstaclePattern: 4
+  step: 1
+  crossRadius: 0
+  crossCenterClearingRadius: 0
+  diagonalsRadius: 8
+  diagonalCenterClearingRadius: 1
+  cornerExtent: 0
+  stripeAxis: 1
+  stripeSpacing: 2
+  stripeDistanceFromBorders: 3
+--- !u!114 &1242449695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242449693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
+  decorative: []
+--- !u!114 &1242449696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242449693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 999999
+  parent: {fileID: 1242449698}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isDrawingTiles: 0
+--- !u!114 &1242449697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242449693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1242449696}
+  tilePool: {fileID: 1242449695}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 75
+    y: 40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &1242449698
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242449693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &1280491224
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +1340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1280491225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,7 +1378,7 @@ MonoBehaviour:
   room: {fileID: 1280491229}
   height: 1
   holePattern: 2
-  holeProbability: .25
+  holeProbability: 0.25
   checkerSpacing: 2
   centerThresholdNorthSouth: 3
   centerThresholdEastWest: 5
@@ -917,6 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -936,6 +1414,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &1280491229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +1449,122 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
+--- !u!1 &1642475942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1642475947}
+  - 114: {fileID: 1642475946}
+  - 114: {fileID: 1642475945}
+  - 114: {fileID: 1642475944}
+  - 114: {fileID: 1642475943}
+  m_Layer: 0
+  m_Name: Should have geometric obstacles (center cross)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1642475943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642475942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c433ed112dc4d5ab22432662cdc5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1642475945}
+  tilePool: {fileID: 1642475944}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 1642475946}
+  height: 1
+  obstaclePattern: 2
+  step: 1
+  crossRadius: 6
+  crossCenterClearingRadius: 0
+  diagonalsRadius: 0
+  diagonalCenterClearingRadius: 0
+  cornerExtent: 0
+  stripeAxis: 1
+  stripeSpacing: 2
+  stripeDistanceFromBorders: 3
+--- !u!114 &1642475944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642475942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
+  decorative: []
+--- !u!114 &1642475945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642475942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 999999
+  parent: {fileID: 1642475947}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isDrawingTiles: 0
+--- !u!114 &1642475946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642475942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 1642475945}
+  tilePool: {fileID: 1642475944}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 50
+    y: 40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &1642475947
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642475942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &1778899385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,14 +1614,14 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -1043,7 +1637,7 @@ Camera:
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
+  m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
 --- !u!4 &1778899390
 Transform:
@@ -1056,7 +1650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1954165028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1954165029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,6 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  path: {fileID: 0}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
   monsterPlacer: {fileID: 0}
   decorative: []
@@ -1127,6 +1722,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  isDrawingTiles: 0
 --- !u!114 &1954165032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,7 +1757,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &1954165034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1777,7 @@ MonoBehaviour:
   room: {fileID: 1954165032}
   height: 1
   wallsForSides: 15
+  openingsForDoors: 1
 --- !u!114 &1954165035
 MonoBehaviour:
   m_ObjectHideFlags: 0
