@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &124347939
 MonoBehaviour:
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 99999
   parent: {fileID: 124347941}
   terrainLayer:
     serializedVersion: 2
@@ -210,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &159959801
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &159959804
 MonoBehaviour:
@@ -274,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 99999
   parent: {fileID: 159959806}
   terrainLayer:
     serializedVersion: 2
@@ -313,7 +315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &159959807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +398,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &486887177
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &486887180
 MonoBehaviour:
@@ -460,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 999999
   parent: {fileID: 486887182}
   terrainLayer:
     serializedVersion: 2
@@ -499,7 +502,117 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!1 &806655338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 806655343}
+  - 114: {fileID: 806655342}
+  - 114: {fileID: 806655341}
+  - 114: {fileID: 806655340}
+  - 114: {fileID: 806655339}
+  m_Layer: 0
+  m_Name: Should have geometric obstacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &806655339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 806655338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c433ed112dc4d5ab22432662cdc5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 806655341}
+  tilePool: {fileID: 806655340}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  room: {fileID: 806655342}
+  height: 1
+  obstaclePattern: 7
+  step: 1
+  crossRadius: 9
+  crossCenterClearingRadius: 2
+  diagonalsRadius: 9
+  diagonalCenterClearingRadius: 5
+  cornerExtent: 6
+--- !u!114 &806655340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 806655338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
+  defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
+  decorative: []
+--- !u!114 &806655341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 806655338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batchSize: 999999
+  parent: {fileID: 806655343}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &806655342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 806655338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30719e5319b314cb88fab9b60dd045cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 806655341}
+  tilePool: {fileID: 806655340}
+  seed: 0
+  anchors: []
+  generateOnStart: 1
+  size:
+    serializedVersion: 2
+    x: 0
+    y: 40
+    width: 20
+    height: 20
+  shouldGenerateAnchors: 1
+--- !u!4 &806655343
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 806655338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &915718671
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!114 &915718674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,6 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &915718675
 MonoBehaviour:
@@ -579,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 999999
   parent: {fileID: 915718673}
   terrainLayer:
     serializedVersion: 2
@@ -659,6 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &1010917328
 MonoBehaviour:
@@ -671,7 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 999999
   parent: {fileID: 1010917330}
   terrainLayer:
     serializedVersion: 2
@@ -710,7 +825,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &1010917332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,6 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &1280491228
 MonoBehaviour:
@@ -815,7 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 999999
   parent: {fileID: 1280491230}
   terrainLayer:
     serializedVersion: 2
@@ -854,7 +970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1778899385
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +1056,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &1954165028
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   defaultEmpty: {fileID: 136726, guid: 8d596108859bf0e4492c51a94f2e303c, type: 2}
+  monsterPlacer: {fileID: 0}
   decorative: []
 --- !u!114 &1954165031
 MonoBehaviour:
@@ -1005,7 +1122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 9999999
   parent: {fileID: 1954165033}
   terrainLayer:
     serializedVersion: 2
@@ -1044,7 +1161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &1954165034
 MonoBehaviour:
   m_ObjectHideFlags: 0

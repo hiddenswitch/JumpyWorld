@@ -9,6 +9,7 @@ namespace JumpyWorld
 
 		public GameObject defaultGround;
 		public GameObject defaultEmpty;
+		public GameObject monsterPlacer;
 		public GameObject[] decorative;
 
 		void Awake ()

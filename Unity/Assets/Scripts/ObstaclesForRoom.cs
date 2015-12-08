@@ -4,8 +4,12 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
+
+
 	public class ObstaclesForRoom : ObstacleGenerator
 	{
+
+
 		public Directions side = Directions.North;
 
 		public override void Generate (int seed)
