@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &190708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 482530}
+  - 114: {fileID: 11410430}
+  - 114: {fileID: 11454678}
+  m_Layer: 0
+  m_Name: CloudLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482530
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11410430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e013c328edaffc41bd24dd6df445724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 0}
+  moveRatio: -.200000003
+--- !u!114 &11454678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d135a0d69594a99a85110b39a8b37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 20
+  xzRegion:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 100
+    height: 100
+  cloudPrefabs:
+  - {fileID: 186396, guid: 0c79c1c357a484abdacade28ffbcea52, type: 2}
+  - {fileID: 141360, guid: 1667d2f44240540bf8f40ba923d5f902, type: 2}
+  - {fileID: 104864, guid: 07c1d3eac7ce346c793c2e9a85bd38aa, type: 2}
+  - {fileID: 191496, guid: ecfa468a4de0d4e47bf5f8bebe776e9d, type: 2}
+  - {fileID: 199984, guid: bbb00ef1cce9a4b50b5d99ee2e63ca80, type: 2}
+  - {fileID: 189216, guid: baf84f5d5a73448499a5be50c4de1f6c, type: 2}
+  - {fileID: 176952, guid: 78606b3ebf9bc441abdd013b97271249, type: 2}
+  - {fileID: 106780, guid: d5ee6b3ee3de54bcb9283149077a42ba, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 190708}
+  m_IsPrefabParent: 1

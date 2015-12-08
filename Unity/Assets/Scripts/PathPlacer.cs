@@ -4,12 +4,13 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class PathPlacer : Generator
+	public class PathPlacer : Generator, IForFloor
 	{
 		public Floor floor;
 		public float height = 1f;
 		public float step = 1f;
 		public int numMonsters = 1;
+		public float probability = 0.1f;
 		public GameObject pathablePrefab;
 		private Vector2 minSizeOfSplit = new Vector2 (3, 3);
 
@@ -21,7 +22,8 @@ namespace JumpyWorld
 		public override void Draw (TileDrawer tileDrawer=null, TilePool tilePool=null)
 		{
 			bool enabled = true;
-
+			tileDrawer = tileDrawer ?? this.tileDrawer;
+			tilePool = tilePool ?? this.tilePool;
 			Rect[] miniRects = PartitionRect (floor.size, numMonsters);
 
 			if (miniRects.Length < numMonsters) {
@@ -29,30 +31,35 @@ namespace JumpyWorld
 				Debug.LogError ("You have too many monsters on the floor");
 			}
 
-			if (enabled) {
+			var roll = Random.value;
+			if (roll > probability) {
+				enabled = false;
+			}
 
-				List<Vector3> path;
-				for (var i = 0; i < numMonsters; i++) {
-					int[] minAndMax = GenerateMinAndMaxForRect (miniRects [i]);
-					path = JumpyWorld.SetRandomPath.CreatePath (miniRects [i], height, minAndMax [0], minAndMax [1]);
-					// draw the path
-					for (var j = 0; j < path.Count; j++) {
-						if (j == path.Count - 1) {
-							DrawLine (tileDrawer, tilePool, path [j], path [0]);
-						} else {
-							DrawLine (tileDrawer, tilePool, path [j], path [j + 1]);
-						}
+			if (!enabled) {
+				return;
+			}
+			List<Vector3> path;
+			for (var i = 0; i < numMonsters; i++) {
+				int[] minAndMax = GenerateMinAndMaxForRect (miniRects [i]);
+				path = JumpyWorld.SetRandomPath.CreatePath (miniRects [i], height, minAndMax [0], minAndMax [1]);
+				// draw the path
+				for (var j = 0; j < path.Count; j++) {
+					if (j == path.Count - 1) {
+						DrawLine (tileDrawer, tilePool, path [j], path [0]);
+					} else {
+						DrawLine (tileDrawer, tilePool, path [j], path [j + 1]);
 					}
-
-					// instantiate ghost
-					var ghost = GameObject.Instantiate (pathablePrefab, Vector3.zero, Quaternion.identity) as GameObject;
-					var movesAlongPath = ghost.GetComponent<MovesAlongPath> ();
-					movesAlongPath.path = path.ToArray ();
-					movesAlongPath.shouldTeleportToStartOfPath = true;
-					// hard coded to lift ghost to play level
-					movesAlongPath.offset = .5f;
-					ghost.BroadcastMessage ("DelayedStart");
 				}
+
+				// instantiate ghost
+				var ghost = GameObject.Instantiate (pathablePrefab, Vector3.zero, Quaternion.identity) as GameObject;
+				var movesAlongPath = ghost.GetComponent<MovesAlongPath> ();
+				movesAlongPath.path = path.ToArray ();
+				movesAlongPath.shouldTeleportToStartOfPath = true;
+				// hard coded to lift ghost to play level
+				movesAlongPath.offset = .5f;
+				ghost.BroadcastMessage ("DelayedStart");
 			}
 		}
 
@@ -113,8 +120,9 @@ namespace JumpyWorld
 					result.Add (R1);
 					result.Add (R2);
 					return result;
-				} else
+				} else {
 					return null;
+				}
 			} else {
 				if (aSource.height > aMinSize.y * 2) {
 					float range = (aSource.height - aMinSize.y * 2);
@@ -127,8 +135,9 @@ namespace JumpyWorld
 					result.Add (R1);
 					result.Add (R2);
 					return result;
-				} else
+				} else {
 					return null;
+				}
 			}
 		}
 
@@ -154,6 +163,15 @@ namespace JumpyWorld
 			} else 
 				result.Add (aSource);
 			return result;
+		}
+
+		Floor IForFloor.floor {
+			get {
+				return this.floor;
+			}
+			set {
+				this.floor = value;
+			}
 		}
 	}
 }

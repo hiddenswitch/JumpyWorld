@@ -11,7 +11,7 @@ namespace JumpyWorld
 		public Vector3 scale;
 		public Quaternion rotation;
 
-		void OnTriggerEnter (Collider other)
+		public virtual void OnTriggerEnter (Collider other)
 		{
 			if (((1 << other.gameObject.layer) & triggersWith.value) > 0) {
 				var instance = CFX_SpawnSystem.GetNextObject (effect);

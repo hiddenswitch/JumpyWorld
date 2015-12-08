@@ -4,10 +4,8 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class MazeForRoom : Generator
+	public class MazeForRoom : ObstacleGenerator
 	{
-		public Floor room;
-		public float height = 1f;
 		[Header("Runtime")]
 		public HashSet<Vector3>
 			obstaclePositions = new HashSet<Vector3> ();
@@ -121,21 +119,15 @@ namespace JumpyWorld
 					activeMazePositions.Remove(selectedPos);
 				}
 			}
-		}
 
-		public override void Draw (TileDrawer tileDrawer, TilePool tilePool)
-		{
-			base.Draw (tileDrawer, tilePool);
-			
-			foreach (var point in obstaclePositions) {
-				tileDrawer.DrawTerrain (tilePool.defaultGround, at: point, isDynamic: false);
+			// populate the obstacles list so they actually get rendered by the tileDrawer
+			foreach (var pos in obstaclePositions) {
+				var obstacle = new Obstacle() {
+					position = pos,
+					tile = tilePool.defaultGround
+				};
+				obstacles.Add(obstacle);
 			}
-		}
-		
-		public override void OnDrawGizmos ()
-		{
-			base.OnDrawGizmos ();			
-			
 		}
 	}
 }

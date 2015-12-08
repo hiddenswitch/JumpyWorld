@@ -4,13 +4,8 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-	public class ObstaclesForRoom : Generator
+	public class ObstaclesForRoom : ObstacleGenerator
 	{
-		public Floor room;
-		public float height = 1f;
-		[Header("Runtime")]
-		public HashSet<Vector3>
-			obstaclePositions = new HashSet<Vector3> ();
 		public Directions side = Directions.North;
 
 		public override void Generate (int seed)
@@ -18,8 +13,6 @@ namespace JumpyWorld
 			base.Generate (seed);
 
 			foreach (var point in Floor.Rectangle(room.size,1f,height)) {
-
-
 
 				// XXXXXXXXXXXXXXX
 				// X             X
@@ -46,26 +39,14 @@ namespace JumpyWorld
 					&& isOnStripe
 					&& point.distanceFromBorders [border1] > 1
 					&& point.distanceFromBorders [border2] > 1) {
-					obstaclePositions.Add (point.position);
+					var obstacle = new Obstacle() {
+						position = point.position,
+						tile = tilePool.defaultGround
+					};
+					obstacles.Add (obstacle);
 				}
 
 			}
-		}
-
-		public override void Draw (TileDrawer tileDrawer, TilePool tilePool)
-		{
-			base.Draw (tileDrawer, tilePool);
-
-			foreach (var point in obstaclePositions) {
-				tileDrawer.DrawTerrain (tilePool.defaultGround, at: point, isDynamic: false);
-			}
-		}
-
-		public override void OnDrawGizmos ()
-		{
-			base.OnDrawGizmos ();
-
-
 		}
 	}
 }

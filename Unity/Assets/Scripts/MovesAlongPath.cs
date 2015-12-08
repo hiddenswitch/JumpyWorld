@@ -6,8 +6,7 @@ namespace JumpyWorld
 	[RequireComponent(typeof(Rigidbody))]
 	public class MovesAlongPath : Source<Vector3[]>
 	{
-		new Rigidbody rigidbody;
-
+		public Rigidbody rigidBody;
 		public Vector3[] path {
 			get {
 				return this.value;
@@ -31,6 +30,7 @@ namespace JumpyWorld
 		// Use this for initialization
 		void Start ()
 		{
+			rigidBody = GetComponent<Rigidbody>();
 		}
 
 		private void DelayedStart ()
@@ -58,7 +58,6 @@ namespace JumpyWorld
 			}
 			
 			if (enabled) {
-				this.rigidbody = this.GetComponent<Rigidbody> ();
 				arrivedThreshold = speed / 2 * Time.fixedDeltaTime;
 				height = transform.position.y + offset;
 				if (shouldTeleportToStartOfPath) {
@@ -92,7 +91,7 @@ namespace JumpyWorld
 				transform.forward = XZCalculateForward (currentPosition, path [(pathIndex + 1) % (path.Length - 1)]);
 				// move the character forward
 				var velocity = transform.forward * speed;
-				rigidbody.velocity = velocity;
+				rigidBody.velocity = velocity;
 			}
 		}
 
