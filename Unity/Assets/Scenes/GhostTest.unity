@@ -157,10 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5b2bff325844de789459c9115d54de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   target: {fileID: 1608151568}
-  myTransform: {fileID: 715178668}
-  rotationSpeed: 3
+  rotationSpeed: 1
   floor: {fileID: 1279893120}
   stop: 0
 --- !u!23 &715178665
