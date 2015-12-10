@@ -7,6 +7,7 @@ namespace JumpyWorld
 	public class MovesAlongPath : Source<Vector3[]>
 	{
 		public Rigidbody rigidBody;
+
 		public Vector3[] path {
 			get {
 				return this.value;
@@ -24,13 +25,12 @@ namespace JumpyWorld
 		private float arrivedThreshold;
 		private float height;
 		public float offset = 0f;
-
 		private bool enabled = true;
 	
 		// Use this for initialization
 		void Start ()
 		{
-			rigidBody = GetComponent<Rigidbody>();
+			rigidBody = GetComponent<Rigidbody> ();
 		}
 
 		private void DelayedStart ()
