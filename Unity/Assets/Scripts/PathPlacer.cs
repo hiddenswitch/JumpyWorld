@@ -74,7 +74,6 @@ namespace JumpyWorld
 		{
 			List<Vector3> pointsToDraw = JumpyWorld.Hallway.BresenhamFilledPath (start, end);
 			for (var i = 0; i < pointsToDraw.Count; i++) {
-				Debug.Log("Draw path");
 				tileDrawer.DrawTerrain (prefab: tilePool.path, at: pointsToDraw [i]);
 			}
 		}
