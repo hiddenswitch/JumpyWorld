@@ -12,6 +12,7 @@ namespace JumpyWorld
         void Start()
         {
             this.condition = condition ?? GetComponent<ICondition>();
+            base.Start();
         }
 
         public override void OnTriggerEnter(Collider other)

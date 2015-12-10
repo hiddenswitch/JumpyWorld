@@ -16,6 +16,16 @@ namespace JumpyWorld
 			/// </summary>
 			public Vector4 distanceFromBorders;
 			public Vector4 distanceFromCenter;
+			public override int GetHashCode ()
+			{
+				return position.GetHashCode();
+			}
+
+			public override bool Equals (object obj)
+			{
+				var other = (RectanglePoint)obj;
+				return position.Equals(other.position);
+			}
 		}
 
 		[Header("Options")]
