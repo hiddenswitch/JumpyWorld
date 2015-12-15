@@ -191,6 +191,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   height: 1
   step: 2
+  overrideCurrent: 0
 --- !u!4 &10217445
 Transform:
   m_ObjectHideFlags: 0
@@ -203,6 +204,121 @@ Transform:
   m_Children: []
   m_Father: {fileID: 274888148}
   m_RootOrder: 0
+--- !u!1 &32481308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 32481309}
+  - 114: {fileID: 32481311}
+  - 114: {fileID: 32481310}
+  m_Layer: 0
+  m_Name: Spike Tile Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &32481309
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32481308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274888148}
+  m_RootOrder: 7
+--- !u!114 &32481310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32481308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 0}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 0}
+  decorative:
+  - {fileID: 196498, guid: eec7fb0151844a146ad2225f948635ca, type: 2}
+--- !u!114 &32481311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32481308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ae52ff7d8bd458ab2a8f5560f5a173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDrawer: {fileID: 274888146}
+  tilePool: {fileID: 32481310}
+  seed: 0
+  anchors: []
+  generateOnStart: 0
+  room: {fileID: 0}
+  xDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .348837584
+      value: .0473373234
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .732919693
+      value: .0460904837
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  zDensity:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .265504241
+      value: .073301971
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .77458632
+      value: .0745450407
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: .00120418519
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  height: 0
+  step: 1
+  overrideCurrent: 1
 --- !u!114 &145717446 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11464066, guid: 4dcf5b279fc124acf89758f894cf22ed,
@@ -283,6 +399,7 @@ Transform:
   - {fileID: 1174779484}
   - {fileID: 1507487784}
   - {fileID: 818280222}
+  - {fileID: 32481309}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &274888149
@@ -336,6 +453,7 @@ MonoBehaviour:
   - {fileID: 1541092310}
   - {fileID: 1174779485}
   - {fileID: 10217444}
+  - {fileID: 32481311}
   wallProbability:
     serializedVersion: 2
     m_Curve:
@@ -467,6 +585,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   height: 1
   step: 1
+  overrideCurrent: 0
 --- !u!4 &399988470
 Transform:
   m_ObjectHideFlags: 0
@@ -737,6 +856,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   height: 2
   step: 1
+  overrideCurrent: 0
   maxObjectCount: 5
   minObjectDistance: 30
 --- !u!1 &818280221
@@ -1125,6 +1245,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   height: 1
   step: 1
+  overrideCurrent: 0
   maxObjectCount: 1
   minObjectDistance: 10
 --- !u!114 &1174779486
@@ -1603,6 +1724,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   height: 1
   step: 1
+  overrideCurrent: 0
   maxObjectCount: 1
   minObjectDistance: 10
 --- !u!1 &1647307480
@@ -1656,6 +1778,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1706801357 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: 4dcf5b279fc124acf89758f894cf22ed, type: 2}
+  m_PrefabInternal: {fileID: 400311211}
+--- !u!114 &1706801358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706801357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e59cb49dbd3fe45a715b3fe917b5c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depth: -10
 --- !u!1 &1806200868
 GameObject:
   m_ObjectHideFlags: 0
