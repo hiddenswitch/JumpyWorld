@@ -25,7 +25,7 @@ namespace JumpyWorld
 		private float arrivedThreshold;
 		private float height;
 		public float offset = 0f;
-		private bool enabled = true;
+		private bool okayToRun = true;
 	
 		// Use this for initialization
 		void Start ()
@@ -37,13 +37,13 @@ namespace JumpyWorld
 		{
 			// check that speed is positive
 			if (speed <= 0) {
-				enabled = false;
+				okayToRun = false;
 				Debug.LogError ("Speed needs to be positive");
 			}
 			
 			// check if closed path
 			if (path [0] != path [path.Length - 1]) {
-				enabled = false;
+				okayToRun = false;
 				Debug.LogError ("Not a closed path.");
 			}
 
@@ -52,12 +52,12 @@ namespace JumpyWorld
 				var p0 = path [i];
 				var p1 = path [i + 1];
 				if (!IsXZRectilinearLine (p0, p1)) {
-					enabled = false;
+					okayToRun = false;
 					Debug.LogError ("Not rectilinear path.");
 				}
 			}
 			
-			if (enabled) {
+			if (okayToRun) {
 				arrivedThreshold = speed / 2 * Time.fixedDeltaTime;
 				height = transform.position.y + offset;
 				if (shouldTeleportToStartOfPath) {
@@ -76,7 +76,7 @@ namespace JumpyWorld
 
 		void FixedUpdate ()
 		{
-			if (enabled) {
+			if (okayToRun) {
 				if (path.Length < 2) {
 					return;
 				}
@@ -85,7 +85,7 @@ namespace JumpyWorld
 				var hasArrived = XZDistance (currentPosition, nextPosition) < arrivedThreshold;
 				if (hasArrived) {
 					// move to the nextPosition, update forward direction
-					transform.position = new Vector3 (nextPosition.x, transform.position.y, nextPosition.z);
+					transform.position = new Vector3 (nextPosition.x, height, nextPosition.z);
 					pathIndex = (pathIndex + 1) % (path.Length - 1);
 				} 
 				transform.forward = XZCalculateForward (currentPosition, path [(pathIndex + 1) % (path.Length - 1)]);
