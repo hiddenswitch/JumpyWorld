@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-//TODO: get rid of System.Collections.Generic and pathP stuff
-//TODO: get rid of delayed start poop
 namespace JumpyWorld
 {
 	[RequireComponent(typeof(DelayedTurnController))]
@@ -16,7 +13,6 @@ namespace JumpyWorld
 		public int rotationSpeed = 1;
 		public Floor floor;
 		public float stop = 0f;
-		private List<Vector3> pathP = new List<Vector3> ();
 		private Vector3 currentPt;
 
 		// threshold for what is close enough in terms of when to enter and exit cells
@@ -25,8 +21,6 @@ namespace JumpyWorld
 		// Use this for initialization
 		void Start ()
 		{
-
-			target.BroadcastMessage ("DelayedStart");
 			currentPt = this.gameObject.transform.position;
 
 			var delayedController = this.gameObject.GetComponent<DelayedTurnController> ();
@@ -40,18 +34,17 @@ namespace JumpyWorld
 		
 		void FixedUpdate ()
 		{
-			pathP.Clear ();
 			var thresh2 = moveSpeed * Time.fixedDeltaTime;
 			var threshold = Mathf.Min (thresh1, thresh2);
 			var myTransform = this.gameObject.transform;
 
-			var distance = 0f;
+			var distanceFromTarget = 0f;
 			var targetInBounds = false;
 
 			// checking if the target is in the bounds of the floor
 			if (target != null) {
 				var bounds = floor.size;
-				distance = Vector3.Distance (myTransform.position, target.position);
+				distanceFromTarget = Vector3.Distance (myTransform.position, target.position);
 				targetInBounds = (bounds.xMin <= target.position.x) && 
 					(target.position.x <= bounds.xMax) && 
 					(bounds.yMin <= target.position.z) && 
@@ -59,14 +52,12 @@ namespace JumpyWorld
 			}
 			
 			// only update if the target is in bounds and not too close
-			if (targetInBounds && distance >= stop) {
+			if (targetInBounds && distanceFromTarget >= stop) {
 				var path = Hallway.BresenhamFilled (
 					from: RoundVector3XZ (myTransform.position),
 					to: RoundVector3XZ (target.position),
 					shouldBalanceCorners: true);
 			
-				pathP = new List<Vector3> (path);
-
 				foreach (var point in path) {
 					if (point != RoundVector3XZ (myTransform.position)) {
 						
@@ -97,31 +88,29 @@ namespace JumpyWorld
 						}
 
 						// move the character forward
-						myTransform.forward = direction;
-						var velocity = myTransform.forward * moveSpeed;
-						myTransform.position = myTransform.position + velocity * Time.deltaTime;
+						updateObjectPosition (myTransform, direction);
 						break;
 					}			
 				}
 			}
 
-			// used for moving the character to an integer point
-
-			else if ((!CloseEnough (currentPt, myTransform.position, threshold)) && distance >= stop) {
+			// used for moving the character to an integer point after target leaves floor
+			else if ((!CloseEnough (currentPt, myTransform.position, threshold)) && distanceFromTarget >= stop) {
 				Vector3 newDirection = RoundVector3XZ ((currentPt - myTransform.position).normalized);
-				if (newDirection == Vector3.left || newDirection == Vector3.right || newDirection == Vector3.forward || newDirection == Vector3.back) {
-					myTransform.forward = newDirection;
-					var velocity = myTransform.forward * moveSpeed;
-					myTransform.position = myTransform.position + velocity * Time.deltaTime;
+				if (newDirection == Vector3.left || 
+					newDirection == Vector3.right || 
+					newDirection == Vector3.forward || 
+					newDirection == Vector3.back) {
+					updateObjectPosition (myTransform, newDirection);
 				}
 			}
 		}
 
-		void OnDrawGizmos ()
+		void updateObjectPosition (Transform transform, Vector3 direction)
 		{
-			for (var i = 0; i < pathP.Count - 1; i++) {
-				Gizmos.DrawLine (pathP [i], pathP [i + 1]);
-			}
+			transform.forward = direction;
+			var velocity = transform.forward * moveSpeed;
+			transform.position = transform.position + velocity * Time.fixedDeltaTime;
 		}
 
 		/// <summary>
