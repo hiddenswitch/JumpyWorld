@@ -437,7 +437,7 @@ GameObject:
   - 4: {fileID: 1664424367}
   - 114: {fileID: 1664424366}
   m_Layer: 0
-  m_Name: CFS spawn
+  m_Name: CFX Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
