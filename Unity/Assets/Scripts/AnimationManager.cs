@@ -15,13 +15,19 @@ namespace JumpyWorld
 		public bool
 			isAlive = true;
 
-		void OnKill ()
+		void OnObjectDied ()
 		{
 			isAlive = false;
 		}
-		
-		// Update is called once per frame
-		void LateUpdate ()
+
+        void OnObjectRevived()
+        {
+            isAlive = true;
+            animator.SetBool(deathParameter, false);
+        }
+
+        // Update is called once per frame
+        void LateUpdate ()
 		{
 			if (animator == null
 				&& controller == null) {

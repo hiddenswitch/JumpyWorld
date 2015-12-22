@@ -3,9 +3,8 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class DiesBelowDepth : PinBool
+	public class Ikillable : PinBool
 	{
-		public float depth;
 		public GameObject[] eventHandlers;
 		public string message = "OnObjectDied";
 		public string reviveMessage = "OnObjectRevived";
@@ -21,19 +20,22 @@ namespace JumpyWorld
 				isAlive = value;
 			}
 		}
-		// Use this for initialization
-	
-		// Update is called once per frame
-		void Update ()
-		{
-			if (transform.position.y < depth
-				&& isAlive) {
-				isAlive = false;
-				foreach (var handler in eventHandlers) {
-					handler.SendMessage (message, this.gameObject, SendMessageOptions.DontRequireReceiver);
-				}
-			}
-		}
+        // Use this for initialization
+
+        // Update is called once per frame
+
+
+        public void Die()
+        {
+            if (isAlive)
+            { 
+                isAlive = false;
+                foreach (var handler in eventHandlers)
+                {
+                    handler.SendMessage(message, this.gameObject, SendMessageOptions.DontRequireReceiver);
+                }
+            }
+        }
 
 		public void ResetDies ()
 		{
