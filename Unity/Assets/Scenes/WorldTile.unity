@@ -394,7 +394,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxDepth: 6
+  maxDepth: 1
   step: 1
   height: 1
   disturbance: 0.85
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d53fb334ae64ef2aa13479e4789eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 45
+  batchSize: 10000
   parent: {fileID: 1237080147}
   terrainLayer:
     serializedVersion: 2
@@ -537,7 +537,6 @@ MonoBehaviour:
   generators:
   - {fileID: 1507487785}
   - {fileID: 399988469}
-  - {fileID: 502739152}
   - {fileID: 1541092310}
   - {fileID: 1174779485}
   - {fileID: 10217444}
