@@ -520,7 +520,7 @@ GameObject:
   - 4: {fileID: 400066}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11497972}
-  - 114: {fileID: 11470812}
+  - 114: {fileID: 11414132}
   - 114: {fileID: 11412584}
   - 54: {fileID: 5400150}
   - 136: {fileID: 13683530}
@@ -534,8 +534,9 @@ GameObject:
   - 114: {fileID: 11427490}
   - 114: {fileID: 11446296}
   - 114: {fileID: 11499612}
-  - 114: {fileID: 11498346}
   - 114: {fileID: 11490010}
+  - 114: {fileID: 11418488}
+  - 114: {fileID: 11468984}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -1000,7 +1001,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 1.67999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 464366}
@@ -1112,6 +1113,34 @@ MonoBehaviour:
   rigidBody: {fileID: 5400150}
   speedScale: 1
   isAlive: 1
+--- !u!114 &11414132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72e1e8632c318c47b7f2667d06feb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  moving: 1
+  isAlive: 1
+--- !u!114 &11418488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83163869087544c57900d425d697aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &11427490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1260,20 +1289,24 @@ MonoBehaviour:
   count: 0
   lifetime: 0
   condition: {fileID: 11427870}
---- !u!114 &11470812
+--- !u!114 &11468984
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100066}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d72e1e8632c318c47b7f2667d06feb8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 75a3b677fe9744de094d5be2a73d2c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  moving: 1
-  isAlive: 1
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 2048
+  effect: {fileID: 100004, guid: 754a7a7c55ee2ce4493a0e4079785280, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  scale: {x: 2, y: 2, z: 2}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11483146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1345,19 +1378,6 @@ MonoBehaviour:
   prevFrameDown: 0
   distanceTraveled: 0
   lastPosition: {x: 0, y: 0}
---- !u!114 &11498346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f23ff33aef06e0248b2ea9466316c22d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileDrawer: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!114 &11498358
 MonoBehaviour:
   m_ObjectHideFlags: 1

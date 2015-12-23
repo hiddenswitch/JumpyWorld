@@ -724,7 +724,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.119999997, y: .100000001, z: -0}
+  m_LocalPosition: {x: 0, y: .600000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 424818}
@@ -845,7 +845,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: c3cb17e117ef841c1ae8acc18bffa0e1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -875,8 +875,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: []
+  rigidBody: {fileID: 0}
   shouldTeleportToStartOfPath: 0
   speed: 5
+  offset: 0
 --- !u!136 &13664324
 CapsuleCollider:
   m_ObjectHideFlags: 1

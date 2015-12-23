@@ -10,6 +10,7 @@ namespace JumpyWorld
 		public AnimationCurve zDensity;
 		public float height = 1f;
 		public float step = 1f;
+        public bool overrideCurrent = false;
 
 		public override void Draw (TileDrawer tileDrawer=null, TilePool tilePool=null)
 		{
@@ -20,7 +21,7 @@ namespace JumpyWorld
 				var xz = Mathf.Sqrt (xDensity.Evaluate (Mathf.InverseLerp (room.size.xMin, room.size.xMax, point.position.x))
 					* zDensity.Evaluate (Mathf.InverseLerp (room.size.yMin, room.size.yMax, point.position.z)));
 				if (random < xz) {
-					tileDrawer.DrawTerrain (prefab: tilePool.decorative [Random.Range (0, tilePool.decorative.Length - 1)], at: point.position);
+					tileDrawer.DrawTerrain (prefab: tilePool.decorative [Random.Range (0, tilePool.decorative.Length - 1)], at: point.position, overwriteIfExists: overrideCurrent);
 				}
 			}
 		}
