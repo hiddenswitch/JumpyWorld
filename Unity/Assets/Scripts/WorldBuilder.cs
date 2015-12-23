@@ -39,6 +39,11 @@ namespace JumpyWorld
         [Header("Generators")]
         public List<Generator> generators;
 
+        public IslandDepthPlacer depthGenerator;
+
+		[Header("Treasure")]
+		public RandomPlacerForRoom coinPlacer;
+
 
 		[Header("Walls")]
 		/// <summary>
@@ -170,7 +175,7 @@ namespace JumpyWorld
 					Destroy (a.generator.gameObject);
 				}
 			}
-
+            AddDepth ();
 			AddWalls();
 
             Random.seed = oldSeed;
@@ -226,17 +231,17 @@ namespace JumpyWorld
                 g.Draw(tileDrawer: tileDrawer);
             }
 
-
+           
             return room;
         }
 
-		void AddWalls() {
-			foreach (var floor in floors) {
-				var shouldPlaceWalls = Random.value <= wallProbability.Evaluate(floor.BoundsGrid.center.magnitude);
+        void AddWalls() {
+            foreach (var floor in floors) {
+                var shouldPlaceWalls = Random.value <= wallProbability.Evaluate(floor.BoundsGrid.center.magnitude);
 
-				if (!shouldPlaceWalls) {
-					continue;
-				}
+                if (!shouldPlaceWalls) {
+                    continue;
+                }
 
 				var walls = floor.gameObject.AddComponent<WallsForRoom>();
 				walls.height = 1f;
@@ -249,7 +254,13 @@ namespace JumpyWorld
 				walls.Draw(tileDrawer:tileDrawer, tilePool:tilePool);
 			}
 		}
-
+        void AddDepth(){
+            foreach (var room in floors) {
+                depthGenerator.room = room;
+                depthGenerator.Generate (seed: Random.Range (0, 65536));
+                depthGenerator.Draw (tileDrawer: tileDrawer);
+            }
+        } 
 
         Hallway GenerateHallway(Vector3 startPoint, Vector3 endPoint, bool ignoreCollision=false)
         {
