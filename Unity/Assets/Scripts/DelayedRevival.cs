@@ -3,11 +3,12 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class DelayedRevival : InstantRevival
+	public class DelayedRevival : MonoBehaviour
 	{
 		public float delay = 2f;
+		public Killable killable;
 		// Use this for initialization
-		protected override void OnObjectDied (GameObject sender)
+		public void OnObjectDied (GameObject sender)
 		{
 			StartCoroutine (DelayedRevivalCoroutine (sender));
 		}
@@ -15,7 +16,7 @@ namespace JumpyWorld
 		IEnumerator DelayedRevivalCoroutine (GameObject sender)
 		{
 			yield return new WaitForSeconds (delay);
-			base.OnObjectDied (sender);
+			killable.Revive ();
 		}
 	}
 }

@@ -10,6 +10,11 @@ namespace JumpyWorld
 		public void ResetPosition ()
 		{
 			transform.position = startPosition;
+			var rb = GetComponent<Rigidbody> ();
+			if (rb == null) {
+				return;
+			}
+			rb.velocity = Vector3.zero;
 		}
 	}
 }

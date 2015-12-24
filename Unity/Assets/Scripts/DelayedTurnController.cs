@@ -10,7 +10,7 @@ namespace JumpyWorld
 		public float enterCellThreshold;
 		public float exitCellThreshold;
 		Vector3 currentDirection;
-		Queue<Vector3> directionQueue; //should be length 1 at most;
+		Queue<Vector3> directionQueue = new Queue<Vector3>(); //should be length 1 at most;
 
 		[Header("Runtime")]
 		public bool

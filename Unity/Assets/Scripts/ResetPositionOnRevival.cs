@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class ResetPositionOnDeath : MonoBehaviour
+	public class ResetPositionOnRevival : MonoBehaviour
 	{
 		public HasStartPosition objectWithPosition;
 		public float delay = 2;
@@ -12,7 +12,7 @@ namespace JumpyWorld
 		{
 		}
 
-		void OnObjectDied (GameObject sender)
+		void OnObjectRevived (GameObject sender)
 		{
 			if (enabled
 				&& sender == objectWithPosition.gameObject) {

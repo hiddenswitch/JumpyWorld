@@ -41,8 +41,9 @@ namespace JumpyWorld
 					animator.SetFloat (speedParameter, controller.velocity.magnitude * speedScale);
 				}
 			} else {
-				animator.SetFloat (speedParameter, 0f);
-				animator.SetBool (deathParameter, true);
+				// TODO: For now, do not set death parameter because this animation is way too slow.
+//				animator.SetFloat (speedParameter, 0f);
+//				animator.SetBool (deathParameter, true);
 			}
 		}
 	}

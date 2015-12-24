@@ -9,7 +9,7 @@ namespace JumpyWorld
     {
         public ICondition condition;
 
-        void Start()
+        public override void Start()
         {
             this.condition = condition ?? GetComponent<ICondition>();
             base.Start();

@@ -16,7 +16,7 @@ namespace JumpyWorld
 			get {
 				return Input.touches;
 			}
-			private set {
+			set {
 				return;
 			}
 		}

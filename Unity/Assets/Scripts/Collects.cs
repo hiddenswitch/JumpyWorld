@@ -11,20 +11,20 @@ namespace JumpyWorld
 			PerRun,
 			PerUser
 		}
+
 		public string collectibleSavePrefix = "Collectible.";
 		public string collectibleTag;
 		public LayerMask triggersWith;
 		public int count;
 		public LifetimeTypes lifetime = LifetimeTypes.PerRun;
 		// Use this for initialization
-		public void Start ()
+		public virtual void Start ()
 		{
 			if (lifetime == LifetimeTypes.PerUser) {
 				count = PlayerPrefs.GetInt (collectibleSavePrefix + collectibleTag);
-			} else
-            {
-                PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, 0);
-            }
+			} else {
+				PlayerPrefs.SetInt (collectibleSavePrefix + collectibleTag, 0);
+			}
 		}
 
 		/// <summary>
@@ -34,18 +34,18 @@ namespace JumpyWorld
 		{
 			if (lifetime == LifetimeTypes.PerRun) {
 				count = 0;
-                PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, 0);
-            }
-        }
+				PlayerPrefs.SetInt (collectibleSavePrefix + collectibleTag, 0);
+			}
+		}
 
-        public void decrement (int amount)
-        {
-            count -= amount;
-            PlayerPrefs.SetInt(collectibleSavePrefix + collectibleTag, count);
+		public void decrement (int amount)
+		{
+			count -= amount;
+			PlayerPrefs.SetInt (collectibleSavePrefix + collectibleTag, count);
 
-        }
+		}
 
-        void OnObjectDied (GameObject sender)
+		void OnObjectDied (GameObject sender)
 		{
 			Reset ();
 		}
@@ -53,14 +53,16 @@ namespace JumpyWorld
 		public virtual void OnTriggerEnter (Collider other)
 		{
 			if (((1 << other.gameObject.layer) & triggersWith.value) > 0
-				&& other.gameObject.CompareTag (this.collectibleTag)) {
+			    && other.gameObject.CompareTag (this.collectibleTag)) {
 				count += 1;
 				PlayerPrefs.SetInt (collectibleSavePrefix + collectibleTag, count);
 				// record coin balance to Mixpanel 
-				Mixpanel.SuperProperties ["Coin Balance"] = count;
-				Mixpanel.SendEvent ("Item Collected", new Dictionary<string, object>{
-					{"Type", "Coin" },
-					{"Count", count}
+				if (collectibleTag == "coin") {
+					Mixpanel.SuperProperties ["Coin Balance"] = count;
+				}
+				Mixpanel.SendEvent ("Item Collected", new Dictionary<string, object> {
+					{ "Type", "Coin" },
+					{ "Count", count }
 				});
 			}
 		}

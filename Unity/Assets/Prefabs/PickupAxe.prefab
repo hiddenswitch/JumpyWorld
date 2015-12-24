@@ -28,6 +28,7 @@ GameObject:
   - 114: {fileID: 11439934}
   - 114: {fileID: 11433248}
   - 136: {fileID: 13679882}
+  - 114: {fileID: 11415630}
   m_Layer: 10
   m_Name: PickupAxe
   m_TagString: Axe
@@ -59,8 +60,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.7205086, y: .886492372, z: -1.02543163}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalPosition: {x: -18.720509, y: 0.8864924, z: -1.0254316}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 480814}
   - {fileID: 492734}
@@ -72,8 +73,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105790}
-  m_LocalRotation: {x: .148454159, y: -.126359269, z: -.977987468, w: -.0743995756}
-  m_LocalPosition: {x: 2.26359105, y: -1.67804217, z: -7.50384235}
+  m_LocalRotation: {x: 0.14845416, y: -0.12635927, z: -0.97798747, w: -0.074399576}
+  m_LocalPosition: {x: 2.263591, y: -1.6780422, z: -7.5038424}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 461370}
@@ -84,8 +85,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176900}
-  m_LocalRotation: {x: .983881354, y: .00305330893, z: -.0215911325, w: -.177488282}
-  m_LocalPosition: {x: .00151443481, y: 2.17547631, z: .368288517}
+  m_LocalRotation: {x: 0.98388135, y: 0.003053309, z: -0.021591133, w: -0.17748828}
+  m_LocalPosition: {x: 0.0015144348, y: 2.1754763, z: 0.36828852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461370}
@@ -111,7 +112,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -130,6 +131,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176900}
   m_Mesh: {fileID: 4300106, guid: f6697d5015125824ea3f782d7fc20246, type: 3}
+--- !u!114 &11415630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a3b677fe9744de094d5be2a73d2c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggersWith:
+    serializedVersion: 2
+    m_Bits: 512
+  effect: {fileID: 100000, guid: d9d64543c9675f2498b17b97f782bfdf, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11433248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,10 +197,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: .569999993
-  m_Height: 2.89807057
+  m_Radius: 0.57
+  m_Height: 2.8980706
   m_Direction: 1
-  m_Center: {x: -.307651013, y: 1.09055877, z: 7.89727551e-07}
+  m_Center: {x: -0.307651, y: 1.0905588, z: 0.00000078972755}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

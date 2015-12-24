@@ -1,19 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DieBelowDepth : MonoBehaviour {
-
-    public float depth;
+public class DieBelowDepth : MonoBehaviour
+{
+	public float depth;
+	bool calledDie;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (transform.position.y < depth)
-        {
-            this.gameObject.BroadcastMessage("Die");
-        }
-    }
+	void Update ()
+	{
+		if (transform.position.y < depth
+		          && !calledDie) {
+			calledDie = true;
+			this.gameObject.BroadcastMessage ("Die");
+		}
+
+		if (transform.position.y > depth
+		    && calledDie) {
+			calledDie = false;
+		}
+	}
 }

@@ -25,7 +25,7 @@ namespace JumpyWorld
 		public int batchSize;
 		public Transform parent;
 		public LayerMask terrainLayer;
-		private GameObject destroyableParent;
+		public GameObject destroyableParent;
 		
 		public bool isDrawingTiles = false;
 

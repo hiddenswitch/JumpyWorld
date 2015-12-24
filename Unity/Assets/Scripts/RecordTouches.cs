@@ -14,7 +14,7 @@ namespace JumpyWorld
 		static Touch[] emptyTouch = new Touch[0];
 		public string hostName;
 		public int port = 6001;
-		TcpListener listener;
+		TcpListener listener = null;
 		SortedList<float, TouchRecord> currentTouchRecording = new SortedList<float, TouchRecord> (60 * 120);
 		int lastLow;
 		float timeOffset;
@@ -45,7 +45,7 @@ namespace JumpyWorld
 					return emptyTouch;
 				}
 			}
-			private set {
+			set {
 				return;
 			}
 		}
@@ -96,11 +96,11 @@ namespace JumpyWorld
 		public static void DoAcceptSocketCallback (IAsyncResult ar)
 		{
 			// Get the listener that handles the client request.
-			TcpListener listener = (TcpListener)ar.AsyncState;
+//			TcpListener listener = (TcpListener)ar.AsyncState;
 			
 			// End the operation and display the received data on the
 			//console.
-			Socket clientSocket = listener.EndAcceptSocket (ar);
+//			Socket clientSocket = listener.EndAcceptSocket (ar);
 			
 			// Process the connection here. (Add the client to a 
 			// server table, read data, etc.)

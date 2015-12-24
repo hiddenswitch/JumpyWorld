@@ -54,6 +54,8 @@ namespace JumpyWorld
 
 				// instantiate ghost
 				var ghost = GameObject.Instantiate (pathablePrefab, Vector3.zero, Quaternion.identity) as GameObject;
+				// Set its parent to the drawer's parent
+				ghost.transform.SetParent(tileDrawer.destroyableParent.transform, true);
 				var movesAlongPath = ghost.GetComponent<MovesAlongPath> ();
 				movesAlongPath.path = path.ToArray ();
 				movesAlongPath.shouldTeleportToStartOfPath = true;

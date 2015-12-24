@@ -3,12 +3,12 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class Ikillable : PinBool
+	public class Killable : PinBool
 	{
 		public GameObject[] eventHandlers;
 		public string message = "OnObjectDied";
 		public string reviveMessage = "OnObjectRevived";
-		[Header("Runtime")]
+		[Header ("Runtime")]
 		public bool
 			isAlive = true;
 
@@ -20,22 +20,21 @@ namespace JumpyWorld
 				isAlive = value;
 			}
 		}
-        // Use this for initialization
 
-        // Update is called once per frame
+		public void Die ()
+		{
+			if (isAlive) { 
+				isAlive = false;
+				foreach (var handler in eventHandlers) {
+					handler.SendMessage (message, this.gameObject, SendMessageOptions.DontRequireReceiver);
+				}
+			}
+		}
 
-
-        public void Die()
-        {
-            if (isAlive)
-            { 
-                isAlive = false;
-                foreach (var handler in eventHandlers)
-                {
-                    handler.SendMessage(message, this.gameObject, SendMessageOptions.DontRequireReceiver);
-                }
-            }
-        }
+		public void Revive ()
+		{
+			ResetDies ();
+		}
 
 		public void ResetDies ()
 		{

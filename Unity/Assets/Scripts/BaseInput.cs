@@ -8,7 +8,7 @@ namespace JumpyWorld
 	{
 		public virtual IList<Touch> touches {
 			get;
-			private set;
+			set;
 		}
 
 		public virtual int touchCount {

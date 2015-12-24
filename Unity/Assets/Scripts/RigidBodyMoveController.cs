@@ -5,12 +5,11 @@ using System.Collections.Generic;
 
 namespace JumpyWorld
 {
-
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
     public class RigidBodyMoveController : MonoBehaviour
 	{
-        private Rigidbody rigidBody;
+        public Rigidbody rigidBody;
         private CapsuleCollider capsule;
 
 		public float speed = 0.85f;

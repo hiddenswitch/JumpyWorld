@@ -26,12 +26,12 @@ namespace JumpyWorld
 			worldBuilder.Start ();
 		}
 
-		public void OnObjectDied (GameObject sender)
+		public void OnObjectRevived (GameObject sender)
 		{
-			StartCoroutine (OnObjectDiedDelayed (sender));
+			StartCoroutine (OnObjectRevivedDelayed (sender));
 		}
 
-		IEnumerator OnObjectDiedDelayed (GameObject sender)
+		IEnumerator OnObjectRevivedDelayed (GameObject sender)
 		{
 			yield return new WaitForSeconds (delay);
 			RandomizeAndRebuild ();
