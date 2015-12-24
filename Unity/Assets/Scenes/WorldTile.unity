@@ -193,7 +193,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   height: 1
   step: 2
-  overrideCurrent: 0
+  overwrite: 0
+  placeAtBorders: 1
 --- !u!4 &10217445
 Transform:
   m_ObjectHideFlags: 0
@@ -322,7 +323,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   height: 0
   step: 1
-  overrideCurrent: 1
+  overwrite: 1
+  placeAtBorders: 0
 --- !u!114 &145717446 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11464066, guid: 4dcf5b279fc124acf89758f894cf22ed,
@@ -724,7 +726,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   height: 1
   step: 1
-  overrideCurrent: 0
+  overwrite: 0
+  placeAtBorders: 1
 --- !u!4 &399988470
 Transform:
   m_ObjectHideFlags: 0
@@ -931,7 +934,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   height: 2
   step: 1
-  overrideCurrent: 0
+  overwrite: 0
+  placeAtBorders: 1
   maxObjectCount: 5
   minObjectDistance: 30
 --- !u!1001 &554027022
@@ -1375,7 +1379,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   height: 1
   step: 1
-  overrideCurrent: 0
+  overwrite: 0
+  placeAtBorders: 1
   maxObjectCount: 1
   minObjectDistance: 10
 --- !u!114 &1174779486
@@ -1857,7 +1862,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   height: 1
   step: 1
-  overrideCurrent: 0
+  overwrite: 0
+  placeAtBorders: 1
   maxObjectCount: 1
   minObjectDistance: 10
 --- !u!1 &1647307480

@@ -1,5 +1,5 @@
-﻿Cartoon FX Pack, version 2.77
-2015/09/05
+﻿Cartoon FX Pack, version 2.78
+2015/12/19
 © 2015 - Jean Moreno
 =============================
 
@@ -72,6 +72,10 @@ I'd be happy to see any effects used in your project, so feel free to drop me a 
 
 RELEASE NOTES
 -------------
+v2.78
+- fixed compilation warnings with Unity 5.3+
+- fixed CFX_AutoDestructShuriken not working with some prefabs (Unity 5.3.1)
+
 v2.77
 - put all shaders in the same folder
 - fixed a mobile effect using desktop materials

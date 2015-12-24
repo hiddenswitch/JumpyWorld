@@ -6,7 +6,7 @@ namespace JumpyWorld
 {
 	public class TileDrawer : PinBool, IList<Vector3>
 	{
-		class TileInfo
+		class TilesRecord
 		{
 			public Vector3 position;
 			public GameObject gameObject;
@@ -18,7 +18,9 @@ namespace JumpyWorld
 				return position.GetHashCode ();
 			}
 
-        }
+		}
+
+		static Vector3 one = new Vector3 (1f, 1f, 1f);
 
 		public static TileDrawer instance { get; private set; }
 
@@ -38,8 +40,8 @@ namespace JumpyWorld
 			}
 		}
 
-		private Dictionary<Vector3, TileInfo> tiles = new Dictionary<Vector3, TileInfo> (400);
-		private Queue<TileInfo> batchQueue = new Queue<TileInfo> ();
+		private Dictionary<Vector3, TilesRecord> tiles = new Dictionary<Vector3, TilesRecord> (400);
+		private Queue<TilesRecord> batchQueue = new Queue<TilesRecord> ();
 		private bool hasCollided = false;
 		private bool clearing = false;
 
@@ -66,54 +68,82 @@ namespace JumpyWorld
 			destroyableParent.transform.SetParent (parent);
 		}
 
-		public void DrawTerrain (GameObject prefab=null, Vector3 at=default(Vector3), bool isDynamic=true, bool overwriteIfExists = false)
+		public void DrawTerrain (GameObject prefab = null, Vector3 at = default(Vector3), bool isDynamic = true, bool overwriteIfExists = false)
 		{
-			// Don't place terrain if it already exists
+			
 			at = Tile.ToGrid (at);
+			// Get information about what we're drawing
+			var tile = prefab.GetComponent<Tile> ();
+			var volume = one;
+			var pivot = Vector3.zero;
+			if (tile != null) {
+				volume = tile.size;
+				pivot = tile.pivot;
+			}
 
-			if (this.Contains (at)) {
-                if (!overwriteIfExists)
-                {
-                    return;
-                } else
-                {
-                    var infoToBeReplaced = tiles[at];
-                    if (batchQueue.Contains(infoToBeReplaced))
-                    {
-                        infoToBeReplaced.prefab = prefab;
-                        infoToBeReplaced.isDynamic = isDynamic;
-                        return;
-                    } else
-                    {
-                        Destroy(infoToBeReplaced.gameObject);
-                        tiles.Remove(at);
-                    }
-                }
-            }
+			// Don't place terrain if it already exists
+			var queueOverwritten = false;
+			foreach (var unadjustedPoint in TileDrawer.Volume(volume)) {
+				var point = unadjustedPoint + at - pivot;
+				if (this.Contains (point)) {
+					if (!overwriteIfExists) {
+						return;
+					} else {
+						var recordAtPoint = tiles [point];
 
-			var tileInfo = new TileInfo () {position = at, prefab = prefab, isDynamic = isDynamic};
+						if (batchQueue.Contains (recordAtPoint)) {
+							recordAtPoint.prefab = prefab;
+							recordAtPoint.isDynamic = isDynamic;
+							queueOverwritten = true;
+						} else {
+							Destroy (recordAtPoint.gameObject);
+							tiles.Remove (point);
+						}
+					}
+				}
+			}
 
-			batchQueue.Enqueue (tileInfo);
-			tiles.Add (at, tileInfo);
+			if (queueOverwritten) {
+				return;
+			}
+
+			var tileRecord = new TilesRecord () { position = at, prefab = prefab, isDynamic = isDynamic };
+
+			batchQueue.Enqueue (tileRecord);
+
+			foreach (var unadjustedPoint in TileDrawer.Volume(volume)) {
+				tiles.Add (at + unadjustedPoint - pivot, tileRecord);
+			}
 		}
-		
+
+		public static IEnumerable<Vector3> Volume (Vector3 volume)
+		{
+			for (var x = 0f; x < volume.x; x++) {
+				for (var y = 0f; y < volume.y; y++) {
+					for (var z = 0f; z < volume.z; z++) {
+						yield return new Vector3 (x, y, z);
+					}
+				}
+			}
+		}
+
 		IEnumerator QueueProcessingCoroutine ()
 		{
-			var tilesInBatch = new List<TileInfo> (batchSize);
+			var tilesInBatch = new List<TilesRecord> (batchSize);
 			var batched = 0;
 			while (true) {
 				while (batchQueue.Count > 0) {
 					isDrawingTiles = true;
-					var tileInfo = batchQueue.Dequeue ();
-					tileInfo.gameObject = InstantiateTile (tileInfo);
-					tilesInBatch.Add (tileInfo);
+					var tileRecord = batchQueue.Dequeue ();
+					tileRecord.gameObject = InstantiateTile (tileRecord);
+					tilesInBatch.Add (tileRecord);
 					batched++;
 					if (batched > batchSize) {
 						var batchParent = new GameObject ("Batch Parent");
 						batchParent.transform.SetParent (destroyableParent.transform);
-						foreach (var batchTileInfo in tilesInBatch) {
-							if (!batchTileInfo.isDynamic) {
-								var tile = batchTileInfo.gameObject;
+						foreach (var batchTileRecord in tilesInBatch) {
+							if (!batchTileRecord.isDynamic) {
+								var tile = batchTileRecord.gameObject;
 								tile.transform.SetParent (batchParent.transform, true);
 							}
 						}
@@ -130,11 +160,11 @@ namespace JumpyWorld
 						tilesInBatch.Clear ();
 					}
 				}
-				if (batchQueue.Count == 0){
+				if (batchQueue.Count == 0) {
 					isDrawingTiles = false;
 				}
 				if (tilesInBatch.Count > 0
-					&& !clearing) {
+				    && !clearing) {
 					var batchParentFinal = new GameObject ("Batch Parent");
 					batchParentFinal.transform.SetParent (destroyableParent.transform);
 					StaticBatchingUtility.Combine (batchParentFinal);
@@ -145,16 +175,16 @@ namespace JumpyWorld
 			}
 		}
 
-		GameObject InstantiateTile (TileInfo tileInfo)
+		GameObject InstantiateTile (TilesRecord tileRecord)
 		{
-			var tile = tileInfo.prefab;
-			var at = tileInfo.position;
-			var instance = tileInfo.gameObject = Instantiate (tile, at, Quaternion.identity) as GameObject;
+			var tile = tileRecord.prefab;
+			var at = tileRecord.position;
+			var instance = tileRecord.gameObject = Instantiate (tile, at, Quaternion.identity) as GameObject;
 			instance.transform.SetParent (destroyableParent.transform, worldPositionStays: false);
 			return instance;
 		}
 
-		public bool TestCollision (Vector3 at=default(Vector3))
+		public bool TestCollision (Vector3 at = default(Vector3))
 		{
 			return this.Contains (at);
 		}

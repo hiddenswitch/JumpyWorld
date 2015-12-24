@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-// Cartoon FX  - (c) 2015 Jean Moreno
+// Cartoon FX  - (c) 2015, Jean Moreno
 
 // Drag/Drop this script on a Particle System (or an object having Particle System objects as children) to prevent a Shuriken bug
 // where a system would emit at its original instantiated position before being translated, resulting in particles in-between
@@ -11,26 +11,27 @@ using System.Collections;
 public class CFX_ShurikenThreadFix : MonoBehaviour
 {
 	private ParticleSystem[] systems;
-
-	void OnEnable ()
+	
+	void OnEnable()
 	{
-		systems = GetComponentsInChildren<ParticleSystem> ();
+		systems = GetComponentsInChildren<ParticleSystem>();
 		
-		foreach (ParticleSystem ps in systems) {
-			var e = ps.emission;
-			e.enabled = false;
+		foreach(ParticleSystem ps in systems)
+		{
+			ps.Stop(true);
+			ps.Clear(true);
 		}
 		
-		StartCoroutine ("WaitFrame");
+		StartCoroutine("WaitFrame");
 	}
-
-	IEnumerator WaitFrame ()
+	
+	IEnumerator WaitFrame()
 	{
 		yield return null;
 		
-		foreach (ParticleSystem ps in systems) {
-			var e = ps.emission;
-			e.enabled = true;
+		foreach(ParticleSystem ps in systems)
+		{
+			ps.Play(true);
 		}
 	}
 }

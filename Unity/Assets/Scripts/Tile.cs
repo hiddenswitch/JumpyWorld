@@ -5,13 +5,18 @@ namespace JumpyWorld
 	public class Tile : MonoBehaviour, IDirections, IPositionGrid
 	{
 		public static float gridSize = 1;
-		[BitMaskAttribute(typeof(Directions))]
+		[BitMaskAttribute (typeof(Directions))]
 		public Directions
 			directions;
 
+		public Vector3 pivot = new Vector3 (0f, 0f, 0f);
+		public Vector3 size = new Vector3 (1f, 1f, 1f);
+
 		public static Vector3 ToGrid (Vector3 position)
 		{
-			return new Vector3 (Mathf.Round (position.x / gridSize), Mathf.Floor(position.y / gridSize), Mathf.Round(position.z / gridSize));
+			return new Vector3 (Mathf.Round (position.x / gridSize), 
+				Mathf.Floor (position.y / gridSize), 
+				Mathf.Round (position.z / gridSize));
 		}
 
 		public virtual Vector3 PositionGrid {
