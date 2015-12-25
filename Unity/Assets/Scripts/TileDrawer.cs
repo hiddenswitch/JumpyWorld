@@ -180,10 +180,9 @@ namespace JumpyWorld
 					batchParentFinal.transform.SetParent (destroyableParent.transform);
 					StaticBatchingUtility.Combine (batchParentFinal);
 				}
-				Debug.Log (string.Format ("batched {0}", batched));
 				batched = 0;
 				tilesInBatch.Clear ();
-				yield return null;
+				yield return new WaitForEndOfFrame ();
 			}
 		}
 
