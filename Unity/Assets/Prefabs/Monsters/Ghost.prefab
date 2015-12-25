@@ -284,7 +284,6 @@ GameObject:
   - 114: {fileID: 11496184}
   - 54: {fileID: 5492984}
   - 136: {fileID: 13664324}
-  - 114: {fileID: 11456430}
   - 114: {fileID: 11404880}
   m_Layer: 11
   m_Name: Ghost
@@ -870,24 +869,6 @@ MonoBehaviour:
   triggersWith:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &11456430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a3b677fe9744de094d5be2a73d2c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggersWith:
-    serializedVersion: 2
-    m_Bits: 512
-  effect: {fileID: 100000, guid: 45003d3699e5e1c4689eed86bda6a26e, type: 2}
-  offset: {x: 0, y: 0, z: 0}
-  scale: {x: 2, y: 2, z: 2}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11487390
 MonoBehaviour:
   m_ObjectHideFlags: 1

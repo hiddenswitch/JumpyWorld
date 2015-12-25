@@ -42,7 +42,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138422}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -79,8 +79,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -116,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions: 0
+  pivot: {x: 0, y: 0, z: 0}
+  size: {x: 1, y: 1, z: 1}
 --- !u!114 &11419950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,82 +148,82 @@ MonoBehaviour:
   - uvIndices: 090000000a0000000b000000
     location:
       serializedVersion: 2
-      x: .100000001
+      x: 0.1
       y: 0
-      width: .200000003
-      height: 1
+      width: 0.2
+      height: 0.1
     clamp: 0
   - uvIndices: 0d0000000e0000000f000000
     location:
       serializedVersion: 2
-      x: .100000001
+      x: 0.1
       y: 0
-      width: .200000003
-      height: 1
+      width: 0.2
+      height: 0.1
     clamp: 0
   - uvIndices: 2e0000002f00000030000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
   - uvIndices: 000000000100000002000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
   - uvIndices: 240000002500000026000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
   - uvIndices: 1b0000001c0000001d000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
   - uvIndices: 270000002800000029000000410000004200000043000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
   - uvIndices: 13000000160000001400000019000000180000001a000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.2
     clamp: 1
   - uvIndices: 3100000032000000330000003a0000003b0000003c000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
   - uvIndices: 030000000400000005000000370000003800000039000000
     location:
       serializedVersion: 2
-      x: .550000012
+      x: 0.55
       y: 0
-      width: .379999995
-      height: 1
+      width: 0.38
+      height: 0.1
     clamp: 1
 --- !u!1001 &100100000
 Prefab:
@@ -335,6 +339,46 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[9].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[8].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[7].location.height
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[6].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[5].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[3].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[1].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[0].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[2].location.height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shells.Array.data[4].location.height
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

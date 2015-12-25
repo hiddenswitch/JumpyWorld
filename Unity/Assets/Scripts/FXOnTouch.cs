@@ -3,13 +3,9 @@ using System.Collections;
 
 namespace JumpyWorld
 {
-	public class FXOnTouch : MonoBehaviour
+	public class FXOnTouch : FXMaker
 	{
 		public LayerMask triggersWith;
-		public GameObject effect;
-		public Vector3 offset;
-		public Vector3 scale;
-		public Quaternion rotation;
 
 		public virtual void OnTriggerEnter (Collider other)
 		{

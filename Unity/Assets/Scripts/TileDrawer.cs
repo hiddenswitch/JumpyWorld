@@ -42,6 +42,7 @@ namespace JumpyWorld
 
 		private Dictionary<Vector3, TilesRecord> tiles = new Dictionary<Vector3, TilesRecord> (400);
 		private Queue<TilesRecord> batchQueue = new Queue<TilesRecord> ();
+		private HashSet<TilesRecord> batchQueueSet = new HashSet<TilesRecord> ();
 		private bool hasCollided = false;
 		private bool clearing = false;
 
@@ -91,9 +92,13 @@ namespace JumpyWorld
 					} else {
 						var recordAtPoint = tiles [point];
 
-						if (batchQueue.Contains (recordAtPoint)) {
-							recordAtPoint.prefab = prefab;
-							recordAtPoint.isDynamic = isDynamic;
+						if (batchQueueSet.Contains (recordAtPoint)) {
+							if (unadjustedPoint == Vector3.zero) {
+								recordAtPoint.prefab = prefab;
+								recordAtPoint.isDynamic = isDynamic;
+							} else {
+								batchQueueSet.Remove (recordAtPoint);
+							}
 							queueOverwritten = true;
 						} else {
 							Destroy (recordAtPoint.gameObject);
@@ -110,9 +115,11 @@ namespace JumpyWorld
 			var tileRecord = new TilesRecord () { position = at, prefab = prefab, isDynamic = isDynamic };
 
 			batchQueue.Enqueue (tileRecord);
+			batchQueueSet.Add (tileRecord);
 
 			foreach (var unadjustedPoint in TileDrawer.Volume(volume)) {
-				tiles.Add (at + unadjustedPoint - pivot, tileRecord);
+				var point = at + unadjustedPoint - pivot;
+				tiles.Add (point, tileRecord);
 			}
 		}
 
@@ -135,8 +142,12 @@ namespace JumpyWorld
 				while (batchQueue.Count > 0) {
 					isDrawingTiles = true;
 					var tileRecord = batchQueue.Dequeue ();
+					if (!batchQueueSet.Contains (tileRecord)) {
+						continue;
+					}
 					tileRecord.gameObject = InstantiateTile (tileRecord);
 					tilesInBatch.Add (tileRecord);
+					batchQueueSet.Remove (tileRecord);
 					batched++;
 					if (batched > batchSize) {
 						var batchParent = new GameObject ("Batch Parent");
@@ -169,6 +180,7 @@ namespace JumpyWorld
 					batchParentFinal.transform.SetParent (destroyableParent.transform);
 					StaticBatchingUtility.Combine (batchParentFinal);
 				}
+				Debug.Log (string.Format ("batched {0}", batched));
 				batched = 0;
 				tilesInBatch.Clear ();
 				yield return null;

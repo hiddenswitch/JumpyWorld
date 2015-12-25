@@ -797,9 +797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   retractedTime: 2
-  extendingTime: 0.15
+  extendingTime: 0.25
   extendedTime: 1.2
-  retractingTime: 0.15
+  retractingTime: 0.25
   currentState: 0
   timeRemainingInCurrentState: 0.5
 --- !u!114 &11453292
@@ -859,11 +859,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: extendingTime
-      value: 0.15
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: retractingTime
-      value: 0.15
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: retractedTime
