@@ -594,7 +594,7 @@ MonoBehaviour:
   - {fileID: 1174779485}
   - {fileID: 10217444}
   - {fileID: 32481311}
-  depthGenerator: {fileID: 251450605}
+  depthGenerator: {fileID: 0}
   coinPlacer: {fileID: 0}
   wallProbability:
     serializedVersion: 2
