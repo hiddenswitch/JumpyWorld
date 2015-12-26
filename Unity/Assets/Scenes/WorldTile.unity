@@ -380,7 +380,8 @@ Prefab:
       propertyPath: orthographic size
       value: 9.55
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11488076, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 245faebb297f24d6f9f8c04556b93770, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &251450604
@@ -2007,7 +2008,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1850312467}
-  m_LocalRotation: {x: -0.6403417, y: 0.066764906, z: -0.05602242, w: -0.76312935}
+  m_LocalRotation: {x: 0.4545195, y: 0.54167527, z: -0.4545196, w: 0.54167515}
   m_LocalPosition: {x: -2.8559768, y: 1.6328411, z: 12.601483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

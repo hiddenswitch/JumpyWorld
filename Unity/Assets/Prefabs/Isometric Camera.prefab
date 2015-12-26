@@ -34,7 +34,6 @@ GameObject:
   - 114: {fileID: 11405694}
   - 114: {fileID: 11447786}
   - 114: {fileID: 11420774}
-  - 114: {fileID: 11488076}
   m_Layer: 0
   m_Name: Isometric Camera
   m_TagString: MainCamera
@@ -214,23 +213,6 @@ MonoBehaviour:
   landscapeSize: 4
   portraitSize: 9.55
   camera: {fileID: 2097882}
---- !u!114 &11488076
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160434}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  threshold: 0.25
-  intensity: 0.75
-  blurSize: 1
-  blurIterations: 1
-  blurType: 0
-  fastBloomShader: {fileID: 0}
 --- !u!124 &12468082
 Behaviour:
   m_ObjectHideFlags: 1
