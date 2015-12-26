@@ -117,6 +117,7 @@ MonoBehaviour:
   defaultGround: {fileID: 0}
   path: {fileID: 0}
   defaultEmpty: {fileID: 0}
+  walls: {fileID: 0}
   decorative:
   - {fileID: 184728, guid: 90bec4992210646be854a884a5ab93e7, type: 2}
   - {fileID: 187932, guid: 57711b5cebac44e668ca0789e41ebd4a, type: 2}
@@ -250,6 +251,7 @@ MonoBehaviour:
   defaultGround: {fileID: 0}
   path: {fileID: 0}
   defaultEmpty: {fileID: 0}
+  walls: {fileID: 0}
   decorative:
   - {fileID: 196498, guid: eec7fb0151844a146ad2225f948635ca, type: 2}
 --- !u!114 &32481311
@@ -520,6 +522,7 @@ MonoBehaviour:
   defaultGround: {fileID: 104628, guid: f2efe1121aa501f488abc2dafea4d968, type: 2}
   path: {fileID: 115330, guid: ac53b675a63b94518b9e596b300d7823, type: 2}
   defaultEmpty: {fileID: 0}
+  walls: {fileID: 104628, guid: c1af09061371644b8963d45908684b94, type: 2}
   decorative: []
 --- !u!4 &274888148
 Transform:
@@ -655,6 +658,7 @@ MonoBehaviour:
   defaultGround: {fileID: 0}
   path: {fileID: 0}
   defaultEmpty: {fileID: 0}
+  walls: {fileID: 0}
   decorative:
   - {fileID: 150658, guid: 92eee6ecd7b974302948d62764e2cd30, type: 2}
 --- !u!114 &399988469
@@ -863,6 +867,7 @@ MonoBehaviour:
   defaultGround: {fileID: 0}
   path: {fileID: 0}
   defaultEmpty: {fileID: 0}
+  walls: {fileID: 0}
   decorative:
   - {fileID: 123082, guid: 00dd1fe0e2802614bb72bdb829d23339, type: 2}
 --- !u!114 &502739152
@@ -1732,6 +1737,7 @@ MonoBehaviour:
   defaultGround: {fileID: 0}
   path: {fileID: 0}
   defaultEmpty: {fileID: 0}
+  walls: {fileID: 0}
   decorative:
   - {fileID: 120550, guid: e81368354b53ee747bb903fcd681f2bb, type: 2}
 --- !u!114 &1541092310

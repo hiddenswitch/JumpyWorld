@@ -13,6 +13,7 @@ namespace JumpyWorld
 		/// </summary>
 		public GameObject path;
 		public GameObject defaultEmpty;
+		public GameObject walls;
 		public GameObject[] decorative;
 
 		void Awake ()

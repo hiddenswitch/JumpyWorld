@@ -104,7 +104,7 @@ namespace JumpyWorld
 					&& (wallsForSides & point.side) > 0) {
 					var obstacle = new Obstacle () {
 						position = point.position,
-						tile = tilePool.defaultGround
+						tile = tilePool.walls
 					};
 					obstacles.Add (obstacle);
 
