@@ -574,6 +574,10 @@ GameObject:
   - 114: {fileID: 11435190}
   - 114: {fileID: 11427870}
   - 114: {fileID: 11464066}
+  - 114: {fileID: 11422894}
+  - 114: {fileID: 11440652}
+  - 114: {fileID: 11474994}
+  - 114: {fileID: 11419744}
   m_Layer: 9
   m_Name: Collector
   m_TagString: Untagged
@@ -1091,7 +1095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102320300796dac44aa73774e461ba12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 5400150}
   speed: 5
   moving: 1
   isAlive: 1
@@ -1114,6 +1118,30 @@ MonoBehaviour:
   rigidBody: {fileID: 5400150}
   speedScale: 1
   isAlive: 1
+--- !u!114 &11419744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd16fa1898ef72d4e8f0513d2faece71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleSavePrefix: Collectible.
+  collectibleTag: Tree
+--- !u!114 &11422894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3ce4be644da46689dc6b458292bc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11427490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1176,6 +1204,22 @@ MonoBehaviour:
   message: OnObjectDied
   reviveMessage: OnObjectRevived
   isAlive: 1
+--- !u!114 &11440652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2704eced05039fe4b98ad0486d3ea72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: {fileID: 11419744}
+  tileDrawer: {fileID: 0}
+  tilePool: {fileID: 11474994}
+  platformHeight: 0
+  woodCollector: {fileID: 11464066}
 --- !u!114 &11446296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1317,6 +1361,21 @@ MonoBehaviour:
   moveController: {fileID: 11410274}
   enableGravityOnRevival: 1
   delay: 0.2
+--- !u!114 &11474994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f9309de605491aa47c248bcc7e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGround: {fileID: 171730, guid: e5fde66e59447374c9df41fb27b1c6cc, type: 2}
+  path: {fileID: 0}
+  defaultEmpty: {fileID: 0}
+  decorative: []
 --- !u!114 &11483146
 MonoBehaviour:
   m_ObjectHideFlags: 1
