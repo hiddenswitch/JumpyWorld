@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Background
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 9da5906876a154570944204397ddece9, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: d56fa851c00be443895f1e2832843feb, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,6 +78,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CheckerTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 023597a194c90bc41aaf9bb24bb0e519, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -90,11 +97,11 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .5
+        second: 0.5
       data:
         first:
           name: _Parallax
-        second: .0199999996
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -127,6 +134,18 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _SizeMultiplier
+        second: 1
+      data:
+        first:
+          name: _SideLength
+        second: 0.054
+      data:
+        first:
+          name: _Ratio
+        second: 0.82
     m_Colors:
       data:
         first:
@@ -135,4 +154,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Offset
+        second: {r: 0, g: 0, b: 0, a: 0}
