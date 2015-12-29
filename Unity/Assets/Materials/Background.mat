@@ -146,6 +146,10 @@ Material:
         first:
           name: _Ratio
         second: 0.82
+      data:
+        first:
+          name: _Frequency
+        second: 1
     m_Colors:
       data:
         first:
@@ -159,3 +163,19 @@ Material:
         first:
           name: _Offset
         second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _Color1
+        second: {r: 0.99264705, g: 0.99264705, b: 0.99264705, a: 1}
+      data:
+        first:
+          name: _Color2
+        second: {r: 0.6479239, g: 0.7217993, b: 0.8235294, a: 1}
+      data:
+        first:
+          name: _Color3
+        second: {r: 0.63235295, g: 0.8478701, b: 1, a: 1}
+      data:
+        first:
+          name: _Color4
+        second: {r: 0.4532388, g: 0.37927118, b: 0.8455882, a: 1}
