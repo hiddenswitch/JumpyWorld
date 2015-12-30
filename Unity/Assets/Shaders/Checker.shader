@@ -10,6 +10,7 @@
 		_SizeMultiplier ("Size", Range(1,100)) = 8.0
 		_Offset ("Offset", Vector) = (0,0,0,0)
 		_Frequency ("Frequency", Float) = 1.0
+		_Velocity ("Velocity", Vector) = (0,0,0,0)
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -20,12 +21,13 @@
 		#pragma surface surf Standard fullforwardshadows
 
 		// Use shader model 3.0 target, to get nicer looking lighting
-		#pragma target 2.0
+		#pragma target 3.0
 
 		sampler2D _MainTex;
 		sampler2D _CheckerTex;
 		half _SizeMultiplier;
-		float3 _Offset;
+		half3 _Velocity;
+		half3 _Offset;
 
 		struct Input {
 			float2 uv_MainTex;
@@ -35,7 +37,7 @@
 
 		half _Glossiness;
 		half _Metallic;
-		float _Frequency;
+		half _Frequency;
 		fixed4 _Color;
 		fixed4 _Color1;
 		fixed4 _Color2;
@@ -54,16 +56,16 @@
 
 			// Compute isChecker or isTriangle
 			// First, compute the coordinates in tile-space
-			float xo = (inputCoord.x+_Offset.x)*_SizeMultiplier;
-			float yo = (inputCoord.y+_Offset.y)*_SizeMultiplier;
-			float zo = (inputCoord.z+_Offset.z)*_SizeMultiplier;
+			float t = _Time.x;
+			float3 p = (inputCoord+_Offset+t*_Velocity)*_SizeMultiplier;
 
 			// Then, compute whether we're in a checker or a triangle, or both
-			bool isChecker = ((int)xo) & 2 != ((int)yo) & 2 != ((int)zo) & 2;
-			bool isTriangle = frac(xo) > frac(zo);
+			float3 check = fmod(p, float3(2,2,2));
+			bool isChecker = (check.x != check.y) != check.z;
+			bool isTriangle = frac(p.x) > frac(p.z);
 
 			// Compute index used to sample random function
-			float2 index = (int2(xo, zo) << 1) + (isTriangle ? int2(1,1) : int2(0,0));
+			float2 index = floor(p.xz) + (isTriangle ? float2(0.5, 0.5) : float2(0,0));
 
 			// Only branch once.
 			if ((isChecker && isTriangle) || (!isChecker && isTriangle)) {
@@ -73,7 +75,8 @@
 			}
 
 			float r = rand(index);
-			c *= lerp(_Color1, _Color2, (sin((_Time.y+r)*_Frequency)+1)/2);
+			half w = (sin((_Time.y+r)*_Frequency)+1)/2.0;
+			c *= lerp(_Color1, _Color2, w);
 
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables

@@ -179,3 +179,7 @@ Material:
         first:
           name: _Color4
         second: {r: 0.4532388, g: 0.37927118, b: 0.8455882, a: 1}
+      data:
+        first:
+          name: _Velocity
+        second: {r: 0, g: 0, b: 0, a: 0}

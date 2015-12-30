@@ -115,8 +115,8 @@ PlayerSettings:
   VertexChannelCompressionMask:
     serializedVersion: 2
     m_Bits: 238
-  iPhoneSdkVersion: 988
-  iPhoneTargetOSVersion: 22
+  iPhoneSdkVersion: 989
+  iPhoneTargetOSVersion: 40
   uIPrerenderedIcon: 0
   uIRequiresPersistentWiFi: 0
   uIRequiresFullScreen: 1
