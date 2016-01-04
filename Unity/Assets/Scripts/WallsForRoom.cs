@@ -10,7 +10,7 @@ namespace JumpyWorld
 	/// </summary>
 	public class WallsForRoom : ObstacleGenerator
 	{
-		[BitMaskAttribute(typeof(Directions))]
+		[BitMaskAttribute (typeof(Directions))]
 		public Directions
 			wallsForSides = Directions.North | Directions.East | Directions.South | Directions.West;
 		public bool openingsForDoors = true;
@@ -19,10 +19,12 @@ namespace JumpyWorld
 		{
 			base.Generate (seed);
 			var floorPoints = new HashSet<Vector3> ();
+			var teePointsToRemove = new HashSet<Vector3> ();
+
 
 			// Convert to hash set for easy lookups
 			foreach (var point in Floor.Rectangle(room.size, step:1, y: height)) {
-				floorPoints.Add (point.position);
+				floorPoints.Add (point.position + Vector3.down);
 			}
 
 			foreach (var point in Floor.Rectangle(room.size, step:1, y: height)) {
@@ -30,78 +32,82 @@ namespace JumpyWorld
 				// pattern or a cross pattern of floors. Add on Vector3.down since we're checking below us
 				// for floor
 				var hasCrossPattern = tileDrawer.Contains (point.position + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.left + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.right + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.forward + Vector3.down)
-					&& tileDrawer.Contains (point.position + Vector3.back + Vector3.down);
+				                      && tileDrawer.Contains (point.position + Vector3.left + Vector3.down)
+				                      && tileDrawer.Contains (point.position + Vector3.right + Vector3.down)
+				                      && tileDrawer.Contains (point.position + Vector3.forward + Vector3.down)
+				                      && tileDrawer.Contains (point.position + Vector3.back + Vector3.down);
 
-//				// Encode the four T patterns.
-//				var teePoints = new Vector3[][] {
-//					new Vector3[] {
-//						Vector3.zero,
-//						Vector3.left,
-//						Vector3.right,
-//						Vector3.forward
-//					},
-//					new Vector3[] {
-//						Vector3.zero,
-//						Vector3.left,
-//						Vector3.right,
-//						Vector3.back
-//					},
-//					new Vector3[] {
-//						Vector3.zero,
-//						Vector3.forward,
-//						Vector3.right,
-//						Vector3.back
-//					},
-//					new Vector3[] {
-//						Vector3.zero,
-//						Vector3.forward,
-//						Vector3.left,
-//						Vector3.back
-//					},
-//				};
-//
-//				// In order for there to be a T pattern, all four points (the three "tee" points plus the current point
-//				// must exist and at least one must not belong to this floor.
-//				var hasAnyTeePattern = false;
-//				foreach (var tee in teePoints) {
-//					var isTeePattern = true;
-//					var allBelongToFloor = true;
-//
-//					foreach (var teePoint in tee) {
-//						var testPosition = point.position + teePoint + Vector3.down;
-//						// All four points must exist
-//						if (!tileDrawer.Contains (testPosition)) {
-//							isTeePattern = false;
-//							break;
-//						}
-//
-//						if (!floorPoints.Contains(testPosition)) {
-//							allBelongToFloor = false;
-//						}
-//					}
-//
-//					if (allBelongToFloor) {
-//						isTeePattern = false;
-//					}
-//
-//					if (isTeePattern) {
-//						hasAnyTeePattern = true;
-//						break;
-//					}
-//				}
+				// Encode the four T patterns.
+				var teePoints = new Vector3[][] {
+					new Vector3[] {
+						Vector3.zero,
+						Vector3.left,
+						Vector3.right,
+						Vector3.forward
+					},
+					new Vector3[] {
+						Vector3.zero,
+						Vector3.left,
+						Vector3.right,
+						Vector3.back
+					},
+					new Vector3[] {
+						Vector3.zero,
+						Vector3.forward,
+						Vector3.right,
+						Vector3.back
+					},
+					new Vector3[] {
+						Vector3.zero,
+						Vector3.forward,
+						Vector3.left,
+						Vector3.back
+					},
+				};
+
+				var anyTee = false;
+				Vector3[] teePointsWithTee = null;
+				foreach (var tee in teePoints) {
+					var isTee = true;
+					var belongsToOtherFloor = false;
+
+					foreach (var teePoint in tee) {
+						var testPosition = point.position + teePoint + Vector3.down;
+						var hasPosition = tileDrawer.Contains (testPosition);
+						if (!hasPosition) {
+							isTee = false;
+						}
+
+						if (!floorPoints.Contains (testPosition)
+						    && hasPosition) {
+							belongsToOtherFloor = true;
+						}
+					}
+
+					if (isTee
+					    && belongsToOtherFloor) {
+						anyTee = true;
+						teePointsWithTee = tee;
+					}
+				}
 
 				// If we want to save openings for doors and we detected a floor pattern where a door should go (or
 				// we're bordering another room's walls) don't build the opening.
 				if (openingsForDoors
-				    && ( /*hasAnyTeePattern || */ hasCrossPattern)) {
+				    && hasCrossPattern) {
 					continue;
 				}
 
+				if (openingsForDoors
+				    && anyTee) {
+
+					foreach (var teePoint in teePointsWithTee) {
+						teePointsToRemove.Add (point.position + teePoint);
+					}
+				}
+
 				if (point.isBorder
-					&& (wallsForSides & point.side) > 0) {
+				    && (wallsForSides & point.side) > 0) {
 					var obstacle = new Obstacle () {
 						position = point.position,
 						tile = tilePool.walls
@@ -109,6 +115,10 @@ namespace JumpyWorld
 					obstacles.Add (obstacle);
 
 				}
+			}
+
+			foreach (var toRemove in teePointsToRemove) {
+				obstacles.Remove (new Obstacle () { position = toRemove, tile = tilePool.walls });
 			}
 		}
 	}

@@ -14,10 +14,10 @@ namespace JumpyWorld
 
 		public Floor room;
 		public float height = 1f;
-		[Header("Runtime")]
+		[Header ("Runtime")]
 		public HashSet<Obstacle>
 			obstacles = new HashSet<Obstacle> ();
-		
+
 		public override void Draw (TileDrawer tileDrawer, TilePool tilePool)
 		{
 			base.Draw (tileDrawer, tilePool);
