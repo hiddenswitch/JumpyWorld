@@ -22,7 +22,7 @@ namespace JumpyWorld
 	
 		}
 
-		void OnTriggerEnter (Collider other)
+		void OnTriggerStay (Collider other)
 		{
 			var conditionMet = condition == null ? true : condition.evaluate ();
 			if (conditionMet && ((1 << other.gameObject.layer) & triggersWith.value) > 0) {
