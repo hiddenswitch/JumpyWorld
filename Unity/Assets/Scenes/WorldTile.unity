@@ -831,10 +831,6 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1025331909}
-    - target: {fileID: 2048540, guid: dae8734368e9e412aa2721357f3f1423, type: 2}
-      propertyPath: m_HDR
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dae8734368e9e412aa2721357f3f1423, type: 2}
   m_IsPrefabParent: 0

@@ -17,8 +17,8 @@ namespace JumpyWorld
 		void UpdateCamera ()
 		{
 			if (Application.isMobilePlatform) {
-				isometricCamera.SetActive (true);
 				topDownCamera.SetActive (false);
+				isometricCamera.SetActive (true);
 			} else {
 				topDownCamera.SetActive (true);
 				isometricCamera.SetActive (false);
