@@ -8,7 +8,7 @@ namespace JumpyWorld
 		// Use this for initialization
 		void Awake ()
 		{
-			Application.targetFrameRate = -1;
+			Application.targetFrameRate = 60;
 		}
 	}
 }
