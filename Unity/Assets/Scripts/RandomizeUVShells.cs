@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 namespace JumpyWorld
 {
@@ -18,13 +20,21 @@ namespace JumpyWorld
 		Vector2[] startUVs;
 		Mesh mesh;
 		// Use this for initialization
-		void Awake ()
+		void Start ()
 		{
+			if (!enabled)
+			{
+				return;
+			}
 			mesh = meshFilter.mesh;
 			startUVs = mesh.uv;
 			if (randomizeOnStart) {
 				Randomize ();
 			}
+		}
+
+		private void Update()
+		{
 		}
 
 		public void Randomize ()
